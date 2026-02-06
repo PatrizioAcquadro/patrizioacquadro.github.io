@@ -41,6 +41,111 @@ const embed = document.getElementById('cv-embed');
 const lastUpdated = document.getElementById('cv-last-updated');
 const year = document.getElementById('cv-current-year');
 
+function initializeMobileMenu() {
+  const navbar = document.getElementById('cv-header');
+  const menuToggle = document.getElementById('cv-menu-toggle');
+  const panel = document.getElementById('cv-nav-panel');
+
+  if (!navbar || !menuToggle || !panel) {
+    return;
+  }
+
+  navbar.classList.add('is-enhanced');
+
+  function isOpen() {
+    return navbar.getAttribute('data-menu-open') === 'true';
+  }
+
+  function setOpenState(open) {
+    navbar.setAttribute('data-menu-open', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Close CV navigation menu' : 'Open CV navigation menu');
+  }
+
+  function closeMenu(restoreFocus = false) {
+    if (!isOpen()) {
+      return;
+    }
+
+    setOpenState(false);
+
+    if (restoreFocus) {
+      menuToggle.focus();
+    }
+  }
+
+  menuToggle.addEventListener('click', () => {
+    setOpenState(!isOpen());
+  });
+
+  panel.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMenu(false);
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!isOpen()) {
+      return;
+    }
+
+    if (navbar.contains(event.target)) {
+      return;
+    }
+
+    closeMenu(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu(true);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1120) {
+      setOpenState(false);
+    }
+  });
+
+  setOpenState(false);
+}
+
+function initializeRevealAnimations() {
+  const items = [...document.querySelectorAll('.reveal')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (items.length === 0) {
+    return;
+  }
+
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    document.documentElement.removeAttribute('data-motion');
+    items.forEach((item) => item.classList.add('is-visible'));
+    return;
+  }
+
+  document.documentElement.setAttribute('data-motion', 'enhanced');
+
+  items.forEach((item, index) => {
+    item.style.setProperty('--reveal-delay', `${Math.min(index * 70, 220)}ms`);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  items.forEach((item) => observer.observe(item));
+}
+
 function initializeCvPage() {
   if (blockedByFrameProtection) {
     return;
@@ -53,6 +158,9 @@ function initializeCvPage() {
 
   lastUpdated.textContent = `Last updated: ${siteData.lastUpdated}`;
   year.textContent = String(new Date().getFullYear());
+
+  initializeMobileMenu();
+  initializeRevealAnimations();
 }
 
 initializeCvPage();

@@ -24,76 +24,117 @@
     <meta property="og:url" content="https://your-domain.example/" />
     <meta property="og:image" content="https://your-domain.example/og/og-cover.png" />
 
+    <link rel="stylesheet" href="/src/styles/system.css" />
     <link rel="stylesheet" href="/src/styles/main.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="site-header" id="home">
-      <div class="container header-inner">
-        <a class="site-title" href="#home">Patrizio Acquadro</a>
+    <header class="c-navbar" id="site-header" data-menu-open="false">
+      <div class="container c-navbar__inner">
+        <a class="c-navbar__brand" href="#home">Patrizio Acquadro</a>
 
-        <nav aria-label="Primary navigation">
-          <ul class="nav-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#entrepreneurship">Entrepreneurship</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#talks">Talks</a></li>
-            <li><a href="./cv/">CV</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
-          Dark mode
+        <button
+          class="c-navbar__menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav-panel"
+          aria-label="Open navigation menu"
+        >
+          Menu
         </button>
+
+        <div class="c-navbar__panel" id="primary-nav-panel">
+          <nav aria-label="Primary navigation" id="primary-nav">
+            <ul class="c-navbar__links nav-list">
+              <li><a class="c-navbar__link" href="#home">Home</a></li>
+              <li><a class="c-navbar__link" href="#news">News</a></li>
+              <li><a class="c-navbar__link" href="#research">Research</a></li>
+              <li><a class="c-navbar__link" href="#projects">Projects</a></li>
+              <li><a class="c-navbar__link" href="#entrepreneurship">Entrepreneurship</a></li>
+              <li><a class="c-navbar__link" href="#skills">Skills</a></li>
+              <li><a class="c-navbar__link" href="#talks">Talks</a></li>
+              <li><a class="c-navbar__link" href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="c-navbar__actions" aria-label="Primary actions">
+            <a class="c-button c-button--solid" href="./cv/">CV</a>
+            <a class="c-button c-button--ghost" href="#contact">Contact</a>
+            <a
+              class="c-button c-button--subtle"
+              href="https://github.com/PatrizioAcquadro"
+              target="_blank"
+              rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
+              aria-label="GitHub profile (opens in a new tab)"
+            >
+              GitHub
+            </a>
+            <a
+              class="c-button c-button--subtle"
+              href="https://www.linkedin.com/in/patrizio-acquadro"
+              target="_blank"
+              rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
+              aria-label="LinkedIn profile (opens in a new tab)"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
     <main id="main-content">
-      <section class="hero section reveal" aria-labelledby="hero-name">
+      <section class="hero c-section reveal" id="home" aria-labelledby="hero-name">
         <div class="container hero-grid">
-          <div>
+          <div class="hero-copy">
+            <p class="c-section__kicker">Premium Academic/Tech Portfolio</p>
             <h1 id="hero-name"></h1>
             <p class="hero-tagline" id="hero-tagline"></p>
             <p class="hero-bio" id="hero-bio"></p>
+            <div class="hero-actions">
+              <a class="c-button c-button--solid" href="./cv/">View CV</a>
+              <a class="c-button c-button--ghost" href="#contact">Get in touch</a>
+            </div>
           </div>
+
           <figure class="hero-figure">
             <img id="profile-image" class="profile-image" src="" alt="Portrait of Patrizio Acquadro" />
           </figure>
         </div>
       </section>
 
-      <section class="section section-muted reveal" id="contact" aria-labelledby="contact-title">
-        <div class="container">
-          <h2 id="contact-title">Contact</h2>
-          <ul class="contact-list" id="contact-list"></ul>
-          <p class="privacy-note" id="privacy-note"></p>
+      <section class="c-section reveal" id="news" aria-labelledby="news-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Latest Updates</p>
+            <h2 id="news-title">News</h2>
+          </header>
+          <ul class="news-list c-timeline" id="news-list"></ul>
         </div>
       </section>
 
-      <section class="section reveal" id="news" aria-labelledby="news-title">
-        <div class="container">
-          <h2 id="news-title">News / Updates</h2>
-          <ul class="news-list" id="news-list"></ul>
-        </div>
-      </section>
-
-      <section class="section reveal" id="research" aria-labelledby="research-title">
-        <div class="container">
-          <h2 id="research-title">Research</h2>
+      <section class="c-section c-section--surface reveal" id="research" aria-labelledby="research-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Research Work</p>
+            <h2 id="research-title">Research</h2>
+          </header>
           <div class="research-list" id="research-list"></div>
           <p class="inline-note">Publications (coming soon)</p>
         </div>
       </section>
 
-      <section class="section reveal" id="projects" aria-labelledby="projects-title">
-        <div class="container">
-          <h2 id="projects-title">Selected Projects</h2>
+      <section class="c-section reveal" id="projects" aria-labelledby="projects-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Selected Engineering</p>
+            <h2 id="projects-title">Projects</h2>
+          </header>
           <div class="projects-grid" id="projects-grid"></div>
           <p class="inline-note">
             More work on
@@ -102,24 +143,44 @@
         </div>
       </section>
 
-      <section class="section reveal" id="entrepreneurship" aria-labelledby="entrepreneurship-title">
-        <div class="container">
-          <h2 id="entrepreneurship-title">Entrepreneurship</h2>
+      <section class="c-section c-section--surface reveal" id="entrepreneurship" aria-labelledby="entrepreneurship-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Venture Building</p>
+            <h2 id="entrepreneurship-title">Entrepreneurship</h2>
+          </header>
           <div class="venture-list" id="venture-list"></div>
         </div>
       </section>
 
-      <section class="section reveal" id="skills" aria-labelledby="skills-title">
-        <div class="container">
-          <h2 id="skills-title">Skills</h2>
+      <section class="c-section reveal" id="skills" aria-labelledby="skills-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Tools and Capability</p>
+            <h2 id="skills-title">Skills</h2>
+          </header>
           <div class="skills-grid" id="skills-grid"></div>
         </div>
       </section>
 
-      <section class="section reveal" id="talks" aria-labelledby="talks-title">
-        <div class="container">
-          <h2 id="talks-title">Talks &amp; Activities</h2>
-          <ul class="talks-list" id="talks-list"></ul>
+      <section class="c-section c-section--surface reveal" id="talks" aria-labelledby="talks-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Speaking and Activities</p>
+            <h2 id="talks-title">Talks &amp; Activities</h2>
+          </header>
+          <ul class="talks-list c-timeline" id="talks-list"></ul>
+        </div>
+      </section>
+
+      <section class="c-section c-section--contact reveal" id="contact" aria-labelledby="contact-title">
+        <div class="container section-shell">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Direct Channels</p>
+            <h2 id="contact-title">Contact</h2>
+          </header>
+          <ul class="contact-list" id="contact-list"></ul>
+          <p class="privacy-note" id="privacy-note"></p>
         </div>
       </section>
     </main>

@@ -1,7 +1,6 @@
 import { siteData } from './content/siteData.js';
 
 const baseUrl = '/';
-const THEME_STORAGE_KEY = 'pa-theme';
 
 function enforceFrameProtection() {
   if (window.top === window.self) {
@@ -49,7 +48,6 @@ const skillsGrid = document.getElementById('skills-grid');
 const talksList = document.getElementById('talks-list');
 const lastUpdated = document.getElementById('last-updated');
 const currentYear = document.getElementById('current-year');
-const themeToggle = document.getElementById('theme-toggle');
 
 function addExternalLinkAttributes(anchor, href, label) {
   if (!href.startsWith('http')) {
@@ -74,6 +72,13 @@ function createTag(tagName, className, textContent) {
   }
 
   return node;
+}
+
+function createMetaBadge(textContent) {
+  const wrapper = createTag('p', 'card-meta');
+  const badge = createTag('span', 'c-badge', textContent);
+  wrapper.append(badge);
+  return wrapper;
 }
 
 function setImageWithFallback(imageEl, sources) {
@@ -132,8 +137,8 @@ function renderNews() {
   const sortedNews = [...siteData.news].sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
 
   sortedNews.forEach((item) => {
-    const listItem = createTag('li', 'news-item');
-    const date = createTag('time', 'news-date', `${item.dateLabel}: `);
+    const listItem = createTag('li', 'news-item c-timeline-item');
+    const date = createTag('time', 'news-date', item.dateLabel);
     date.dateTime = item.isoDate;
     listItem.append(date);
 
@@ -143,7 +148,8 @@ function renderNews() {
       addExternalLinkAttributes(link, item.href, `News item from ${item.dateLabel}`);
       listItem.append(link);
     } else {
-      listItem.append(document.createTextNode(item.text));
+      const text = createTag('p', 'news-text', item.text);
+      listItem.append(text);
     }
 
     newsList.append(listItem);
@@ -151,7 +157,7 @@ function renderNews() {
 }
 
 function renderResearch() {
-  const thesisCard = createTag('article', 'content-card research-card');
+  const thesisCard = createTag('article', 'c-card content-card research-card');
   const thesisTitle = createTag('h3', '', siteData.thesis.title);
   const thesisText = createTag('p', 'card-body', siteData.thesis.text);
   const thesisLink = createTag('a', 'card-link', 'Thesis page');
@@ -162,9 +168,9 @@ function renderResearch() {
   researchList.append(thesisCard);
 
   siteData.research.forEach((item) => {
-    const card = createTag('article', 'content-card research-card');
+    const card = createTag('article', 'c-card content-card research-card');
     const title = createTag('h3', '', `${item.role} | ${item.org}`);
-    const timeframe = createTag('p', 'card-meta', item.timeframe);
+    const timeframe = createMetaBadge(item.timeframe);
     const bulletList = createTag('ul', 'card-list');
 
     item.bullets.forEach((bullet) => {
@@ -186,13 +192,23 @@ function renderResearch() {
 
 function renderProjects() {
   siteData.projects.forEach((item) => {
-    const card = createTag('article', 'content-card project-card');
+    const card = createTag('article', 'c-card content-card project-card');
     const title = createTag('h3', '', item.title);
-    const timeframe = createTag('p', 'card-meta', item.timeframe);
+    const timeframe = createMetaBadge(item.timeframe);
     const built = createTag('p', 'card-body', item.built);
-    const stack = createTag('p', 'card-stack', `Stack/Tools: ${item.stack}`);
+    const stackLabel = createTag('p', 'card-meta', 'Stack / Tools');
+    const stackList = createTag('ul', 'stack-list');
 
-    card.append(title, timeframe, built, stack);
+    item.stack
+      .split(',')
+      .map((stackItem) => stackItem.trim())
+      .filter(Boolean)
+      .forEach((stackItem) => {
+        const badgeItem = createTag('li', 'c-badge', stackItem);
+        stackList.append(badgeItem);
+      });
+
+    card.append(title, timeframe, built, stackLabel, stackList);
 
     if (item.href) {
       const link = createTag('a', 'card-link', item.hrefLabel || 'Project link');
@@ -209,9 +225,9 @@ function renderProjects() {
 
 function renderVentures() {
   siteData.ventures.forEach((item) => {
-    const card = createTag('article', 'content-card venture-card');
+    const card = createTag('article', 'c-card content-card venture-card');
     const title = createTag('h3', '', `${item.name} | ${item.role}`);
-    const timeframe = createTag('p', 'card-meta', item.timeframe);
+    const timeframe = createMetaBadge(item.timeframe);
     const bulletList = createTag('ul', 'card-list');
 
     item.bullets.forEach((bullet) => {
@@ -225,12 +241,12 @@ function renderVentures() {
 
 function renderSkills() {
   siteData.skills.forEach((group) => {
-    const card = createTag('article', 'content-card skill-card');
+    const card = createTag('article', 'c-card content-card skill-card');
     const title = createTag('h3', '', group.group);
     const list = createTag('ul', 'skill-list');
 
     group.items.forEach((item) => {
-      list.append(createTag('li', 'skill-pill', item));
+      list.append(createTag('li', 'skill-pill c-badge', item));
     });
 
     card.append(title, list);
@@ -240,9 +256,9 @@ function renderSkills() {
 
 function renderActivities() {
   siteData.activities.forEach((item) => {
-    const listItem = createTag('li', 'talk-item');
+    const listItem = createTag('li', 'talk-item c-timeline-item');
     const title = createTag('h3', 'talk-title', item.title);
-    const timeframe = createTag('p', 'card-meta', item.timeframe);
+    const timeframe = createTag('p', 'talk-date', item.timeframe);
     const text = createTag('p', 'card-body', item.text);
 
     listItem.append(title, timeframe, text);
@@ -250,61 +266,175 @@ function renderActivities() {
   });
 }
 
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-  themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-}
+function initializeMobileMenu() {
+  const navbar = document.querySelector('.c-navbar');
+  const menuToggle = document.getElementById('menu-toggle');
+  const panel = document.getElementById('primary-nav-panel');
 
-function getStoredTheme() {
-  try {
-    return window.localStorage.getItem(THEME_STORAGE_KEY);
-  } catch (error) {
-    return null;
+  if (!navbar || !menuToggle || !panel) {
+    return;
   }
-}
 
-function setStoredTheme(theme) {
-  try {
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch (error) {
-    // Ignore storage failures and continue with in-memory theme state.
+  navbar.classList.add('is-enhanced');
+
+  function isOpen() {
+    return navbar.getAttribute('data-menu-open') === 'true';
   }
-}
 
-function initializeTheme() {
-  const storedTheme = getStoredTheme();
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : prefersDark ? 'dark' : 'light';
+  function setOpenState(open) {
+    navbar.setAttribute('data-menu-open', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
 
-  setTheme(initialTheme);
-
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-    setStoredTheme(nextTheme);
-    setTheme(nextTheme);
-  });
-
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  mediaQuery.addEventListener('change', (event) => {
-    if (getStoredTheme()) {
+  function closeMenu(restoreFocus = false) {
+    if (!isOpen()) {
       return;
     }
 
-    setTheme(event.matches ? 'dark' : 'light');
+    setOpenState(false);
+
+    if (restoreFocus) {
+      menuToggle.focus();
+    }
+  }
+
+  menuToggle.addEventListener('click', () => {
+    setOpenState(!isOpen());
+  });
+
+  panel.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMenu(false);
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!isOpen()) {
+      return;
+    }
+
+    if (navbar.contains(event.target)) {
+      return;
+    }
+
+    closeMenu(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu(true);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1120) {
+      setOpenState(false);
+    }
+  });
+
+  setOpenState(false);
+}
+
+function initializeActiveSectionIndicator() {
+  const navLinks = [...document.querySelectorAll('.c-navbar__link[href^="#"]')];
+
+  if (navLinks.length === 0) {
+    return;
+  }
+
+  const sectionEntries = navLinks
+    .map((link) => {
+      const targetId = link.getAttribute('href')?.slice(1) || '';
+      const target = document.getElementById(targetId);
+
+      if (!targetId || !target) {
+        return null;
+      }
+
+      return { targetId, target, link };
+    })
+    .filter(Boolean);
+
+  if (sectionEntries.length === 0) {
+    return;
+  }
+
+  function setActive(targetId) {
+    navLinks.forEach((link) => {
+      link.removeAttribute('aria-current');
+    });
+
+    const active = sectionEntries.find((entry) => entry.targetId === targetId);
+    if (active) {
+      active.link.setAttribute('aria-current', 'page');
+    }
+  }
+
+  const initialHash = window.location.hash.slice(1);
+  const defaultTarget = initialHash || sectionEntries[0].targetId;
+  setActive(defaultTarget);
+
+  if (!('IntersectionObserver' in window)) {
+    return;
+  }
+
+  const visibleSections = new Map();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visibleSections.set(entry.target.id, entry.intersectionRatio);
+        } else {
+          visibleSections.delete(entry.target.id);
+        }
+      });
+
+      if (visibleSections.size === 0) {
+        return;
+      }
+
+      const [mostVisibleId] = [...visibleSections.entries()].sort((a, b) => b[1] - a[1])[0];
+      setActive(mostVisibleId);
+    },
+    {
+      rootMargin: '-35% 0px -45% 0px',
+      threshold: [0.1, 0.3, 0.5, 0.8]
+    }
+  );
+
+  sectionEntries.forEach((entry) => {
+    observer.observe(entry.target);
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hashTarget = window.location.hash.slice(1);
+    if (hashTarget) {
+      setActive(hashTarget);
+    }
   });
 }
 
 function initializeRevealAnimations() {
-  const items = document.querySelectorAll('.reveal');
+  const items = [...document.querySelectorAll('.reveal')];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (items.length === 0) {
+    return;
+  }
+
   if (reducedMotion || !('IntersectionObserver' in window)) {
+    document.documentElement.removeAttribute('data-motion');
     items.forEach((item) => item.classList.add('is-visible'));
     return;
   }
+
+  document.documentElement.setAttribute('data-motion', 'enhanced');
+
+  items.forEach((item, index) => {
+    item.style.setProperty('--reveal-delay', `${Math.min(index * 55, 360)}ms`);
+  });
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -332,14 +462,15 @@ function initialize() {
   }
 
   renderHero();
-  renderContacts();
   renderNews();
   renderResearch();
   renderProjects();
   renderVentures();
   renderSkills();
   renderActivities();
-  initializeTheme();
+  renderContacts();
+  initializeMobileMenu();
+  initializeActiveSectionIndicator();
   initializeRevealAnimations();
   renderFooter();
 }

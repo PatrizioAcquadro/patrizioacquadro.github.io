@@ -16,50 +16,79 @@
     <link rel="canonical" href="https://your-domain.example/cv/" />
 
     <meta property="og:title" content="CV | Patrizio Acquadro" />
-    <meta
-      property="og:description"
-      content="View or download the CV of Patrizio Acquadro."
-    />
+    <meta property="og:description" content="View or download the CV of Patrizio Acquadro." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://your-domain.example/cv/" />
     <meta property="og:image" content="https://your-domain.example/og/og-cover.png" />
 
+    <link rel="stylesheet" href="/src/styles/system.css" />
     <link rel="stylesheet" href="/src/styles/cv.css" />
     <script type="module" src="/src/cv.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="cv-header">
-      <div class="cv-container cv-header-inner">
-        <a class="cv-title" href="../">Patrizio Acquadro</a>
-        <nav aria-label="CV page navigation">
-          <ul class="cv-nav-list">
-            <li><a href="../">Home</a></li>
-            <li><a id="cv-download-top" href="">Download CV</a></li>
-          </ul>
-        </nav>
+    <header class="c-navbar" id="cv-header" data-menu-open="false">
+      <div class="container c-navbar__inner">
+        <a class="c-navbar__brand" href="../#home">Patrizio Acquadro</a>
+
+        <button
+          class="c-navbar__menu-toggle"
+          id="cv-menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="cv-nav-panel"
+          aria-label="Open CV navigation menu"
+        >
+          Menu
+        </button>
+
+        <div class="c-navbar__panel" id="cv-nav-panel">
+          <nav aria-label="CV page navigation">
+            <ul class="c-navbar__links">
+              <li><a class="c-navbar__link" href="../#home">Home</a></li>
+              <li><a class="c-navbar__link" href="../#research">Research</a></li>
+              <li><a class="c-navbar__link" href="../#projects">Projects</a></li>
+              <li><a class="c-navbar__link" href="../#contact">Contact</a></li>
+              <li><a class="c-navbar__link" href="./" aria-current="page">CV</a></li>
+            </ul>
+          </nav>
+
+          <div class="c-navbar__actions" aria-label="CV actions">
+            <a class="c-button c-button--solid" id="cv-download-top" href="" download>Download CV</a>
+            <a class="c-button c-button--ghost" href="../#home">Back to Home</a>
+          </div>
+        </div>
       </div>
     </header>
 
     <main id="main-content" class="cv-main">
-      <section class="cv-section" aria-labelledby="cv-heading">
-        <div class="cv-container">
-          <h1 id="cv-heading">Curriculum Vitae</h1>
-          <p>
-            This page embeds my latest CV PDF for quick review. If the embedded document does not load in your browser,
-            use the direct download link below.
-          </p>
-          <p>
-            <a class="cv-download-button" id="cv-download" href="" download>Download CV (PDF)</a>
-          </p>
+      <section class="c-section cv-intro reveal" aria-labelledby="cv-heading">
+        <div class="container">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Curriculum Vitae</p>
+            <h1 id="cv-heading">CV</h1>
+            <p class="c-section__description">
+              This page embeds my latest CV PDF for quick review. If the embedded document does not load in your browser,
+              use the direct download link below.
+            </p>
+          </header>
+
+          <div class="cv-intro-actions">
+            <a class="c-button c-button--solid" id="cv-download" href="" download>Download CV (PDF)</a>
+            <a class="c-button c-button--subtle" href="../#contact">Contact</a>
+          </div>
         </div>
       </section>
 
-      <section class="cv-section cv-viewer-section" aria-labelledby="cv-viewer-heading">
-        <div class="cv-container">
-          <h2 id="cv-viewer-heading">Embedded CV</h2>
-          <div class="cv-viewer-wrapper">
+      <section class="c-section c-section--surface cv-viewer-section reveal" aria-labelledby="cv-viewer-heading">
+        <div class="container">
+          <header class="c-section__header">
+            <p class="c-section__kicker">Inline Viewer</p>
+            <h2 id="cv-viewer-heading">Embedded CV</h2>
+          </header>
+
+          <div class="cv-viewer-wrapper c-card">
             <object id="cv-embed" data="" type="application/pdf" class="cv-viewer">
               <p>
                 Your browser cannot display PDFs inline.
@@ -71,8 +100,8 @@
       </section>
     </main>
 
-    <footer class="cv-footer">
-      <div class="cv-container cv-footer-inner">
+    <footer class="site-footer cv-footer">
+      <div class="container footer-inner">
         <p id="cv-last-updated"></p>
         <p>&copy; <span id="cv-current-year"></span> Patrizio Acquadro</p>
       </div>

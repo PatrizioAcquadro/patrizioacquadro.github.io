@@ -249,6 +249,12 @@ h3 {
   text-decoration: none;
 }
 
+.privacy-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .news-list,
 .talks-list {
   list-style: disc;
@@ -363,6 +369,15 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.frame-guard-message {
+  margin: 2rem auto;
+  width: min(100% - 2rem, var(--max-width));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1rem;
 }
 
 .reveal {

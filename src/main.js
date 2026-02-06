@@ -3,11 +3,44 @@ import { siteData } from './content/siteData.js';
 const baseUrl = '/';
 const THEME_STORAGE_KEY = 'pa-theme';
 
+function enforceFrameProtection() {
+  if (window.top === window.self) {
+    return false;
+  }
+
+  // Best-effort anti-clickjacking for GitHub Pages, where defensive headers are limited.
+  document.documentElement.setAttribute('hidden', '');
+
+  try {
+    window.top.location = window.self.location.href;
+    return true;
+  } catch (error) {
+    document.documentElement.removeAttribute('hidden');
+
+    if (document.body) {
+      while (document.body.firstChild) {
+        document.body.removeChild(document.body.firstChild);
+      }
+
+      const warning = document.createElement('p');
+      warning.className = 'frame-guard-message';
+      warning.setAttribute('role', 'alert');
+      warning.textContent = 'This page cannot be embedded in another site.';
+      document.body.append(warning);
+    }
+
+    return true;
+  }
+}
+
+const blockedByFrameProtection = enforceFrameProtection();
+
 const heroName = document.getElementById('hero-name');
 const heroTagline = document.getElementById('hero-tagline');
 const heroBio = document.getElementById('hero-bio');
 const profileImage = document.getElementById('profile-image');
 const contactList = document.getElementById('contact-list');
+const privacyNote = document.getElementById('privacy-note');
 const newsList = document.getElementById('news-list');
 const researchList = document.getElementById('research-list');
 const projectsGrid = document.getElementById('projects-grid');
@@ -25,6 +58,7 @@ function addExternalLinkAttributes(anchor, href, label) {
 
   anchor.target = '_blank';
   anchor.rel = 'noopener noreferrer';
+  anchor.referrerPolicy = 'no-referrer';
   anchor.setAttribute('aria-label', `${label} (opens in a new tab)`);
 }
 
@@ -72,14 +106,26 @@ function renderHero() {
 }
 
 function renderContacts() {
-  siteData.contactLinks.forEach((item) => {
+  function appendContactLink(label, href) {
     const listItem = createTag('li', 'contact-item');
-    const link = createTag('a', 'contact-link', item.label);
-    link.href = item.href;
-    addExternalLinkAttributes(link, item.href, item.label);
+    const link = createTag('a', 'contact-link', label);
+    link.href = href;
+    addExternalLinkAttributes(link, href, label);
     listItem.append(link);
     contactList.append(listItem);
+  }
+
+  siteData.contactLinks.forEach((item) => {
+    appendContactLink(item.label, item.href);
   });
+
+  if (siteData.privacyExposure.showPhone && siteData.privacyExposure.phoneHref) {
+    appendContactLink(siteData.privacyExposure.phoneLabel, siteData.privacyExposure.phoneHref);
+  }
+
+  if (privacyNote) {
+    privacyNote.textContent = siteData.privacyExposure.note;
+  }
 }
 
 function renderNews() {
@@ -281,6 +327,10 @@ function renderFooter() {
 }
 
 function initialize() {
+  if (blockedByFrameProtection) {
+    return;
+  }
+
   renderHero();
   renderContacts();
   renderNews();

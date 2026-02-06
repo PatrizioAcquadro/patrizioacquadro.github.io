@@ -1,0 +1,6 @@
+* @PatrizioAcquadro
+
+# Security-sensitive repository controls
+/.github/workflows/* @PatrizioAcquadro
+/SECURITY.md @PatrizioAcquadro
+/scripts/security-baseline-check.mjs @PatrizioAcquadro

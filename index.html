@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'; worker-src 'none'; manifest-src 'self'; media-src 'self'; upgrade-insecure-requests"
     />
     <title>Patrizio Acquadro | AI Research, Engineering, and Entrepreneurship</title>
     <meta
@@ -71,6 +72,7 @@
         <div class="container">
           <h2 id="contact-title">Contact</h2>
           <ul class="contact-list" id="contact-list"></ul>
+          <p class="privacy-note" id="privacy-note"></p>
         </div>
       </section>
 
@@ -95,7 +97,7 @@
           <div class="projects-grid" id="projects-grid"></div>
           <p class="inline-note">
             More work on
-            <a href="https://github.com/PatrizioAcquadro" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            <a href="https://github.com/PatrizioAcquadro" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">GitHub</a>.
           </p>
         </div>
       </section>

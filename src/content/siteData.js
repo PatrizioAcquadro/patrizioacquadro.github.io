@@ -1,5 +1,6 @@
 /**
  * @typedef {{ label: string, href: string }} ContactLink
+ * @typedef {{ showPhone: boolean, phoneLabel: string, phoneHref: string, note: string }} PrivacyExposure
  * @typedef {{ dateLabel: string, isoDate: string, text: string, href?: string }} NewsItem
  * @typedef {{ role: string, org: string, timeframe: string, bullets: string[], href?: string }} ResearchItem
  * @typedef {{ title: string, timeframe: string, built: string, stack: string, href?: string, hrefLabel?: string }} ProjectItem
@@ -14,6 +15,7 @@
  *   positioning: string,
  *   bio: string,
  *   lastUpdated: string,
+ *   privacyExposure: PrivacyExposure,
  *   contactLinks: ContactLink[],
  *   news: NewsItem[],
  *   thesis: { title: string, text: string, href: string },
@@ -30,6 +32,13 @@ export const siteData = {
   bio:
     'I am an MSc student in Artificial Intelligence and a visiting student at Purdue University. My recent work spans sim-to-real vision-language-action systems, LLM code-generation workflows, and hands-on projects from benchmarking to deployment.',
   lastUpdated: 'February 2026',
+  privacyExposure: {
+    showPhone: false,
+    phoneLabel: 'Phone',
+    phoneHref: 'tel:+10000000000',
+    note:
+      'Privacy & Exposure: this site intentionally limits public personal data. Email, LinkedIn, and GitHub are published; phone is optional and disabled by default.'
+  },
   contactLinks: [
     { label: 'Email', href: 'mailto:acquadropatrizio@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrizio-acquadro' },

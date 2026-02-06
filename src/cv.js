@@ -1,7 +1,6 @@
-import './styles/cv.css';
 import { siteData } from './content/siteData.js';
 
-const pdfUrl = `${import.meta.env.BASE_URL}cv/AcquadroPatrizioCV.pdf`;
+const pdfUrl = '/cv/AcquadroPatrizioCV.pdf';
 
 const downloadButton = document.getElementById('cv-download');
 const downloadTop = document.getElementById('cv-download-top');

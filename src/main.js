@@ -1,7 +1,6 @@
-import './styles/main.css';
 import { siteData } from './content/siteData.js';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = '/';
 const THEME_STORAGE_KEY = 'pa-theme';
 
 const heroName = document.getElementById('hero-name');

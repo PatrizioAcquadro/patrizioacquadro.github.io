@@ -231,7 +231,7 @@ export const siteData = {
     },
     {
       group: 'Languages',
-      items: ['Italian (native)', 'English (fluent)', 'French (intermediate)']
+      items: ['Italian (native)', 'English (fluent)', 'French (basic)']
     },
     {
       group: 'Professional Skills',

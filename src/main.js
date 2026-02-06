@@ -42,11 +42,33 @@ function createTag(tagName, className, textContent) {
   return node;
 }
 
+function setImageWithFallback(imageEl, sources) {
+  let index = 0;
+
+  function tryNextSource() {
+    if (index >= sources.length) {
+      imageEl.removeEventListener('error', tryNextSource);
+      return;
+    }
+
+    imageEl.src = sources[index];
+    index += 1;
+  }
+
+  imageEl.addEventListener('error', tryNextSource);
+  tryNextSource();
+}
+
 function renderHero() {
   heroName.textContent = siteData.name;
   heroTagline.textContent = siteData.positioning;
   heroBio.textContent = siteData.bio;
-  profileImage.src = `${baseUrl}images/PatrizioAcquadro.png`;
+  setImageWithFallback(profileImage, [
+    `${baseUrl}images/PatrizioAcquadro.png`,
+    `${baseUrl}public/images/PatrizioAcquadro.png`,
+    `${baseUrl}images/avatar-placeholder.svg`,
+    `${baseUrl}public/images/avatar-placeholder.svg`
+  ]);
 }
 
 function renderContacts() {

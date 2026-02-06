@@ -375,45 +375,52 @@ function initializeActiveSectionIndicator() {
   const defaultTarget = initialHash || sectionEntries[0].targetId;
   setActive(defaultTarget);
 
-  if (!('IntersectionObserver' in window)) {
-    return;
+  function getScrollActivationOffset() {
+    const navbar = document.querySelector('.c-navbar');
+    const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+    return navbarHeight + 24;
   }
 
-  const visibleSections = new Map();
+  function updateActiveSectionFromScroll() {
+    const activationOffset = getScrollActivationOffset();
+    let activeTargetId = sectionEntries[0].targetId;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visibleSections.set(entry.target.id, entry.intersectionRatio);
-        } else {
-          visibleSections.delete(entry.target.id);
-        }
-      });
-
-      if (visibleSections.size === 0) {
-        return;
+    sectionEntries.forEach((entry) => {
+      const sectionTop = entry.target.getBoundingClientRect().top;
+      if (sectionTop <= activationOffset) {
+        activeTargetId = entry.targetId;
       }
+    });
 
-      const [mostVisibleId] = [...visibleSections.entries()].sort((a, b) => b[1] - a[1])[0];
-      setActive(mostVisibleId);
-    },
-    {
-      rootMargin: '-35% 0px -45% 0px',
-      threshold: [0.1, 0.3, 0.5, 0.8]
+    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    if (isAtBottom) {
+      activeTargetId = sectionEntries[sectionEntries.length - 1].targetId;
     }
-  );
 
-  sectionEntries.forEach((entry) => {
-    observer.observe(entry.target);
-  });
+    setActive(activeTargetId);
+  }
+
+  let isTicking = false;
+  function requestActiveSectionUpdate() {
+    if (isTicking) {
+      return;
+    }
+
+    isTicking = true;
+    window.requestAnimationFrame(() => {
+      updateActiveSectionFromScroll();
+      isTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', requestActiveSectionUpdate, { passive: true });
+  window.addEventListener('resize', requestActiveSectionUpdate);
 
   window.addEventListener('hashchange', () => {
-    const hashTarget = window.location.hash.slice(1);
-    if (hashTarget) {
-      setActive(hashTarget);
-    }
+    requestActiveSectionUpdate();
   });
+
+  requestActiveSectionUpdate();
 }
 
 function initializeRevealAnimations() {

@@ -57,6 +57,7 @@
   --shadow-elevated: 0 18px 45px rgba(9, 15, 21, 0.62);
 
   --content-max: 60rem;
+  --nav-max: 86rem;
   --prose-max: 64ch;
 
   --motion-duration-fast: 160ms;
@@ -180,6 +181,10 @@ ol {
   margin-inline: auto;
 }
 
+.c-navbar .container {
+  width: min(100% - var(--space-4), var(--nav-max));
+}
+
 .c-navbar {
   position: sticky;
   top: 0;
@@ -191,9 +196,9 @@ ol {
 
 .c-navbar__inner {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  column-gap: var(--space-3);
+  column-gap: var(--space-4);
   min-height: 4.75rem;
 }
 
@@ -223,10 +228,14 @@ ol {
 }
 
 .c-navbar__panel {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.c-navbar__panel nav {
   min-width: 0;
 }
 
@@ -234,44 +243,69 @@ ol {
   list-style: none;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-1);
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.c-navbar__links::-webkit-scrollbar {
+  display: none;
 }
 
 .c-navbar__link {
   display: inline-flex;
   align-items: center;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
+  position: relative;
   color: var(--color-slopes);
-  font-size: var(--text-sm);
+  font-size: 0.92rem;
   font-weight: 500;
-  line-height: 1;
-  min-height: 2rem;
-  padding: 0.45rem 0.72rem;
+  line-height: 1.2;
+  min-height: 1.85rem;
+  padding: 0.35rem 0;
   text-decoration: none;
   transition:
-    color var(--motion-duration-fast) var(--motion-ease),
-    border-color var(--motion-duration-fast) var(--motion-ease),
-    background var(--motion-duration-fast) var(--motion-ease);
+    color var(--motion-duration-fast) var(--motion-ease);
+}
+
+.c-navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 100%;
+  height: 1px;
+  background: var(--color-arctic);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
 }
 
 .c-navbar__link:hover,
 .c-navbar__link:focus-visible {
-  border-color: var(--color-apres-alpha-38);
   color: var(--color-arctic);
 }
 
+.c-navbar__link:hover::after,
+.c-navbar__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
 .c-navbar__link[aria-current='page'] {
-  border-color: var(--color-slopes-alpha-28);
-  background: var(--color-arctic-alpha-08);
   color: var(--color-arctic);
+}
+
+.c-navbar__link[aria-current='page']::after {
+  transform: scaleX(1);
 }
 
 .c-navbar__actions {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
+  flex-shrink: 0;
   gap: var(--space-1);
 }
 
@@ -458,6 +492,7 @@ html[data-motion='enhanced'] .reveal.is-visible {
 
   .c-navbar__panel {
     grid-column: 1 / -1;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-2);
@@ -478,23 +513,30 @@ html[data-motion='enhanced'] .reveal.is-visible {
   .c-navbar__links {
     flex-direction: column;
     align-items: stretch;
+    gap: 0;
+    overflow: visible;
   }
 
   .c-navbar__link {
     width: 100%;
     justify-content: flex-start;
     min-height: 2.35rem;
-    padding-inline: var(--space-2);
+    padding: 0.58rem 0;
+  }
+
+  .c-navbar__link::after {
+    left: 0;
+    width: 2.25rem;
+    bottom: 0.35rem;
   }
 
   .c-navbar__actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-1);
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
-  .c-button {
-    width: 100%;
+  .c-navbar__actions .c-button {
+    width: auto;
   }
 }
 
@@ -503,8 +545,8 @@ html[data-motion='enhanced'] .reveal.is-visible {
     width: min(100% - var(--space-3), var(--content-max));
   }
 
-  .c-navbar__actions {
-    grid-template-columns: 1fr;
+  .c-navbar__actions .c-button {
+    width: 100%;
   }
 }
 

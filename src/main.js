@@ -383,11 +383,15 @@ function initializeActiveSectionIndicator() {
 
   function updateActiveSectionFromScroll() {
     const activationOffset = getScrollActivationOffset();
+    const scrollPosition = window.scrollY + activationOffset;
     let activeTargetId = sectionEntries[0].targetId;
 
-    sectionEntries.forEach((entry) => {
-      const sectionTop = entry.target.getBoundingClientRect().top;
-      if (sectionTop <= activationOffset) {
+    sectionEntries.forEach((entry, index) => {
+      const sectionStart = entry.target.offsetTop;
+      const nextSectionStart =
+        index < sectionEntries.length - 1 ? sectionEntries[index + 1].target.offsetTop : Number.POSITIVE_INFINITY;
+
+      if (scrollPosition >= sectionStart && scrollPosition < nextSectionStart) {
         activeTargetId = entry.targetId;
       }
     });

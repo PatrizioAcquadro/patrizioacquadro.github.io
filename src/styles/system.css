@@ -277,10 +277,14 @@ ol {
   bottom: -0.45rem;
   width: 100%;
   height: 1px;
-  background: var(--color-arctic);
+  background: var(--color-apres-ski);
+  opacity: 0.9;
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform var(--motion-duration-fast) var(--motion-ease);
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    background var(--motion-duration-fast) var(--motion-ease),
+    opacity var(--motion-duration-fast) var(--motion-ease);
 }
 
 .c-navbar__link:hover,
@@ -290,14 +294,19 @@ ol {
 
 .c-navbar__link:hover::after,
 .c-navbar__link:focus-visible::after {
+  background: var(--color-slopes);
   transform: scaleX(1);
 }
 
 .c-navbar__link[aria-current='page'] {
   color: var(--color-arctic);
+  font-weight: 650;
 }
 
 .c-navbar__link[aria-current='page']::after {
+  height: 2px;
+  background: var(--color-arctic);
+  opacity: 1;
   transform: scaleX(1);
 }
 

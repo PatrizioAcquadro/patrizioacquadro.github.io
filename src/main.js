@@ -46,7 +46,7 @@ function renderHero() {
   heroName.textContent = siteData.name;
   heroTagline.textContent = siteData.positioning;
   heroBio.textContent = siteData.bio;
-  profileImage.src = `${baseUrl}images/avatar-placeholder.svg`;
+  profileImage.src = `${baseUrl}images/PatrizioAcquadro.png`;
 }
 
 function renderContacts() {

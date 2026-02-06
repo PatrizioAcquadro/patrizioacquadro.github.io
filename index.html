@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <title>Patrizio Acquadro | AI Research, Engineering, and Entrepreneurship</title>
+    <meta
+      name="description"
+      content="Personal website of Patrizio Acquadro: AI research, engineering projects, entrepreneurship work, and updates."
+    />
+    <link rel="canonical" href="https://your-domain.example/" />
+
+    <meta property="og:title" content="Patrizio Acquadro | AI Research, Engineering, and Entrepreneurship" />
+    <meta
+      property="og:description"
+      content="AI research, engineering projects, entrepreneurship initiatives, and recent updates."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.example/" />
+    <meta property="og:image" content="https://your-domain.example/og/og-cover.png" />
+
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" id="home">
+      <div class="container header-inner">
+        <a class="site-title" href="#home">Patrizio Acquadro</a>
+
+        <nav aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#entrepreneurship">Entrepreneurship</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#talks">Talks</a></li>
+            <li><a href="./cv/">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+          Dark mode
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section reveal" aria-labelledby="hero-name">
+        <div class="container hero-grid">
+          <div>
+            <h1 id="hero-name"></h1>
+            <p class="hero-tagline" id="hero-tagline"></p>
+            <p class="hero-bio" id="hero-bio"></p>
+          </div>
+          <figure class="hero-figure">
+            <img id="profile-image" class="profile-image" src="" alt="Placeholder portrait of Patrizio Acquadro" />
+            <figcaption class="photo-note">TODO: replace placeholder avatar with official profile photo.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section-muted reveal" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title">Contact</h2>
+          <ul class="contact-list" id="contact-list"></ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="news" aria-labelledby="news-title">
+        <div class="container">
+          <h2 id="news-title">News / Updates</h2>
+          <ul class="news-list" id="news-list"></ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="research" aria-labelledby="research-title">
+        <div class="container">
+          <h2 id="research-title">Research</h2>
+          <div class="research-list" id="research-list"></div>
+          <p class="inline-note">Publications (coming soon)</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <h2 id="projects-title">Selected Projects</h2>
+          <div class="projects-grid" id="projects-grid"></div>
+          <p class="inline-note">
+            More work on
+            <a href="https://github.com/PatrizioAcquadro" target="_blank" rel="noopener noreferrer">GitHub</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="entrepreneurship" aria-labelledby="entrepreneurship-title">
+        <div class="container">
+          <h2 id="entrepreneurship-title">Entrepreneurship</h2>
+          <div class="venture-list" id="venture-list"></div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="skills" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Skills</h2>
+          <div class="skills-grid" id="skills-grid"></div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="talks" aria-labelledby="talks-title">
+        <div class="container">
+          <h2 id="talks-title">Talks &amp; Activities</h2>
+          <ul class="talks-list" id="talks-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p id="last-updated"></p>
+        <p>&copy; <span id="current-year"></span> Patrizio Acquadro</p>
+      </div>
+    </footer>
+  </body>
+</html>

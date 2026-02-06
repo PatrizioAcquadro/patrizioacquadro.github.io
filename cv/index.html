@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self'; object-src 'self'; base-uri 'self'; form-action 'none'"
+    />
+    <title>CV | Patrizio Acquadro</title>
+    <meta
+      name="description"
+      content="Curriculum vitae of Patrizio Acquadro, available for online viewing and download."
+    />
+    <link rel="canonical" href="https://your-domain.example/cv/" />
+
+    <meta property="og:title" content="CV | Patrizio Acquadro" />
+    <meta
+      property="og:description"
+      content="View or download the CV of Patrizio Acquadro."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.example/cv/" />
+    <meta property="og:image" content="https://your-domain.example/og/og-cover.png" />
+
+    <script type="module" src="/src/cv.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="cv-header">
+      <div class="cv-container cv-header-inner">
+        <a class="cv-title" href="../">Patrizio Acquadro</a>
+        <nav aria-label="CV page navigation">
+          <ul class="cv-nav-list">
+            <li><a href="../">Home</a></li>
+            <li><a id="cv-download-top" href="">Download CV</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="cv-main">
+      <section class="cv-section" aria-labelledby="cv-heading">
+        <div class="cv-container">
+          <h1 id="cv-heading">Curriculum Vitae</h1>
+          <p>
+            This page embeds my latest CV PDF for quick review. If the embedded document does not load in your browser,
+            use the direct download link below.
+          </p>
+          <p>
+            <a class="cv-download-button" id="cv-download" href="" download>Download CV (PDF)</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="cv-section cv-viewer-section" aria-labelledby="cv-viewer-heading">
+        <div class="cv-container">
+          <h2 id="cv-viewer-heading">Embedded CV</h2>
+          <div class="cv-viewer-wrapper">
+            <object id="cv-embed" data="" type="application/pdf" class="cv-viewer">
+              <p>
+                Your browser cannot display PDFs inline.
+                <a id="cv-fallback-link" href="" download>Download the CV directly</a>.
+              </p>
+            </object>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="cv-footer">
+      <div class="cv-container cv-footer-inner">
+        <p id="cv-last-updated"></p>
+        <p>&copy; <span id="cv-current-year"></span> Patrizio Acquadro</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,93 +1,64 @@
-# Patrizio Acquadro - Personal Website
+# Personal Website (Static, Vite + GitHub Pages)
 
-Static personal website built with Vite and deployed on GitHub Pages.
+This repository contains a static personal website built with Vite, plain HTML/CSS/JavaScript, and deployed with GitHub Pages.
 
-## Stack
+## Requirements
 
-- Vite (build/dev server)
-- Vanilla HTML, CSS, JavaScript
-- GitHub Actions for deployment
+- Node.js 20+ (LTS recommended)
+- npm 10+
 
-## Local Development
+## Installation
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Start development server:
-   ```bash
-   npm run dev
-   ```
-3. Build production files:
-   ```bash
-   npm run build
-   ```
-4. Preview production build:
-   ```bash
-   npm run preview
-   ```
+```bash
+npm install
+```
 
-## Content Editing
+## Run Locally
 
-All editable content lives in:
+```bash
+npm run dev
+```
 
-- `/Users/patrizioacquadro/Desktop/GitHub_Website/src/content/siteData.js`
+The local dev server URL is printed in the terminal (usually `http://localhost:5173`).
 
-Rules used for this website:
+## Production Build
 
-- Use only facts from the CV source document unless explicitly provided by the owner.
-- If information is missing, keep a TODO placeholder instead of inventing data.
-- Keep `Publications (coming soon)` until explicit publication entries are available.
+```bash
+npm run build
+```
 
-## Key Files
+Build output is generated in `dist/`.
 
-- Home page: `/Users/patrizioacquadro/Desktop/GitHub_Website/index.html`
-- CV page: `/Users/patrizioacquadro/Desktop/GitHub_Website/cv/index.html`
-- Main app logic: `/Users/patrizioacquadro/Desktop/GitHub_Website/src/main.js`
-- CV page logic: `/Users/patrizioacquadro/Desktop/GitHub_Website/src/cv.js`
-- Main styles: `/Users/patrizioacquadro/Desktop/GitHub_Website/src/styles/main.css`
-- CV styles: `/Users/patrizioacquadro/Desktop/GitHub_Website/src/styles/cv.css`
-- PDF source served by site: `/Users/patrizioacquadro/Desktop/GitHub_Website/public/cv/AcquadroPatrizioCV.pdf`
-- Deploy workflow: `/Users/patrizioacquadro/Desktop/GitHub_Website/.github/workflows/deploy-pages.yml`
+To preview the production build locally:
 
-## GitHub Pages Deployment
+```bash
+npm run preview
+```
 
-1. Push this repository to GitHub.
-2. In GitHub, open `Settings -> Pages`.
-3. Under `Build and deployment`, select `GitHub Actions` as the source.
-4. Push to `main` (or run the workflow manually from `Actions`).
-5. GitHub Actions builds `dist/` and deploys it to Pages.
+## Repository Structure
 
-The Vite base path is auto-detected in `vite.config.js`:
+- `index.html`: main single-page site
+- `cv/index.html`: CV route
+- `src/content/siteData.js`: editable content source
+- `src/main.js`: homepage rendering logic
+- `src/cv.js`: CV page logic
+- `src/styles/`: stylesheets
+- `public/`: static assets copied to build output
+- `.github/workflows/deploy-pages.yml`: GitHub Pages deployment workflow
 
-- If repository name ends with `.github.io`, base is `/`.
-- Otherwise, base is `/<repo-name>/`.
+## Deploy to GitHub Pages
 
-## SEO and Canonical URL Setup
-
-Both pages include SEO and Open Graph tags with placeholder canonical URLs.
-
-After first deploy, update these placeholders in:
-
-- `/Users/patrizioacquadro/Desktop/GitHub_Website/index.html`
-- `/Users/patrizioacquadro/Desktop/GitHub_Website/cv/index.html`
-
-Replace `https://your-domain.example/...` with your real GitHub Pages URL or custom domain.
+1. Push changes to `main`.
+2. Ensure GitHub Pages is enabled for the repository.
+3. Use GitHub Actions as the deployment source.
+4. The workflow builds and deploys automatically on every push to `main`.
 
 ## Optional Custom Domain
 
-1. Create file `public/CNAME` with your domain (for example `www.yourdomain.com`).
-2. Configure DNS at your domain provider.
-3. Typical setup:
-   - `CNAME` record for `www` -> `<username>.github.io`
-   - `A` records for apex/root domain -> GitHub Pages IPs (as documented by GitHub)
-4. Enable `Enforce HTTPS` in GitHub Pages settings after DNS propagation.
+1. Create `public/CNAME` with your domain (for example `www.yourdomain.com`).
+2. Configure DNS records with your domain provider.
+3. Enable HTTPS in GitHub Pages settings after DNS propagation.
 
-## Accessibility and UX Notes
+## Notes
 
-- Semantic landmarks and heading hierarchy
-- Keyboard-focus styles and skip link
-- Responsive layout for mobile and desktop
-- Optional dark mode with persisted preference
-- Reduced-motion support
-
+- Canonical and Open Graph URLs are placeholders by default. Update them to your real domain after deployment.

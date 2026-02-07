@@ -169,6 +169,20 @@
       </section>
     </main>
 
+    <div class="mail-sheet-backdrop" id="mail-sheet-backdrop" hidden>
+      <div class="mail-sheet" id="mail-sheet" role="dialog" aria-modal="true" aria-labelledby="mail-sheet-title">
+        <button class="mail-sheet__close" id="mail-sheet-close" type="button" aria-label="Close mail panel">&times;</button>
+        <p class="mail-sheet__kicker">Mail</p>
+        <h3 class="mail-sheet__title" id="mail-sheet-title">Reach me by email</h3>
+        <div class="mail-sheet__email-row">
+          <p class="mail-sheet__email" id="mail-sheet-email"></p>
+          <button class="c-button c-button--subtle mail-sheet__copy" id="mail-copy-button" type="button">Copy</button>
+        </div>
+        <p class="mail-sheet__status" id="mail-copy-status" role="status" aria-live="polite"></p>
+        <a class="c-button c-button--solid mail-sheet__cta" id="mail-cta-button" href="">Reach out via mail</a>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-inner">
         <p id="last-updated"></p>

@@ -40,7 +40,7 @@ export const siteData = {
       'Privacy & Exposure: this site intentionally limits public personal data. Email, LinkedIn, and GitHub are published; phone is optional and disabled by default.'
   },
   contactLinks: [
-    { label: 'Email', href: 'mailto:acquadropatrizio@gmail.com' },
+    { label: 'Mail', href: 'mailto:acquadropatrizio@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrizio-acquadro' },
     { label: 'GitHub', href: 'https://github.com/PatrizioAcquadro' }
   ],

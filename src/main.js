@@ -40,6 +40,12 @@ const heroBio = document.getElementById('hero-bio');
 const profileImage = document.getElementById('profile-image');
 const contactList = document.getElementById('contact-list');
 const privacyNote = document.getElementById('privacy-note');
+const mailSheetBackdrop = document.getElementById('mail-sheet-backdrop');
+const mailSheetClose = document.getElementById('mail-sheet-close');
+const mailSheetEmail = document.getElementById('mail-sheet-email');
+const mailCopyButton = document.getElementById('mail-copy-button');
+const mailCopyStatus = document.getElementById('mail-copy-status');
+const mailCtaButton = document.getElementById('mail-cta-button');
 const newsList = document.getElementById('news-list');
 const researchList = document.getElementById('research-list');
 const projectsGrid = document.getElementById('projects-grid');
@@ -79,6 +85,46 @@ function createMetaBadge(textContent) {
   const badge = createTag('span', 'c-badge', textContent);
   wrapper.append(badge);
   return wrapper;
+}
+
+function extractEmailFromMailto(mailtoHref) {
+  if (!mailtoHref || !mailtoHref.startsWith('mailto:')) {
+    return '';
+  }
+
+  const raw = mailtoHref.slice('mailto:'.length).split('?')[0].trim();
+  if (!raw) {
+    return '';
+  }
+
+  try {
+    return decodeURIComponent(raw);
+  } catch (error) {
+    return raw;
+  }
+}
+
+function fallbackCopyText(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.setAttribute('readonly', '');
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  textArea.style.top = '0';
+
+  document.body.append(textArea);
+  textArea.select();
+  textArea.setSelectionRange(0, textArea.value.length);
+
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch (error) {
+    copied = false;
+  }
+
+  document.body.removeChild(textArea);
+  return copied;
 }
 
 function setImageWithFallback(imageEl, sources) {
@@ -131,6 +177,150 @@ function renderContacts() {
   if (privacyNote) {
     privacyNote.textContent = siteData.privacyExposure.note;
   }
+}
+
+function initializeMailContactInteraction() {
+  if (
+    !contactList ||
+    !mailSheetBackdrop ||
+    !mailSheetClose ||
+    !mailSheetEmail ||
+    !mailCopyButton ||
+    !mailCopyStatus ||
+    !mailCtaButton
+  ) {
+    return;
+  }
+
+  const mailTrigger = contactList.querySelector('.contact-link[href^="mailto:"]');
+  if (!mailTrigger) {
+    return;
+  }
+
+  const mailtoHref = mailTrigger.getAttribute('href') || '';
+  const email = extractEmailFromMailto(mailtoHref);
+  if (!email) {
+    return;
+  }
+
+  mailTrigger.setAttribute('aria-haspopup', 'dialog');
+  mailTrigger.setAttribute('aria-controls', 'mail-sheet');
+  mailTrigger.setAttribute('aria-expanded', 'false');
+  mailSheetEmail.textContent = email;
+  mailCtaButton.href = mailtoHref;
+  mailCtaButton.setAttribute('aria-label', `Reach out to ${email} via email`);
+
+  let previouslyFocusedElement = null;
+  let hideTimeoutId = 0;
+  let statusTimeoutId = 0;
+
+  function scheduleStatusClear() {
+    if (statusTimeoutId) {
+      window.clearTimeout(statusTimeoutId);
+    }
+
+    statusTimeoutId = window.setTimeout(() => {
+      mailCopyStatus.textContent = '';
+      statusTimeoutId = 0;
+    }, 1800);
+  }
+
+  function onEscapeKey(event) {
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    closeMailSheet({ restoreFocus: true });
+  }
+
+  function openMailSheet() {
+    if (mailSheetBackdrop.getAttribute('data-open') === 'true') {
+      return;
+    }
+
+    if (hideTimeoutId) {
+      window.clearTimeout(hideTimeoutId);
+      hideTimeoutId = 0;
+    }
+
+    previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    mailCopyStatus.textContent = '';
+    mailSheetBackdrop.hidden = false;
+    mailTrigger.setAttribute('aria-expanded', 'true');
+
+    window.requestAnimationFrame(() => {
+      mailSheetBackdrop.setAttribute('data-open', 'true');
+    });
+
+    document.addEventListener('keydown', onEscapeKey);
+    mailSheetClose.focus();
+  }
+
+  function closeMailSheet({ restoreFocus }) {
+    if (mailSheetBackdrop.hidden && mailSheetBackdrop.getAttribute('data-open') !== 'true') {
+      return;
+    }
+
+    mailSheetBackdrop.setAttribute('data-open', 'false');
+    mailTrigger.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('keydown', onEscapeKey);
+
+    if (hideTimeoutId) {
+      window.clearTimeout(hideTimeoutId);
+    }
+
+    hideTimeoutId = window.setTimeout(() => {
+      mailSheetBackdrop.hidden = true;
+      hideTimeoutId = 0;
+    }, 260);
+
+    if (restoreFocus && previouslyFocusedElement) {
+      previouslyFocusedElement.focus();
+    }
+  }
+
+  async function copyEmailToClipboard() {
+    let copied = false;
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch (error) {
+        copied = false;
+      }
+    }
+
+    if (!copied) {
+      copied = fallbackCopyText(email);
+    }
+
+    mailCopyStatus.textContent = copied ? 'Copied ✓' : 'Copy failed';
+    scheduleStatusClear();
+  }
+
+  mailTrigger.addEventListener('click', (event) => {
+    event.preventDefault();
+    openMailSheet();
+  });
+
+  mailSheetClose.addEventListener('click', () => {
+    closeMailSheet({ restoreFocus: true });
+  });
+
+  mailSheetBackdrop.addEventListener('click', (event) => {
+    if (event.target === mailSheetBackdrop) {
+      closeMailSheet({ restoreFocus: true });
+    }
+  });
+
+  mailCopyButton.addEventListener('click', () => {
+    void copyEmailToClipboard();
+  });
+
+  mailCtaButton.addEventListener('click', () => {
+    closeMailSheet({ restoreFocus: false });
+  });
 }
 
 function renderNews() {
@@ -500,6 +690,7 @@ function initialize() {
   renderSkills();
   renderActivities();
   renderContacts();
+  initializeMailContactInteraction();
   initializeMobileMenu();
   initializeCvDownload();
   initializeActiveSectionIndicator();

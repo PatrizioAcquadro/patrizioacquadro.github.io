@@ -129,28 +129,32 @@ export const siteData = {
       timeframe: 'May 2025 - Jul 2025',
       built: 'Designed and integrated a multi-provider coding-agent pipeline with structured tools and realistic benchmark tasks.',
       stack: 'OpenAI, Gemini, OpenRouter, LangChain, Pydantic',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/code-agent-replication',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'STM32N6 NPU On-Device Transformer',
       timeframe: 'May 2025 - Jul 2025',
       built: 'Deployed an INT8 encoder-only transformer under strict Flash, SRAM, and latency constraints.',
       stack: 'STM32 Edge-AI, X-Cube-AI, CubeIDE, CubeProgrammer, AI Dev Cloud',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/TitoNicolaDrugman/Transformer-NPU-STM32N6',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'Transformer for Piano MIDI Generation',
       timeframe: 'Jun 2025 - Jul 2025',
       built: 'Trained and evaluated a ~15M REMI transformer with explainability methods for sequence generation.',
       stack: 'PyTorch, AdamW, mixed precision, Integrated Gradients, Attention Rollout',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/autoregressive-midi-transformer',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'Patient-Nurse-Room Scheduling via MILP',
       timeframe: 'Jan 2025 - Feb 2025',
       built: 'Formulated and solved constrained hospital admission scheduling to optimality across multiple instances.',
       stack: 'MILP, CBC solver, mip (Python)',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/PatientNurseRoomAssignment_FOR',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'Student & Companies Platform',
@@ -164,21 +168,24 @@ export const siteData = {
       timeframe: 'Nov 2024 - Dec 2024',
       built: 'Built query pipelines and analytics workflows on large unstructured datasets.',
       stack: 'MongoDB, Elasticsearch, JSON data modeling',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/SMBUD-2024-2025-AcquadroDrugmanGadiaga',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'Medical Trials Search Engine',
       timeframe: 'Dec 2023 - Jan 2024',
       built: 'Developed a clinical trial search engine with LLM-assisted keyword extraction and filtering.',
       stack: 'GPT-3.5 Turbo, retrieval pipeline, knowledge base integration',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/Clinical-Trial-Search-Engine',
+      hrefLabel: 'GitHub repository'
     },
     {
       title: 'Castle War',
       timeframe: 'Jul 2022 - Sep 2022',
       built: 'Built a Python game from scratch, covering gameplay logic, algorithms, and graphics implementation.',
       stack: 'Python, Pygame',
-      hrefLabel: 'Link coming soon'
+      href: 'https://github.com/PatrizioAcquadro/CastleWarGame',
+      hrefLabel: 'GitHub repository'
     }
   ],
   ventures: [

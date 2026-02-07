@@ -99,16 +99,6 @@ export const siteData = {
       href: 'https://github.com/PatrizioAcquadro/RAG_Project_SE2'
     },
     {
-      role: 'AI Researcher Intern',
-      org: 'Exprivia',
-      timeframe: 'Apr 2024 - Jun 2024',
-      bullets: [
-        'Explored ML and DL model development in quantum computing contexts.',
-        'Designed and adapted generative AI models for advanced platforms.',
-        'Evaluated financial scenario applications for AI algorithms.'
-      ]
-    },
-    {
       role: 'Generative AI Researcher & Re-Ranking Specialist',
       org: 'UNIMIB',
       timeframe: 'Mar 2024 - Jun 2024',
@@ -116,6 +106,16 @@ export const siteData = {
         'Co-developed work on clinical trial search with RAG-focused re-ranking.',
         'Applied pairwise relevance strategies in a LangChain-based pipeline.',
         'Built and integrated a UMLS-based knowledge base for retrieval quality.'
+      ]
+    },
+    {
+      role: 'AI Researcher Intern',
+      org: 'Exprivia',
+      timeframe: 'Apr 2024 - Jun 2024',
+      bullets: [
+        'Explored ML and DL model development in quantum computing contexts.',
+        'Designed and adapted generative AI models for advanced platforms.',
+        'Evaluated financial scenario applications for AI algorithms.'
       ]
     }
   ],

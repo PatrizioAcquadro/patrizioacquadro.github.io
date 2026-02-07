@@ -6,9 +6,9 @@ const errors = [];
 
 const htmlPolicyTargets = [
   { path: 'index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'cv/index.html', frameDirective: "frame-src 'self'", objectDirective: "object-src 'none'" },
+  { path: 'cv/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'self'" },
   { path: 'dist/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'dist/cv/index.html', frameDirective: "frame-src 'self'", objectDirective: "object-src 'none'" }
+  { path: 'dist/cv/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'self'" }
 ];
 
 const requiredCspDirectives = [

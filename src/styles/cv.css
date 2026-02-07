@@ -43,11 +43,14 @@ body::before {
   min-height: 44rem;
   height: 76vh;
   border: 0;
-  background: var(--color-midnight);
+  background: #0b1118;
 }
 
 .cv-fallback {
-  margin-top: var(--space-2);
+  margin: 0;
+  border-top: var(--border-default);
+  padding: var(--space-2);
+  text-align: center;
   color: var(--color-apres-ski);
   font-size: var(--text-sm);
 }

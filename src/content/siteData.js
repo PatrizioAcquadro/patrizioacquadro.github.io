@@ -157,18 +157,35 @@ export const siteData = {
       hrefLabel: 'GitHub repository'
     },
     {
-      title: 'Student & Companies Platform',
-      timeframe: 'Jan 2025 - Feb 2025',
-      built: 'Produced end-to-end requirements and design documentation across requirements, architecture, data, and deployment views.',
-      stack: 'RASD, DD, Alloy, API/UI specification',
-      hrefLabel: 'Link coming soon'
+      title: 'Disneyland Review Analysis',
+      timeframe: 'Jun 2023 - Jul 2023',
+      built: 'Built a deep-learning pipeline to analyze and predict review ratings from client feedback data.',
+      stack: 'Python, Deep Learning, Feedforward NN, Recurrent NN, Feature Engineering',
+      href: 'https://github.com/PatrizioAcquadro/Disneyland-Review-Analysis',
+      hrefLabel: 'GitHub repository'
     },
     {
-      title: 'MongoDB & Elasticsearch on Unstructured Data',
-      timeframe: 'Nov 2024 - Dec 2024',
-      built: 'Built query pipelines and analytics workflows on large unstructured datasets.',
-      stack: 'MongoDB, Elasticsearch, JSON data modeling',
-      href: 'https://github.com/PatrizioAcquadro/SMBUD-2024-2025-AcquadroDrugmanGadiaga',
+      title: 'Employee Future Prediction',
+      timeframe: 'Jan 2023 - Feb 2023',
+      built: 'Built a machine-learning workflow to predict employee attrition using comparative sampling and dimensionality reduction strategies.',
+      stack: 'Python, Machine Learning, Resampling, Dimensionality Reduction, Model Evaluation',
+      href: 'https://github.com/PatrizioAcquadro/Employee-Future-Prediction',
+      hrefLabel: 'GitHub repository'
+    },
+    {
+      title: 'BIF Translator',
+      timeframe: 'Jun 2023 - Jul 2023',
+      built: 'Developed an AI translator for BIF and benchmarked transformer-based and bidirectional GRU approaches.',
+      stack: 'Python, NLP, Transformers, Bidirectional GRU, Deep Learning',
+      href: 'https://github.com/PatrizioAcquadro/BIF-Translator',
+      hrefLabel: 'GitHub repository'
+    },
+    {
+      title: 'Neural Models Analysis',
+      timeframe: 'Jan 2024 - Feb 2024',
+      built: 'Compared FitzHugh-Nagumo and Hindmarsh-Rose models to study neural dynamics and computational neuroscience behavior.',
+      stack: 'Computational Neuroscience, Dynamical Systems, Data Analysis, Python',
+      href: 'https://github.com/PatrizioAcquadro/Neural-Dynamics-Comparative-Study',
       hrefLabel: 'GitHub repository'
     },
     {

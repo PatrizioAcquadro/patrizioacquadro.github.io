@@ -95,16 +95,6 @@ export const siteData = {
         'Optimized LLM pipelines for code generation on large-scale database tasks.',
         'Combined multi-hop retrieval, adaptive thresholds, dynamic-k, and a 4-bit NF4 DeepSeek-R1-Distill-Qwen-7B generator.',
         'Tracked Clean-Reference@k, Repo-Recall@k, BLEU, ChrF, CodeBLEU, and API-Recall.'
-      ]
-    },
-    {
-      role: 'Generative AI Researcher & Re-Ranking Specialist',
-      org: 'UNIMIB',
-      timeframe: 'Mar 2024 - Jun 2024',
-      bullets: [
-        'Co-developed work on clinical trial search with RAG-focused re-ranking.',
-        'Applied pairwise relevance strategies in a LangChain-based pipeline.',
-        'Built and integrated a UMLS-based knowledge base for retrieval quality.'
       ],
       href: 'https://github.com/PatrizioAcquadro/RAG_Project_SE2'
     },
@@ -116,6 +106,16 @@ export const siteData = {
         'Explored ML and DL model development in quantum computing contexts.',
         'Designed and adapted generative AI models for advanced platforms.',
         'Evaluated financial scenario applications for AI algorithms.'
+      ]
+    },
+    {
+      role: 'Generative AI Researcher & Re-Ranking Specialist',
+      org: 'UNIMIB',
+      timeframe: 'Mar 2024 - Jun 2024',
+      bullets: [
+        'Co-developed work on clinical trial search with RAG-focused re-ranking.',
+        'Applied pairwise relevance strategies in a LangChain-based pipeline.',
+        'Built and integrated a UMLS-based knowledge base for retrieval quality.'
       ]
     }
   ],

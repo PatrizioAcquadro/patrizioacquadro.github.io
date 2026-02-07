@@ -49,7 +49,6 @@ const newsList = document.getElementById('news-list');
 const researchList = document.getElementById('research-list');
 const projectsGrid = document.getElementById('projects-grid');
 const ventureList = document.getElementById('venture-list');
-const skillsGrid = document.getElementById('skills-grid');
 const talksList = document.getElementById('talks-list');
 const lastUpdated = document.getElementById('last-updated');
 const currentYear = document.getElementById('current-year');
@@ -421,21 +420,6 @@ function renderVentures() {
   });
 }
 
-function renderSkills() {
-  siteData.skills.forEach((group) => {
-    const card = createTag('article', 'c-card content-card skill-card');
-    const title = createTag('h3', '', group.group);
-    const list = createTag('ul', 'skill-list');
-
-    group.items.forEach((item) => {
-      list.append(createTag('li', 'skill-pill c-badge', item));
-    });
-
-    card.append(title, list);
-    skillsGrid.append(card);
-  });
-}
-
 function renderActivities() {
   siteData.activities.forEach((item) => {
     const listItem = createTag('li', 'talk-item c-timeline-item');
@@ -679,7 +663,6 @@ function initialize() {
   renderResearch();
   renderProjects();
   renderVentures();
-  renderSkills();
   renderActivities();
   renderContacts();
   initializeMailContactInteraction();

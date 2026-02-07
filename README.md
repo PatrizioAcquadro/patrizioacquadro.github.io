@@ -40,7 +40,7 @@ npm run preview
 This repository applies layered hardening while staying fully static:
 
 - Static-only architecture (no backend, no server functions, no dynamic user input processing).
-- Strict Content Security Policy (CSP) via meta tags on both routes.
+- Strict Content Security Policy (CSP) via meta tags on all HTML routes.
 - Referrer policy set to `no-referrer`.
 - Best-effort anti-clickjacking runtime guard for GitHub Pages hosting constraints.
 - No third-party scripts or trackers.
@@ -88,10 +88,10 @@ Public data exposure is intentionally minimized:
 ## Repository Structure
 
 - `index.html`: main single-page site
-- `cv/index.html`: CV route
+- `cv/index.html`: legacy CV URL redirect route (`/cv/` -> Home)
 - `src/content/siteData.js`: editable content source
 - `src/main.js`: homepage rendering logic
-- `src/cv.js`: CV page logic
+- `src/cv-redirect.js`: legacy CV route redirect logic
 - `src/styles/`: stylesheets
 - `public/`: static assets copied to build output
 - `scripts/security-baseline-check.mjs`: custom policy enforcement script

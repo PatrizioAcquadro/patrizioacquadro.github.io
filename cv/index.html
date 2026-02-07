@@ -6,7 +6,7 @@
     <meta name="referrer" content="no-referrer" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'self'; form-action 'none'; base-uri 'none'; worker-src 'none'; manifest-src 'self'; media-src 'self'; upgrade-insecure-requests"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self' https://docs.google.com; object-src 'none'; form-action 'none'; base-uri 'none'; worker-src 'none'; manifest-src 'self'; media-src 'self'; upgrade-insecure-requests"
     />
     <title>CV | Patrizio Acquadro</title>
     <meta
@@ -89,7 +89,7 @@
           </header>
 
           <div class="cv-viewer-wrapper c-card">
-            <embed id="cv-embed" src="" type="application/pdf" class="cv-viewer" />
+            <iframe id="cv-embed" src="" class="cv-viewer" title="Embedded PDF of Patrizio Acquadro CV"></iframe>
             <p class="cv-fallback">
               If the PDF viewer does not load, <a id="cv-fallback-link" href="" download>download the CV directly</a>.
             </p>

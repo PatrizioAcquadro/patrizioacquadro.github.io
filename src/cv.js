@@ -8,7 +8,17 @@ function resolveBasePath(path) {
 }
 
 const pdfDownloadUrl = resolveBasePath('cv/AcquadroPatrizioCV.pdf');
-const pdfViewerUrl = `${pdfDownloadUrl}#view=FitH&toolbar=1&navpanes=0`;
+
+function getViewerUrl() {
+  const absolutePdfUrl = new URL(pdfDownloadUrl, window.location.origin).toString();
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+  if (isLocalhost) {
+    return `${pdfDownloadUrl}#view=FitH&toolbar=1&navpanes=0`;
+  }
+
+  return `https://docs.google.com/gview?embedded=1&url=${encodeURIComponent(absolutePdfUrl)}`;
+}
 
 function enforceFrameProtection() {
   if (window.top === window.self) {
@@ -172,7 +182,7 @@ function initializeCvPage() {
   }
 
   if (embed) {
-    embed.src = pdfViewerUrl;
+    embed.src = getViewerUrl();
   }
 
   if (lastUpdated) {

@@ -218,9 +218,7 @@ ol {
 .c-navbar__logo {
   width: 1.6rem;
   height: 1.6rem;
-  border-radius: 0.45rem;
-  border: 1px solid var(--color-apres-alpha-38);
-  background: var(--color-mountainside);
+  border-radius: 0;
   object-fit: cover;
   flex-shrink: 0;
 }

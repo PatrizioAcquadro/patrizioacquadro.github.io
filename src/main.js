@@ -338,16 +338,6 @@ function renderNews() {
 }
 
 function renderResearch() {
-  const thesisCard = createTag('article', 'c-card content-card research-card');
-  const thesisTitle = createTag('h3', '', siteData.thesis.title);
-  const thesisText = createTag('p', 'card-body', siteData.thesis.text);
-  const thesisLink = createTag('a', 'card-link', 'Thesis page');
-  thesisLink.href = siteData.thesis.href;
-  addExternalLinkAttributes(thesisLink, siteData.thesis.href, 'Current thesis work');
-
-  thesisCard.append(thesisTitle, thesisText, thesisLink);
-  researchList.append(thesisCard);
-
   siteData.research.forEach((item) => {
     const card = createTag('article', 'c-card content-card research-card');
     const title = createTag('h3', '', `${item.role} | ${item.org}`);
@@ -361,7 +351,7 @@ function renderResearch() {
     card.append(title, timeframe, bulletList);
 
     if (item.href) {
-      const link = createTag('a', 'card-link', 'Project link');
+      const link = createTag('a', 'card-link', 'Thesis page');
       link.href = item.href;
       addExternalLinkAttributes(link, item.href, `${item.role} link`);
       card.append(link);

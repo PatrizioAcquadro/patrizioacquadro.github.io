@@ -18,7 +18,6 @@
  *   privacyExposure: PrivacyExposure,
  *   contactLinks: ContactLink[],
  *   news: NewsItem[],
- *   thesis: { title: string, text: string, href: string },
  *   research: ResearchItem[],
  *   projects: ProjectItem[],
  *   ventures: VentureItem[],
@@ -76,21 +75,17 @@ export const siteData = {
       text: 'Joined Politecnico di Milano as a Generative AI Researcher on LLM optimization for large-scale code generation tasks.'
     }
   ],
-  thesis: {
-    title: 'Current Thesis Work',
-    text: 'Sim-to-real VLA for precision bimanual manipulation, with a LEGO assembly benchmark and full training-to-deployment pipeline.',
-    href: 'https://websitepresentation.vercel.app/'
-  },
   research: [
     {
       role: 'Visiting Research Student',
       org: 'Purdue University',
       timeframe: 'Jan 2026 - Present',
       bullets: [
-        'Built a MuJoCo benchmark and evaluation suite with rich-contact dynamics.',
-        'Implemented an EO-1-style decoder-only transformer policy with a Qwen2.5-VL backbone.',
-        'Managed the end-to-end pipeline: simulation, annotations, training, fine-tuning, and deployment on Unitree H1.'
-      ]
+        'Leading my MSc thesis research on sim-to-real VLA for precision bimanual manipulation.',
+        'Built a LEGO assembly benchmark with rich-contact simulation and evaluation tooling in MuJoCo.',
+        'Own the full thesis pipeline end-to-end: data/annotations, training, fine-tuning, and deployment on Unitree H1.'
+      ],
+      href: 'https://websitepresentation.vercel.app/'
     },
     {
       role: 'Generative AI Researcher',

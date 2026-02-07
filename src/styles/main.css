@@ -339,13 +339,20 @@ body::after {
 }
 
 .mail-sheet__status {
-  min-height: 1.1rem;
-  color: var(--color-slopes);
-  font-size: var(--text-xs);
+  min-height: 1.5rem;
+  color: var(--color-arctic);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 
-.mail-sheet__cta {
+.mail-sheet__status:not(:empty) {
   width: fit-content;
+  border: var(--border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-arctic-alpha-08);
+  padding: 0.22rem 0.65rem;
 }
 
 .privacy-note {
@@ -443,8 +450,7 @@ body::after {
     align-items: stretch;
   }
 
-  .mail-sheet__copy,
-  .mail-sheet__cta {
+  .mail-sheet__copy {
     width: 100%;
   }
 }

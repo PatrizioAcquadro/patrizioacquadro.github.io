@@ -45,7 +45,6 @@ const mailSheetClose = document.getElementById('mail-sheet-close');
 const mailSheetEmail = document.getElementById('mail-sheet-email');
 const mailCopyButton = document.getElementById('mail-copy-button');
 const mailCopyStatus = document.getElementById('mail-copy-status');
-const mailCtaButton = document.getElementById('mail-cta-button');
 const newsList = document.getElementById('news-list');
 const researchList = document.getElementById('research-list');
 const projectsGrid = document.getElementById('projects-grid');
@@ -186,8 +185,7 @@ function initializeMailContactInteraction() {
     !mailSheetClose ||
     !mailSheetEmail ||
     !mailCopyButton ||
-    !mailCopyStatus ||
-    !mailCtaButton
+    !mailCopyStatus
   ) {
     return;
   }
@@ -207,8 +205,6 @@ function initializeMailContactInteraction() {
   mailTrigger.setAttribute('aria-controls', 'mail-sheet');
   mailTrigger.setAttribute('aria-expanded', 'false');
   mailSheetEmail.textContent = email;
-  mailCtaButton.href = mailtoHref;
-  mailCtaButton.setAttribute('aria-label', `Reach out to ${email} via email`);
 
   let previouslyFocusedElement = null;
   let hideTimeoutId = 0;
@@ -316,10 +312,6 @@ function initializeMailContactInteraction() {
 
   mailCopyButton.addEventListener('click', () => {
     void copyEmailToClipboard();
-  });
-
-  mailCtaButton.addEventListener('click', () => {
-    closeMailSheet({ restoreFocus: false });
   });
 }
 

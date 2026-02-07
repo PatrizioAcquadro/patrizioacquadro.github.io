@@ -88,12 +88,11 @@ Public data exposure is intentionally minimized:
 ## Repository Structure
 
 - `index.html`: main single-page site
-- `cv/index.html`: CV route
 - `src/content/siteData.js`: editable content source
 - `src/main.js`: homepage rendering logic
-- `src/cv.js`: CV page logic
 - `src/styles/`: stylesheets
 - `public/`: static assets copied to build output
+- `public/cv/AcquadroPatrizioCV.pdf`: downloadable CV artifact
 - `scripts/security-baseline-check.mjs`: custom policy enforcement script
 - `.github/workflows/deploy-pages.yml`: GitHub Pages deployment workflow
 - `.github/workflows/security.yml`: CI security checks workflow

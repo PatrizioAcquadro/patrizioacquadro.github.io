@@ -6,9 +6,7 @@ const errors = [];
 
 const htmlPolicyTargets = [
   { path: 'index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'cv/index.html', frameDirective: "frame-src 'self' https://docs.google.com", objectDirective: "object-src 'none'" },
-  { path: 'dist/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'dist/cv/index.html', frameDirective: "frame-src 'self' https://docs.google.com", objectDirective: "object-src 'none'" }
+  { path: 'dist/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" }
 ];
 
 const requiredCspDirectives = [
@@ -97,24 +95,6 @@ function isFirstPartyAsset(value) {
   }
 
   return true;
-}
-
-function isAllowedExternalIframe(relativePath, value) {
-  const cvPages = new Set(['cv/index.html', 'dist/cv/index.html']);
-  if (!cvPages.has(relativePath)) {
-    return false;
-  }
-
-  if (!hasExternalUrl(value)) {
-    return false;
-  }
-
-  try {
-    const parsedUrl = new URL(value);
-    return parsedUrl.hostname === 'docs.google.com';
-  } catch (error) {
-    return false;
-  }
 }
 
 function assertCspAndReferrer(relativePath, frameDirective, objectDirective) {
@@ -206,10 +186,6 @@ function assertHtmlAssetPolicies(relativePath) {
         return;
       }
 
-      if (tagName === 'iframe' && isAllowedExternalIframe(relativePath, value)) {
-        return;
-      }
-
       if (!isFirstPartyAsset(value)) {
         errors.push(`Non-first-party ${tagName} ${attr} in ${relativePath}: ${value}`);
       }
@@ -274,7 +250,6 @@ function assertNoExternalCssImports() {
 function assertNoTrackers() {
   const filesToScan = [
     'index.html',
-    'cv/index.html',
     ...walkFiles('src', ['.js', '.css', '.html']),
     ...walkFiles('dist', ['.js', '.css', '.html'])
   ];

@@ -484,14 +484,12 @@ body::after {
   transition:
     color var(--motion-duration-fast) var(--motion-ease),
     border-color var(--motion-duration-fast) var(--motion-ease),
-    background var(--motion-duration-fast) var(--motion-ease),
-    transform var(--motion-duration-fast) var(--motion-ease);
+    background var(--motion-duration-fast) var(--motion-ease);
 }
 
 .c-theme-toggle:hover {
   color: var(--color-arctic);
   border-color: var(--color-slopes-alpha-28);
-  transform: translateY(calc(var(--motion-distance-sm) * -1));
 }
 
 .c-theme-toggle__icon {
@@ -524,7 +522,7 @@ body::after {
 @media (max-width: 70rem) {
   .c-theme-toggle {
     align-self: flex-start;
-    margin-bottom: var(--space-1);
+    margin-top: var(--space-1);
   }
 }
 

@@ -351,7 +351,8 @@ function renderResearch() {
     card.append(title, timeframe, bulletList);
 
     if (item.href) {
-      const link = createTag('a', 'card-link', 'Thesis page');
+      const linkLabel = item.org === 'Purdue University' ? 'Thesis page' : 'Project link';
+      const link = createTag('a', 'card-link', linkLabel);
       link.href = item.href;
       addExternalLinkAttributes(link, item.href, `${item.role} link`);
       card.append(link);

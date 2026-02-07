@@ -105,7 +105,8 @@ export const siteData = {
         'Co-developed work on clinical trial search with RAG-focused re-ranking.',
         'Applied pairwise relevance strategies in a LangChain-based pipeline.',
         'Built and integrated a UMLS-based knowledge base for retrieval quality.'
-      ]
+      ],
+      href: 'https://github.com/PatrizioAcquadro/RAG_Project_SE2'
     },
     {
       role: 'AI Researcher Intern',

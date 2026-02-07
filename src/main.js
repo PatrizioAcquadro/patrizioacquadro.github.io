@@ -462,6 +462,26 @@ function initializeRevealAnimations() {
   items.forEach((item) => observer.observe(item));
 }
 
+function initializeCvDownload() {
+  const cvLink = document.querySelector('a[download="AcquadroPatrizioCV.pdf"]');
+
+  if (!cvLink) {
+    return;
+  }
+
+  const baseHref = cvLink.getAttribute('href');
+
+  cvLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const freshLink = document.createElement('a');
+    freshLink.href = `${baseHref}?v=${Date.now()}`;
+    freshLink.download = 'AcquadroPatrizioCV.pdf';
+    document.body.appendChild(freshLink);
+    freshLink.click();
+    document.body.removeChild(freshLink);
+  });
+}
+
 function renderFooter() {
   lastUpdated.textContent = `Last updated: ${siteData.lastUpdated}`;
   currentYear.textContent = String(new Date().getFullYear());
@@ -481,6 +501,7 @@ function initialize() {
   renderActivities();
   renderContacts();
   initializeMobileMenu();
+  initializeCvDownload();
   initializeActiveSectionIndicator();
   initializeRevealAnimations();
   renderFooter();

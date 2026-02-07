@@ -87,36 +87,36 @@
 [data-theme='light'] {
   color-scheme: light;
 
-  --color-arctic: #51504e;
-  --color-slopes: #868483;
-  --color-apres-ski: #b8bbbf;
+  --color-arctic: #1c2028;
+  --color-slopes: #3e4450;
+  --color-apres-ski: #8a8d96;
   --color-mountainside: #dadbde;
   --color-midnight: #e2e2de;
 
-  --color-arctic-alpha-08: rgba(81, 80, 78, 0.08);
-  --color-arctic-alpha-14: rgba(81, 80, 78, 0.14);
-  --color-arctic-alpha-22: rgba(81, 80, 78, 0.22);
-  --color-slopes-alpha-18: rgba(134, 132, 131, 0.18);
-  --color-slopes-alpha-28: rgba(134, 132, 131, 0.28);
-  --color-apres-alpha-38: rgba(184, 187, 191, 0.38);
+  --color-arctic-alpha-08: rgba(28, 32, 40, 0.05);
+  --color-arctic-alpha-14: rgba(28, 32, 40, 0.09);
+  --color-arctic-alpha-22: rgba(28, 32, 40, 0.14);
+  --color-slopes-alpha-18: rgba(62, 68, 80, 0.12);
+  --color-slopes-alpha-28: rgba(62, 68, 80, 0.18);
+  --color-apres-alpha-38: rgba(138, 141, 150, 0.3);
   --color-mountainside-alpha-72: rgba(218, 219, 222, 0.82);
   --color-midnight-alpha-90: rgba(226, 226, 222, 0.92);
 
-  --shadow-soft: 0 12px 30px rgba(81, 80, 78, 0.1);
-  --shadow-elevated: 0 18px 45px rgba(81, 80, 78, 0.14);
+  --shadow-soft: 0 12px 30px rgba(28, 32, 40, 0.08);
+  --shadow-elevated: 0 18px 45px rgba(28, 32, 40, 0.12);
 
-  --bg-gradient-a: rgba(81, 80, 78, 0.04);
-  --bg-gradient-b: rgba(134, 132, 131, 0.04);
-  --bg-gradient-c: rgba(218, 219, 222, 0.3);
+  --bg-gradient-a: rgba(28, 32, 40, 0.03);
+  --bg-gradient-b: rgba(62, 68, 80, 0.03);
+  --bg-gradient-c: rgba(218, 219, 222, 0.25);
   --bg-gradient-d: rgba(226, 226, 222, 0);
-  --bg-noise-color: rgba(184, 187, 191, 0.03);
+  --bg-noise-color: rgba(138, 141, 150, 0.02);
   --bg-noise-gap: rgba(226, 226, 222, 0);
-  --surface-gradient-a: rgba(218, 219, 222, 0.5);
-  --surface-gradient-b: rgba(226, 226, 222, 0);
-  --surface-bg: rgba(218, 219, 222, 0.45);
-  --contact-bg: rgba(218, 219, 222, 0.35);
+  --surface-gradient-a: rgba(184, 187, 191, 0.35);
+  --surface-gradient-b: rgba(218, 219, 222, 0.15);
+  --surface-bg: rgba(218, 219, 222, 0.5);
+  --contact-bg: rgba(184, 187, 191, 0.25);
   --footer-bg: rgba(218, 219, 222, 0.96);
-  --sheet-backdrop-bg: rgba(81, 80, 78, 0.4);
+  --sheet-backdrop-bg: rgba(28, 32, 40, 0.35);
   --sheet-gradient-a: rgba(226, 226, 222, 0.95);
   --sheet-gradient-b: rgba(218, 219, 222, 0.98);
   --sheet-email-bg: rgba(218, 219, 222, 0.6);

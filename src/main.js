@@ -622,7 +622,7 @@ function initializeRevealAnimations() {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0 }
   );
 
   items.forEach((item) => observer.observe(item));

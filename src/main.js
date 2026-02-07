@@ -691,11 +691,76 @@ function renderFooter() {
   currentYear.textContent = String(new Date().getFullYear());
 }
 
+function initializeThemeToggle() {
+  var STORAGE_KEY = 'theme-preference';
+  var toggleButton = document.getElementById('theme-toggle');
+
+  if (!toggleButton) {
+    return;
+  }
+
+  function getSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      return 'light';
+    }
+    return 'dark';
+  }
+
+  function getStoredTheme() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'light' || stored === 'dark') {
+        return stored;
+      }
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+    return null;
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (e) {
+      /* silently fail */
+    }
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    toggleButton.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+  }
+
+  var resolvedTheme = getStoredTheme() || getSystemTheme();
+  applyTheme(resolvedTheme);
+
+  toggleButton.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    storeTheme(next);
+  });
+
+  if (window.matchMedia) {
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+    mediaQuery.addEventListener('change', function (event) {
+      if (getStoredTheme()) {
+        return;
+      }
+      applyTheme(event.matches ? 'light' : 'dark');
+    });
+  }
+}
+
 function initialize() {
   if (blockedByFrameProtection) {
     return;
   }
 
+  initializeThemeToggle();
   renderHero();
   renderNews();
   renderResearch();

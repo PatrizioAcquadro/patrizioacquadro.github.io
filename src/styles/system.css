@@ -16,6 +16,22 @@
   --color-mountainside-alpha-72: rgba(38, 46, 54, 0.72);
   --color-midnight-alpha-90: rgba(9, 15, 21, 0.9);
 
+  --bg-gradient-a: rgba(211, 209, 206, 0.09);
+  --bg-gradient-b: rgba(179, 183, 186, 0.08);
+  --bg-gradient-c: rgba(38, 46, 54, 0.35);
+  --bg-gradient-d: rgba(9, 15, 21, 0);
+  --bg-noise-color: rgba(108, 109, 116, 0.03);
+  --bg-noise-gap: rgba(9, 15, 21, 0);
+  --surface-gradient-a: rgba(38, 46, 54, 0.26);
+  --surface-gradient-b: rgba(9, 15, 21, 0);
+  --surface-bg: rgba(9, 15, 21, 0.55);
+  --contact-bg: rgba(38, 46, 54, 0.26);
+  --footer-bg: rgba(9, 15, 21, 0.96);
+  --sheet-backdrop-bg: rgba(9, 15, 21, 0.58);
+  --sheet-gradient-a: rgba(38, 46, 54, 0.9);
+  --sheet-gradient-b: rgba(9, 15, 21, 0.95);
+  --sheet-email-bg: rgba(9, 15, 21, 0.58);
+
   --font-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', 'Noto Sans', sans-serif;
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
   --font-mono: 'SF Mono', Menlo, Consolas, monospace;
@@ -68,6 +84,44 @@
   --motion-distance-md: 0.625rem;
 }
 
+[data-theme='light'] {
+  color-scheme: light;
+
+  --color-arctic: #1c2028;
+  --color-slopes: #3e4450;
+  --color-apres-ski: #8a8d96;
+  --color-mountainside: #e8e4df;
+  --color-midnight: #f5f2ed;
+
+  --color-arctic-alpha-08: rgba(28, 32, 40, 0.05);
+  --color-arctic-alpha-14: rgba(28, 32, 40, 0.09);
+  --color-arctic-alpha-22: rgba(28, 32, 40, 0.14);
+  --color-slopes-alpha-18: rgba(62, 68, 80, 0.12);
+  --color-slopes-alpha-28: rgba(62, 68, 80, 0.18);
+  --color-apres-alpha-38: rgba(138, 141, 150, 0.3);
+  --color-mountainside-alpha-72: rgba(232, 228, 223, 0.82);
+  --color-midnight-alpha-90: rgba(245, 242, 237, 0.92);
+
+  --shadow-soft: 0 12px 30px rgba(28, 32, 40, 0.08);
+  --shadow-elevated: 0 18px 45px rgba(28, 32, 40, 0.12);
+
+  --bg-gradient-a: rgba(28, 32, 40, 0.03);
+  --bg-gradient-b: rgba(62, 68, 80, 0.03);
+  --bg-gradient-c: rgba(232, 228, 223, 0.25);
+  --bg-gradient-d: rgba(245, 242, 237, 0);
+  --bg-noise-color: rgba(138, 141, 150, 0.02);
+  --bg-noise-gap: rgba(245, 242, 237, 0);
+  --surface-gradient-a: rgba(232, 228, 223, 0.4);
+  --surface-gradient-b: rgba(245, 242, 237, 0);
+  --surface-bg: rgba(245, 242, 237, 0.55);
+  --contact-bg: rgba(232, 228, 223, 0.3);
+  --footer-bg: rgba(245, 242, 237, 0.96);
+  --sheet-backdrop-bg: rgba(28, 32, 40, 0.35);
+  --sheet-gradient-a: rgba(245, 242, 237, 0.95);
+  --sheet-gradient-b: rgba(232, 228, 223, 0.98);
+  --sheet-email-bg: rgba(232, 228, 223, 0.6);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -86,6 +140,9 @@ body {
   line-height: var(--line-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color var(--motion-duration-base) var(--motion-ease),
+    color var(--motion-duration-base) var(--motion-ease);
 }
 
 main {

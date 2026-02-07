@@ -13,9 +13,9 @@ body::after {
 
 body::before {
   background:
-    radial-gradient(circle at 12% 8%, rgba(211, 209, 206, 0.09) 0%, transparent 44%),
-    radial-gradient(circle at 88% 2%, rgba(179, 183, 186, 0.08) 0%, transparent 42%),
-    linear-gradient(180deg, rgba(38, 46, 54, 0.35) 0%, rgba(9, 15, 21, 0) 52%);
+    radial-gradient(circle at 12% 8%, var(--bg-gradient-a) 0%, transparent 44%),
+    radial-gradient(circle at 88% 2%, var(--bg-gradient-b) 0%, transparent 42%),
+    linear-gradient(180deg, var(--bg-gradient-c) 0%, var(--bg-gradient-d) 52%);
   animation: ambient-shift 24s var(--motion-ease) infinite alternate;
 }
 
@@ -23,10 +23,10 @@ body::after {
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(108, 109, 116, 0.03) 0px,
-      rgba(108, 109, 116, 0.03) 1px,
-      rgba(9, 15, 21, 0) 1px,
-      rgba(9, 15, 21, 0) 4px
+      var(--bg-noise-color) 0px,
+      var(--bg-noise-color) 1px,
+      var(--bg-noise-gap) 1px,
+      var(--bg-noise-gap) 4px
     );
   opacity: 0.4;
 }
@@ -83,12 +83,12 @@ body::after {
 
 .c-section--surface {
   background:
-    linear-gradient(180deg, rgba(38, 46, 54, 0.26) 0%, rgba(9, 15, 21, 0) 75%),
-    rgba(9, 15, 21, 0.55);
+    linear-gradient(180deg, var(--surface-gradient-a) 0%, var(--surface-gradient-b) 75%),
+    var(--surface-bg);
 }
 
 .c-section--contact {
-  background: rgba(38, 46, 54, 0.26);
+  background: var(--contact-bg);
 }
 
 .section-shell {
@@ -238,7 +238,7 @@ body::after {
   align-items: flex-end;
   justify-content: center;
   padding: var(--space-2);
-  background: rgba(9, 15, 21, 0.58);
+  background: var(--sheet-backdrop-bg);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -259,8 +259,8 @@ body::after {
   border: var(--border-strong);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(180deg, rgba(38, 46, 54, 0.9) 0%, rgba(9, 15, 21, 0.95) 100%),
-    rgba(9, 15, 21, 0.95);
+    linear-gradient(180deg, var(--sheet-gradient-a) 0%, var(--sheet-gradient-b) 100%),
+    var(--sheet-gradient-b);
   box-shadow: var(--shadow-elevated);
   padding: var(--space-3);
   display: grid;
@@ -321,7 +321,7 @@ body::after {
   gap: var(--space-1);
   border: var(--border-default);
   border-radius: var(--radius-md);
-  background: rgba(9, 15, 21, 0.58);
+  background: var(--sheet-email-bg);
   padding: 0.6rem;
 }
 
@@ -379,7 +379,7 @@ body::after {
 
 .site-footer {
   border-top: var(--border-default);
-  background: rgba(9, 15, 21, 0.96);
+  background: var(--footer-bg);
   padding-block: var(--space-3);
 }
 
@@ -463,6 +463,68 @@ body::after {
 
   .mail-sheet__copy {
     width: 100%;
+  }
+}
+
+/* ── Theme Toggle ── */
+
+.c-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: var(--border-default);
+  border-radius: var(--radius-pill);
+  background: var(--color-mountainside-alpha-72);
+  color: var(--color-slopes);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    color var(--motion-duration-fast) var(--motion-ease),
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    background var(--motion-duration-fast) var(--motion-ease),
+    transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.c-theme-toggle:hover {
+  color: var(--color-arctic);
+  border-color: var(--color-slopes-alpha-28);
+  transform: translateY(calc(var(--motion-distance-sm) * -1));
+}
+
+.c-theme-toggle__icon {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform var(--motion-duration-base) var(--motion-ease);
+}
+
+.c-theme-toggle:hover .c-theme-toggle__icon {
+  transform: rotate(15deg);
+}
+
+.c-theme-toggle__sun {
+  display: block;
+}
+
+.c-theme-toggle__moon {
+  display: none;
+}
+
+[data-theme='light'] .c-theme-toggle__sun {
+  display: none;
+}
+
+[data-theme='light'] .c-theme-toggle__moon {
+  display: block;
+}
+
+@media (max-width: 70rem) {
+  .c-theme-toggle {
+    align-self: flex-start;
+    margin-bottom: var(--space-1);
   }
 }
 

@@ -1,6 +1,13 @@
 import { siteData } from './content/siteData.js';
 
-const pdfUrl = '/cv/AcquadroPatrizioCV.pdf';
+function resolveBasePath(path) {
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  const normalizedPath = path.replace(/^\/+/, '');
+  return `${normalizedBase}${normalizedPath}`;
+}
+
+const pdfUrl = resolveBasePath('cv/AcquadroPatrizioCV.pdf');
 
 function enforceFrameProtection() {
   if (window.top === window.self) {
@@ -151,13 +158,29 @@ function initializeCvPage() {
     return;
   }
 
-  downloadButton.href = pdfUrl;
-  downloadTop.href = pdfUrl;
-  fallbackLink.href = pdfUrl;
-  embed.data = pdfUrl;
+  if (downloadButton) {
+    downloadButton.href = pdfUrl;
+  }
 
-  lastUpdated.textContent = `Last updated: ${siteData.lastUpdated}`;
-  year.textContent = String(new Date().getFullYear());
+  if (downloadTop) {
+    downloadTop.href = pdfUrl;
+  }
+
+  if (fallbackLink) {
+    fallbackLink.href = pdfUrl;
+  }
+
+  if (embed) {
+    embed.data = pdfUrl;
+  }
+
+  if (lastUpdated) {
+    lastUpdated.textContent = `Last updated: ${siteData.lastUpdated}`;
+  }
+
+  if (year) {
+    year.textContent = String(new Date().getFullYear());
+  }
 
   initializeMobileMenu();
   initializeRevealAnimations();

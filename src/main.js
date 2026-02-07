@@ -622,10 +622,57 @@ function initializeRevealAnimations() {
         }
       });
     },
-    { threshold: 0 }
+    { threshold: 0.01, rootMargin: '0px 0px 75px 0px' }
   );
 
   items.forEach((item) => observer.observe(item));
+
+  let revealPending = items.filter((item) => !item.classList.contains('is-visible'));
+
+  if (revealPending.length === 0) {
+    return;
+  }
+
+  let fallbackTicking = false;
+
+  function checkRevealFallback() {
+    const viewportHeight = window.innerHeight;
+
+    revealPending = revealPending.filter((item) => {
+      if (item.classList.contains('is-visible')) {
+        return false;
+      }
+
+      const rect = item.getBoundingClientRect();
+      if (rect.top < viewportHeight + 75 && rect.bottom > 0) {
+        item.classList.add('is-visible');
+        observer.unobserve(item);
+        return false;
+      }
+
+      return true;
+    });
+
+    if (revealPending.length === 0) {
+      window.removeEventListener('scroll', onScrollFallback);
+      window.removeEventListener('resize', onScrollFallback);
+    }
+  }
+
+  function onScrollFallback() {
+    if (fallbackTicking) {
+      return;
+    }
+
+    fallbackTicking = true;
+    window.requestAnimationFrame(() => {
+      checkRevealFallback();
+      fallbackTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScrollFallback, { passive: true });
+  window.addEventListener('resize', onScrollFallback);
 }
 
 function initializeCvDownload() {

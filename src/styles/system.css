@@ -372,6 +372,7 @@ ol {
 
 .c-section {
   padding-block: clamp(var(--space-7), 8vw, var(--space-10));
+  scroll-margin-top: 5rem;
 }
 
 .c-section + .c-section {

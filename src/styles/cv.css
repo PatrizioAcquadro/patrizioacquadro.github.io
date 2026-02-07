@@ -46,6 +46,12 @@ body::before {
   background: var(--color-midnight);
 }
 
+.cv-fallback {
+  margin-top: var(--space-2);
+  color: var(--color-apres-ski);
+  font-size: var(--text-sm);
+}
+
 .site-footer {
   border-top: var(--border-default);
   background: rgba(9, 15, 21, 0.96);

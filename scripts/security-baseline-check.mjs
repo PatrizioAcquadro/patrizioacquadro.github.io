@@ -5,10 +5,10 @@ const repoRoot = process.cwd();
 const errors = [];
 
 const htmlPolicyTargets = [
-  { path: 'index.html', objectDirective: "object-src 'none'" },
-  { path: 'cv/index.html', objectDirective: "object-src 'self'" },
-  { path: 'dist/index.html', objectDirective: "object-src 'none'" },
-  { path: 'dist/cv/index.html', objectDirective: "object-src 'self'" }
+  { path: 'index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
+  { path: 'cv/index.html', frameDirective: "frame-src 'self'", objectDirective: "object-src 'none'" },
+  { path: 'dist/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
+  { path: 'dist/cv/index.html', frameDirective: "frame-src 'self'", objectDirective: "object-src 'none'" }
 ];
 
 const requiredCspDirectives = [
@@ -18,7 +18,6 @@ const requiredCspDirectives = [
   "img-src 'self' data:",
   "font-src 'self'",
   "connect-src 'none'",
-  "frame-src 'none'",
   "form-action 'none'",
   "base-uri 'none'",
   "worker-src 'none'",
@@ -100,7 +99,7 @@ function isFirstPartyAsset(value) {
   return true;
 }
 
-function assertCspAndReferrer(relativePath, objectDirective) {
+function assertCspAndReferrer(relativePath, frameDirective, objectDirective) {
   const html = readText(relativePath);
   if (!html) {
     return;
@@ -114,7 +113,7 @@ function assertCspAndReferrer(relativePath, objectDirective) {
   }
 
   const cspContent = extractAttr(cspTag, 'content');
-  const directives = [...requiredCspDirectives, objectDirective];
+  const directives = [...requiredCspDirectives, frameDirective, objectDirective];
   directives.forEach((directive) => {
     if (!cspContent.includes(directive)) {
       errors.push(`CSP in ${relativePath} is missing directive: ${directive}`);
@@ -297,7 +296,7 @@ function assertNoDangerousSinks() {
 }
 
 htmlPolicyTargets.forEach((target) => {
-  assertCspAndReferrer(target.path, target.objectDirective);
+  assertCspAndReferrer(target.path, target.frameDirective, target.objectDirective);
   assertHtmlAssetPolicies(target.path);
 });
 assertNoExternalCssImports();

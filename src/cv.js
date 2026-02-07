@@ -171,7 +171,7 @@ function initializeCvPage() {
   }
 
   if (embed) {
-    embed.data = pdfUrl;
+    embed.src = pdfUrl;
   }
 
   if (lastUpdated) {

@@ -90,9 +90,14 @@
 
           <div class="cv-viewer-wrapper c-card">
             <iframe id="cv-embed" src="" class="cv-viewer" title="Embedded PDF of Patrizio Acquadro CV"></iframe>
-            <p class="cv-fallback">
-              If the PDF viewer does not load, <a id="cv-fallback-link" href="" download>download the CV directly</a>.
-            </p>
+            <div class="cv-fallback-panel" id="cv-viewer-fallback" hidden>
+              <p class="cv-fallback-title">The inline viewer is unavailable on this browser/network.</p>
+              <p class="cv-fallback-text">You can still open or download the CV directly.</p>
+              <div class="cv-fallback-actions">
+                <a class="c-button c-button--solid" id="cv-open-link" href="" target="_blank" rel="noopener noreferrer">Open CV in new tab</a>
+                <a class="c-button c-button--ghost" id="cv-fallback-link" href="" download>Download CV</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -34,11 +34,13 @@ body::before {
 }
 
 .cv-viewer-wrapper {
+  position: relative;
   padding: 0;
   overflow: hidden;
 }
 
 .cv-viewer {
+  display: block;
   width: 100%;
   min-height: 44rem;
   height: 76vh;
@@ -46,13 +48,36 @@ body::before {
   background: #0b1118;
 }
 
-.cv-fallback {
-  margin: 0;
+.cv-fallback-panel {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-2);
+  min-height: 44rem;
+  height: 76vh;
   border-top: var(--border-default);
-  padding: var(--space-2);
+  padding: var(--space-4);
   text-align: center;
-  color: var(--color-apres-ski);
-  font-size: var(--text-sm);
+  background:
+    linear-gradient(180deg, rgba(38, 46, 54, 0.32) 0%, rgba(9, 15, 21, 0.65) 100%),
+    #0b1118;
+}
+
+.cv-fallback-title {
+  color: var(--color-arctic);
+  font-size: var(--text-lg);
+  max-width: 44ch;
+}
+
+.cv-fallback-text {
+  max-width: 50ch;
+}
+
+.cv-fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
 }
 
 .site-footer {
@@ -95,5 +120,19 @@ body::before {
   .cv-viewer {
     min-height: 34rem;
     height: 70vh;
+  }
+
+  .cv-fallback-panel {
+    min-height: 34rem;
+    height: 70vh;
+    padding: var(--space-3);
+  }
+
+  .cv-fallback-actions {
+    width: 100%;
+  }
+
+  .cv-fallback-actions .c-button {
+    width: 100%;
   }
 }

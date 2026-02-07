@@ -54,10 +54,54 @@ const blockedByFrameProtection = enforceFrameProtection();
 
 const downloadButton = document.getElementById('cv-download');
 const downloadTop = document.getElementById('cv-download-top');
+const openLink = document.getElementById('cv-open-link');
 const fallbackLink = document.getElementById('cv-fallback-link');
 const embed = document.getElementById('cv-embed');
+const viewerFallback = document.getElementById('cv-viewer-fallback');
 const lastUpdated = document.getElementById('cv-last-updated');
 const year = document.getElementById('cv-current-year');
+
+function initializeViewerFallback() {
+  if (!embed || !viewerFallback) {
+    return;
+  }
+
+  let settled = false;
+  const timeoutMs = 5500;
+
+  function showFallback() {
+    if (settled) {
+      return;
+    }
+
+    settled = true;
+    embed.hidden = true;
+    viewerFallback.hidden = false;
+  }
+
+  const timeoutId = window.setTimeout(() => {
+    showFallback();
+  }, timeoutMs);
+
+  function markLoaded() {
+    if (settled) {
+      return;
+    }
+
+    settled = true;
+    window.clearTimeout(timeoutId);
+    embed.hidden = false;
+    viewerFallback.hidden = true;
+  }
+
+  embed.addEventListener('load', () => {
+    markLoaded();
+  });
+
+  embed.addEventListener('error', () => {
+    showFallback();
+  });
+}
 
 function initializeMobileMenu() {
   const navbar = document.getElementById('cv-header');
@@ -177,6 +221,10 @@ function initializeCvPage() {
     downloadTop.href = pdfDownloadUrl;
   }
 
+  if (openLink) {
+    openLink.href = pdfDownloadUrl;
+  }
+
   if (fallbackLink) {
     fallbackLink.href = pdfDownloadUrl;
   }
@@ -193,6 +241,7 @@ function initializeCvPage() {
     year.textContent = String(new Date().getFullYear());
   }
 
+  initializeViewerFallback();
   initializeMobileMenu();
   initializeRevealAnimations();
 }

@@ -1,7 +1,6 @@
 import { siteData } from './content/siteData.js';
 
 const baseUrl = '/';
-const cvFilePath = 'cv/AcquadroPatrizioCV.pdf';
 
 function enforceFrameProtection() {
   if (window.top === window.self) {
@@ -38,7 +37,6 @@ const blockedByFrameProtection = enforceFrameProtection();
 const heroName = document.getElementById('hero-name');
 const heroTagline = document.getElementById('hero-tagline');
 const heroBio = document.getElementById('hero-bio');
-const heroCvDownload = document.getElementById('hero-cv-download');
 const profileImage = document.getElementById('profile-image');
 const contactList = document.getElementById('contact-list');
 const privacyNote = document.getElementById('privacy-note');
@@ -60,13 +58,6 @@ function addExternalLinkAttributes(anchor, href, label) {
   anchor.rel = 'noopener noreferrer';
   anchor.referrerPolicy = 'no-referrer';
   anchor.setAttribute('aria-label', `${label} (opens in a new tab)`);
-}
-
-function resolveBasePath(path) {
-  const base = import.meta.env.BASE_URL || '/';
-  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
-  const normalizedPath = path.replace(/^\/+/, '');
-  return `${normalizedBase}${normalizedPath}`;
 }
 
 function createTag(tagName, className, textContent) {
@@ -111,9 +102,6 @@ function renderHero() {
   heroName.textContent = siteData.name;
   heroTagline.textContent = siteData.positioning;
   heroBio.textContent = siteData.bio;
-  if (heroCvDownload) {
-    heroCvDownload.href = resolveBasePath(cvFilePath);
-  }
   setImageWithFallback(profileImage, [
     `${baseUrl}images/PatrizioAcquadro.png`,
     `${baseUrl}public/images/PatrizioAcquadro.png`,

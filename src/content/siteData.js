@@ -278,22 +278,22 @@ export const siteData = {
     {
       title: 'JCI (Junior Chamber International) Biella',
       timeframe: 'Jul 2025 - Present',
-      text: 'Led social promotion and communications for the launch of four events, boosting local visibility and attendance.'
+      text: 'Led social promotion and communications in a 14-member JCI team, supporting the launch of four events and boosting local visibility and attendance.'
     },
     {
       title: 'Guest Speaker - "Chiediamolo all\'AI"',
       timeframe: 'Jun 2025',
-      text: 'Spoke on an LLM awareness panel, translating core concepts, risks, and adoption best practices for a broad audience.'
+      text: 'Spoke on an LLM-awareness panel with live demos, translating core concepts, risks, ethics, and adoption best practices for a broad audience.'
     },
     {
       title: 'Guest Speaker - ASL Biella',
       timeframe: 'Apr 2025',
-      text: 'Presented practical AI use cases in neuropsychiatry to ASL physicians to enable workflow integration.'
+      text: 'Presented practical AI use cases in neuropsychiatry to ASL physicians for workflow integration, then moderated clinician Q&A on pilot design.'
     },
     {
       title: 'L\'Oreal Brandstorm (You-Real)',
       timeframe: 'Feb 2025 - Mar 2025',
-      text: 'Owned the tech concept and UX for an AI smart mirror in a three-person team, shaping the concept for judging.'
+      text: 'Owned the tech concept and UX for an AI smart mirror and companion app in a three-person team, shaping the concept for judging.'
     },
     {
       title: 'IELTS Academic 7.5',
@@ -308,7 +308,7 @@ export const siteData = {
     {
       title: 'Italian Red Cross Training & Volunteer Program',
       timeframe: 'Nov 2023 - Dec 2023',
-      text: 'Trained as a first-aid volunteer, supporting emergency response, incident management, and patient assistance.'
+      text: 'Completed first-aid volunteer training and qualification, then supported emergency response, incident management, and patient assistance.'
     }
   ]
 };

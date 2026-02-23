@@ -90,26 +90,28 @@ body::after {
   max-width: min(72ch, 100%);
   display: grid;
   gap: 0.65rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .hero-quote__text {
   margin: 0;
   text-align: center;
   color: var(--color-arctic);
-  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem);
+  font-size: clamp(0.95rem, 0.9rem + 0.45vw, 1.25rem);
   font-style: italic;
-  line-height: 1.55;
-  text-wrap: balance;
+  line-height: 1.45;
+  white-space: nowrap;
 }
 
 .hero-quote__author {
   justify-self: end;
   color: var(--color-apres-ski);
-  font-family: var(--font-mono);
+  font-family: var(--font-serif);
   font-size: var(--text-sm);
   font-style: normal;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .c-section--surface {

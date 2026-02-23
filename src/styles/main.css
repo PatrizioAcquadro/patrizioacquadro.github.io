@@ -59,6 +59,12 @@ body::after {
   max-width: 62ch;
 }
 
+.hero-invite {
+  max-width: 62ch;
+  margin-top: var(--space-1);
+  color: var(--color-arctic);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;

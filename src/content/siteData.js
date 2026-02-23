@@ -278,22 +278,22 @@ export const siteData = {
     {
       title: 'JCI (Junior Chamber International) Biella',
       timeframe: 'Jul 2025 - Present',
-      text: 'Handled communications, budgets, and sponsor outreach in a team of 14 while launching and supporting community events.'
+      text: 'Led social promotion and communications for the launch of four events, boosting local visibility and attendance.'
     },
     {
       title: 'Guest Speaker - "Chiediamolo all\'AI"',
       timeframe: 'Jun 2025',
-      text: 'Presented AI and LLM fundamentals with live demos, adoption guidance, and discussion on ethics, work, and legal context.'
+      text: 'Spoke on an LLM awareness panel, translating core concepts, risks, and adoption best practices for a broad audience.'
     },
     {
       title: 'Guest Speaker - ASL Biella',
       timeframe: 'Apr 2025',
-      text: 'Delivered a practical AI-in-neuropsychiatry session and moderated clinician Q&A on pilot design and implementation.'
+      text: 'Presented practical AI use cases in neuropsychiatry to ASL physicians to enable workflow integration.'
     },
     {
       title: 'L\'Oreal Brandstorm (You-Real)',
       timeframe: 'Feb 2025 - Mar 2025',
-      text: 'Led the technical concept and UX direction for an AI smart mirror and companion app in a three-person team.'
+      text: 'Owned the tech concept and UX for an AI smart mirror in a three-person team, shaping the concept for judging.'
     },
     {
       title: 'IELTS Academic 7.5',
@@ -308,7 +308,7 @@ export const siteData = {
     {
       title: 'Italian Red Cross Training & Volunteer Program',
       timeframe: 'Nov 2023 - Dec 2023',
-      text: 'Completed a 14-hour training course and exam for volunteer qualification.'
+      text: 'Trained as a first-aid volunteer, supporting emergency response, incident management, and patient assistance.'
     }
   ]
 };

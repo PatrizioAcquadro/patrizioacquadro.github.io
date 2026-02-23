@@ -79,7 +79,7 @@ body::after {
 
 .profile-image {
   width: clamp(12.5rem, 28vw, 17.25rem);
-  aspect-ratio: 1;
+  aspect-ratio: 5 / 6;
   object-fit: cover;
   border-radius: 1.75rem;
   border: var(--border-strong);

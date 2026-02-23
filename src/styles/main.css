@@ -81,6 +81,37 @@ body::after {
   box-shadow: var(--shadow-elevated);
 }
 
+.hero-quote-shell {
+  margin-top: clamp(var(--space-4), 7vw, var(--space-7));
+}
+
+.hero-quote {
+  margin: 0 auto;
+  max-width: min(72ch, 100%);
+  display: grid;
+  gap: 0.65rem;
+}
+
+.hero-quote__text {
+  margin: 0;
+  text-align: center;
+  color: var(--color-arctic);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.hero-quote__author {
+  justify-self: end;
+  color: var(--color-apres-ski);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .c-section--surface {
   background:
     linear-gradient(180deg, var(--surface-gradient-a) 0%, var(--surface-gradient-b) 75%),

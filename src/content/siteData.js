@@ -88,9 +88,9 @@ export const siteData = {
       org: 'Purdue University',
       timeframe: 'Jan 2026 - Present',
       bullets: [
-        'Leading my MSc thesis research on sim-to-real VLA for precision bimanual manipulation.',
-        'Built a LEGO assembly benchmark with rich-contact simulation and evaluation tooling in MuJoCo.',
-        'Own the full thesis pipeline end-to-end: data/annotations, training, fine-tuning, and deployment on Unitree H1.'
+        'Built a contact-rich MuJoCo LEGO benchmark to analyze failure modes and robustness.',
+        'Owned end-to-end experiments: data, training, tracking, ablations, and reproducible runs.',
+        'Deployed and validated a decoder-only transformer policy on the IHMC Alex humanoid.'
       ],
       href: 'https://websitepresentation.vercel.app/'
     },
@@ -99,9 +99,9 @@ export const siteData = {
       org: 'Politecnico di Milano',
       timeframe: 'Feb 2025 - Sep 2025',
       bullets: [
-        'Optimized LLM pipelines for code generation on large-scale database tasks.',
-        'Combined multi-hop retrieval, adaptive thresholds, dynamic-k, and a 4-bit NF4 DeepSeek-R1-Distill-Qwen-7B generator.',
-        'Tracked Clean-Reference@k, Repo-Recall@k, BLEU, ChrF, CodeBLEU, and API-Recall.'
+        'Built a 7.6k-snippet repo KB with robust chunking and filtering for coverage.',
+        'Improved grounding with BM25, CodeBERT-cosine, RRF, and multi-hop decomposition.',
+        'Cut iteration time and GPU cost with 4-bit NF4, caching, and OOM-safe resume runs.'
       ],
       href: 'https://github.com/PatrizioAcquadro/RAG_Project_SE2'
     },
@@ -110,9 +110,9 @@ export const siteData = {
       org: 'UNIMIB',
       timeframe: 'Mar 2024 - Jun 2024',
       bullets: [
-        'Co-developed work on clinical trial search with RAG-focused re-ranking.',
-        'Applied pairwise relevance strategies in a LangChain-based pipeline.',
-        'Built and integrated a UMLS-based knowledge base for retrieval quality.'
+        'Built a LangChain RAG pipeline with pairwise re-ranking for clinical-trial retrieval.',
+        'Constructed a UMLS-based knowledge base for grounding and concept normalization.',
+        'Benchmarked open-source and GPT models on clinical accuracy, latency, and cost.'
       ]
     },
     {
@@ -120,9 +120,9 @@ export const siteData = {
       org: 'Exprivia',
       timeframe: 'Apr 2024 - Jun 2024',
       bullets: [
-        'Explored ML and DL model development in quantum computing contexts.',
-        'Designed and adapted generative AI models for advanced platforms.',
-        'Evaluated financial scenario applications for AI algorithms.'
+        'Assessed QML feasibility via market and financial analysis to prioritize use cases.',
+        'Modeled the Heston process with PINN and WGAN baselines for quantitative finance.',
+        'Built a hybrid qWGAN in IBM Quantum/Qiskit with fast convergence and low error.'
       ]
     }
   ],

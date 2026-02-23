@@ -28,9 +28,9 @@
 export const siteData = {
   name: 'Patrizio Acquadro',
   positioning:
-    'I want to build reliable robotics software, using vision-language-action systems and transformer models to turn research into real robot capabilities.',
+    'I am driven to help robotics become reality through AI models, especially VLA systems and multimodal transformers.',
   bio:
-    'I am an MSc student in Artificial Intelligence at Politecnico di Milano and a Visiting Research Student at Purdue University. I work on sim-to-real VLA for precision bimanual manipulation and I care about the full stack, from benchmarks and training to deployment and validation on humanoid platforms. I am especially motivated by roles where AI, LLMs, and transformers are used to make robots more capable, robust, and useful in the real world.',
+    'I am an MSc student in two Artificial Intelligence programs at Politecnico di Milano and the University of Milano-Bicocca. My recent work spans sim-to-real VLA for precision bimanual manipulation at Purdue University, where I own the full stack from benchmarks and training to deployment and validation on humanoid platforms. I am especially motivated by roles where AI, LLMs, and multimodal transformers are used to turn embodied intelligence into real-world impact.',
   lastUpdated: 'February 2026',
   privacyExposure: {
     showPhone: false,

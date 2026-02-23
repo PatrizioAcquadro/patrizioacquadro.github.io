@@ -462,7 +462,7 @@ body::after {
   }
 
   .hero-figure {
-    justify-self: start;
+    justify-self: center;
   }
 }
 
@@ -474,8 +474,36 @@ body::after {
 }
 
 @media (max-width: 40rem) {
+  .hero {
+    padding-top: clamp(var(--space-6), 14vw, var(--space-8));
+  }
+
+  .hero-figure {
+    justify-self: center;
+  }
+
+  .profile-image {
+    width: min(78vw, 17rem);
+  }
+
   .hero-quote-shell {
     width: min(100% - var(--space-3), var(--nav-max));
+  }
+
+  .hero-quote {
+    width: 100%;
+    max-width: 36ch;
+  }
+
+  .hero-quote__text {
+    white-space: normal;
+    text-wrap: balance;
+    font-size: clamp(1.08rem, 4.8vw, 1.28rem);
+    line-height: 1.5;
+  }
+
+  .hero-quote__author {
+    font-size: clamp(1rem, 4vw, 1.08rem);
   }
 
   .hero-actions,

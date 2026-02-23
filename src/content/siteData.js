@@ -214,9 +214,9 @@ export const siteData = {
       role: 'Founder',
       timeframe: 'Jul 2022 - Present',
       bullets: [
-        'Managed local disco and live-event coverage for a youth audience across Biella province.',
-        'Scaled to 8.9k+ followers and ~550k monthly views in a ~43k-resident market.',
-        'Led a 4+ person team across content, design, communications, and partnerships.'
+        'Managed local disco and live-event coverage for a youth audience across Biella province through Instagram.',
+        'Scaled to 8.9k+ followers and ~550k monthly views in a ~43k-resident market with consistent publishing.',
+        'Led a 4+ person team across content, design, communications, and partnerships during peak weeks.'
       ]
     },
     {
@@ -224,9 +224,9 @@ export const siteData = {
       role: 'Founder',
       timeframe: 'Apr 2025 - May 2025',
       bullets: [
-        'Built and shipped the Next.js app end-to-end, optimizing delivery, security, and performance.',
-        'Mapped 50+ venues and 90+ POIs with time-aware events, routes, closures, and logistics.',
-        'Led a 10-person onsite team with the local tourist office for event promotion.'
+        'Built and shipped the Next.js app end-to-end, optimizing delivery, security, and performance at launch.',
+        'Mapped 50+ venues and 90+ POIs with time-aware events, routes, closures, and logistics for clear navigation.',
+        'Led a 10-person onsite team with the local tourist office for promotion and field operations.'
       ]
     },
     {
@@ -234,9 +234,9 @@ export const siteData = {
       role: 'Co-founder',
       timeframe: 'May 2018 - Jul 2019',
       bullets: [
-        'Scaled a custom Minecraft mode to 70-90 daily players (300 peak) across Italy.',
-        'Built custom Java plugins for mobs, enchantments, and weapon/armor effects.',
-        'Managed server and domain operations in a 4-person team, with stable uptime.'
+        'Scaled a custom Minecraft mode to 70-90 daily players (300 peak) across Italy during seasonal events.',
+        'Built custom Java plugins for mobs, enchantments, and weapon/armor effects to enrich gameplay.',
+        'Managed server and domain operations in a 4-person team, maintaining stable uptime through releases.'
       ]
     }
   ],

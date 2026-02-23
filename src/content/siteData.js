@@ -27,9 +27,10 @@
  */
 export const siteData = {
   name: 'Patrizio Acquadro',
-  positioning: 'I build AI systems across research, engineering, and real-world product execution.',
+  positioning:
+    'I want to build reliable robotics software, using vision-language-action systems and transformer models to turn research into real robot capabilities.',
   bio:
-    'I am an MSc student in Artificial Intelligence and a visiting student at Purdue University. My recent work spans sim-to-real vision-language-action systems, LLM code-generation workflows, and hands-on projects from benchmarking to deployment.',
+    'I am an MSc student in Artificial Intelligence at Politecnico di Milano and a Visiting Research Student at Purdue University. I work on sim-to-real VLA for precision bimanual manipulation and I care about the full stack, from benchmarks and training to deployment and validation on humanoid platforms. I am especially motivated by roles where AI, LLMs, and transformers are used to make robots more capable, robust, and useful in the real world.',
   lastUpdated: 'February 2026',
   privacyExposure: {
     showPhone: false,

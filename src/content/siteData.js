@@ -214,9 +214,9 @@ export const siteData = {
       role: 'Founder',
       timeframe: 'Jul 2022 - Present',
       bullets: [
-        'Created a youth-focused local events channel for the province of Biella.',
-        'Reached 8,500+ followers and about 550k monthly views in three years.',
-        'Coordinated and supervised a cross-functional team of 4+ collaborators.'
+        'Managed local disco and live-event coverage for a youth audience across Biella province.',
+        'Scaled to 8.9k+ followers and ~550k monthly views in a ~43k-resident market.',
+        'Led a 4+ person team across content, design, communications, and partnerships.'
       ]
     },
     {
@@ -224,19 +224,19 @@ export const siteData = {
       role: 'Founder',
       timeframe: 'Apr 2025 - May 2025',
       bullets: [
-        'Built a mobile-first interactive map for festival events and city services.',
-        'Coordinated onboarding across 50+ venues and 90+ points of interest.',
-        'Led a 10-person team through planning and live operations during a high-traffic three-day event.'
+        'Built and shipped the Next.js app end-to-end, optimizing delivery, security, and performance.',
+        'Mapped 50+ venues and 90+ POIs with time-aware events, routes, closures, and logistics.',
+        'Led a 10-person onsite team with the local tourist office for event promotion.'
       ]
     },
     {
       name: 'CubeWar Minecraft Server',
       role: 'Co-founder',
-      timeframe: 'May 2018 - Jul 2019 (sold)',
+      timeframe: 'May 2018 - Jul 2019',
       bullets: [
-        'Co-developed a custom Minecraft game mode used by players across Italy.',
-        'Built Java plugins and managed server configuration and operations.',
-        'Directed collaboration among programmers and game designers during key development phases.'
+        'Scaled a custom Minecraft mode to 70-90 daily players (300 peak) across Italy.',
+        'Built custom Java plugins for mobs, enchantments, and weapon/armor effects.',
+        'Managed server and domain operations in a 4-person team, with stable uptime.'
       ]
     }
   ],

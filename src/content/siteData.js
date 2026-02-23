@@ -36,12 +36,13 @@ export const siteData = {
     phoneLabel: 'Phone',
     phoneHref: 'tel:+10000000000',
     note:
-      'Privacy & Exposure: this site intentionally limits public personal data. Email, LinkedIn, and GitHub are published; phone is optional and disabled by default.'
+      'Privacy & Exposure: this site intentionally limits public personal data. Email, LinkedIn, GitHub, and Instagram are published; phone is optional and disabled by default.'
   },
   contactLinks: [
     { label: 'Mail', href: 'mailto:acquadropatrizio@gmail.com' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrizio-acquadro' },
-    { label: 'GitHub', href: 'https://github.com/PatrizioAcquadro' }
+    { label: 'GitHub', href: 'https://github.com/PatrizioAcquadro' },
+    { label: 'Instagram', href: 'https://www.instagram.com/patrizioacquadro/' }
   ],
   news: [
     {

@@ -74,6 +74,12 @@ export const siteData = {
       dateLabel: 'Feb 2025',
       isoDate: '2025-02-01',
       text: 'Joined Politecnico di Milano as a Generative AI Researcher on LLM optimization for large-scale code generation tasks.'
+    },
+    {
+      dateLabel: 'Oct 2024',
+      isoDate: '2024-10-01',
+      text:
+        'Obtained my thesis with the maximum grade (110/110), titled "Theoretical Foundations and Real-World Applications of Quantum Machine Learning in Finance".'
     }
   ],
   research: [

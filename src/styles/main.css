@@ -89,6 +89,7 @@ body::after {
 
 .hero-quote {
   margin: 0 auto;
+  width: max-content;
   max-width: 100%;
   display: grid;
   gap: 0.65rem;
@@ -105,12 +106,13 @@ body::after {
 }
 
 .hero-quote__author {
-  justify-self: end;
+  justify-self: stretch;
+  text-align: right;
   color: var(--color-apres-ski);
   font-family: var(--font-serif);
-  font-size: var(--text-sm);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 

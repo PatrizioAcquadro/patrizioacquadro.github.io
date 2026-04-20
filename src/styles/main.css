@@ -213,6 +213,12 @@ body::after {
   gap: 0.45rem;
 }
 
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 .card-link {
   color: var(--color-arctic);
   font-weight: 600;

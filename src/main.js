@@ -382,11 +382,23 @@ function renderProjects() {
 
     card.append(title, timeframe, built, stackLabel, stackList);
 
-    if (item.href) {
-      const link = createTag('a', 'card-link', item.hrefLabel || 'Project link');
-      link.href = item.href;
-      addExternalLinkAttributes(link, item.href, `${item.title} link`);
-      card.append(link);
+    const itemLinks = Array.isArray(item.links) && item.links.length > 0
+      ? item.links
+      : item.href
+        ? [{ href: item.href, label: item.hrefLabel || 'Project link' }]
+        : [];
+
+    if (itemLinks.length > 0) {
+      const links = createTag('div', 'card-links');
+
+      itemLinks.forEach((linkItem) => {
+        const link = createTag('a', 'card-link', linkItem.label || 'Project link');
+        link.href = linkItem.href;
+        addExternalLinkAttributes(link, linkItem.href, `${item.title} link`);
+        links.append(link);
+      });
+
+      card.append(links);
     } else {
       card.append(createTag('p', 'card-link-placeholder', item.hrefLabel || 'Link coming soon'));
     }

@@ -3,7 +3,7 @@
  * @typedef {{ showPhone: boolean, phoneLabel: string, phoneHref: string, note: string }} PrivacyExposure
  * @typedef {{ dateLabel: string, isoDate: string, text: string, href?: string }} NewsItem
  * @typedef {{ role: string, org: string, timeframe: string, bullets: string[], href?: string }} ResearchItem
- * @typedef {{ title: string, timeframe: string, built: string, stack: string, href?: string, hrefLabel?: string }} ProjectItem
+ * @typedef {{ title: string, timeframe: string, built: string, stack: string, href?: string, hrefLabel?: string, links?: { href: string, label: string }[] }} ProjectItem
  * @typedef {{ name: string, role: string, timeframe: string, bullets: string[] }} VentureItem
  * @typedef {{ group: string, items: string[] }} SkillGroup
  * @typedef {{ title: string, timeframe: string, text: string }} ActivityItem
@@ -141,8 +141,16 @@ export const siteData = {
       timeframe: 'May 2025 - Jul 2025',
       built: 'Deployed an INT8 encoder-only transformer under strict Flash, SRAM, and latency constraints.',
       stack: 'STM32 Edge-AI, X-Cube-AI, CubeIDE, CubeProgrammer, AI Dev Cloud',
-      href: 'https://github.com/TitoNicolaDrugman/Transformer-NPU-STM32N6',
-      hrefLabel: 'GitHub repository'
+      links: [
+        {
+          href: 'https://patrizioacquadro.github.io/stm32n6-docs/',
+          label: 'Documentation'
+        },
+        {
+          href: 'https://github.com/TitoNicolaDrugman/RAG-Code-Generation',
+          label: 'GitHub repository'
+        }
+      ]
     },
     {
       title: 'Transformer for Piano MIDI Generation',

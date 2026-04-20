@@ -277,6 +277,11 @@ export const siteData = {
   ],
   activities: [
     {
+      title: 'TOYP 2026',
+      timeframe: 'Apr 2026',
+      text: 'Won the volunteering category as a Talent Inspiring the Future, recognized for the local impact of BiellaInFesta and Adunet.'
+    },
+    {
       title: 'JCI (Junior Chamber International) Biella',
       timeframe: 'Jul 2025 - Present',
       text: 'Led social promotion and communications in a 14-member JCI team, supporting the launch of four events and boosting local visibility and attendance.'

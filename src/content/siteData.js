@@ -104,7 +104,7 @@ export const siteData = {
         'Improved grounding with BM25, CodeBERT-cosine, RRF, and multi-hop query decomposition on harder tasks.',
         'Cut iteration time and GPU cost with 4-bit NF4, caching, and OOM-safe resume runs during large sweeps.'
       ],
-      href: 'https://github.com/PatrizioAcquadro/RAG_Project_SE2'
+      href: 'https://github.com/PatrizioAcquadro/RAG-Code-Generation'
     },
     {
       role: 'Generative AI Researcher & Re-Ranking Specialist',

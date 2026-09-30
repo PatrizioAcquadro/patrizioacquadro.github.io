@@ -12,6 +12,7 @@
 /**
  * @type {{
  *   name: string,
+ *   siteUrl: string,
  *   positioning: string,
  *   bio: string,
  *   lastUpdated: string,
@@ -27,11 +28,12 @@
  */
 export const siteData = {
   name: 'Patrizio Acquadro',
+  siteUrl: 'https://patrizioacquadro.github.io/',
   positioning:
     'I want to help make robotics real through VLA systems and multimodal transformers.',
   bio:
     'I am an MSc student in two AI programs at Politecnico di Milano and the University of Milano-Bicocca. My recent work spans sim-to-real VLA for precision bimanual manipulation at Purdue University, taking projects from benchmark design and training to humanoid deployment and validation. I am motivated by roles where AI, LLMs, and multimodal transformers drive real embodied intelligence.',
-  lastUpdated: 'February 2026',
+  lastUpdated: '2026-09-30',
   privacyExposure: {
     showPhone: false,
     phoneLabel: 'Phone',
@@ -147,7 +149,7 @@ export const siteData = {
           label: 'Documentation'
         },
         {
-          href: 'https://github.com/TitoNicolaDrugman/RAG-Code-Generation',
+          href: 'https://github.com/PatrizioAcquadro/Transformer-NPU-STM32N6',
           label: 'GitHub repository'
         }
       ]

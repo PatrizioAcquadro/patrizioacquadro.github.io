@@ -1,7 +1,3 @@
-import { siteData } from './content/siteData.js';
-
-const baseUrl = '/';
-
 function enforceFrameProtection() {
   if (window.top === window.self) {
     return false;
@@ -34,56 +30,12 @@ function enforceFrameProtection() {
 
 const blockedByFrameProtection = enforceFrameProtection();
 
-const heroName = document.getElementById('hero-name');
-const heroTagline = document.getElementById('hero-tagline');
-const heroBio = document.getElementById('hero-bio');
-const profileImage = document.getElementById('profile-image');
 const contactList = document.getElementById('contact-list');
-const privacyNote = document.getElementById('privacy-note');
 const mailSheetBackdrop = document.getElementById('mail-sheet-backdrop');
 const mailSheetClose = document.getElementById('mail-sheet-close');
 const mailSheetEmail = document.getElementById('mail-sheet-email');
 const mailCopyButton = document.getElementById('mail-copy-button');
 const mailCopyStatus = document.getElementById('mail-copy-status');
-const newsList = document.getElementById('news-list');
-const researchList = document.getElementById('research-list');
-const projectsGrid = document.getElementById('projects-grid');
-const ventureList = document.getElementById('venture-list');
-const talksList = document.getElementById('talks-list');
-const lastUpdated = document.getElementById('last-updated');
-const currentYear = document.getElementById('current-year');
-
-function addExternalLinkAttributes(anchor, href, label) {
-  if (!href.startsWith('http')) {
-    return;
-  }
-
-  anchor.target = '_blank';
-  anchor.rel = 'noopener noreferrer';
-  anchor.referrerPolicy = 'no-referrer';
-  anchor.setAttribute('aria-label', `${label} (opens in a new tab)`);
-}
-
-function createTag(tagName, className, textContent) {
-  const node = document.createElement(tagName);
-
-  if (className) {
-    node.className = className;
-  }
-
-  if (textContent) {
-    node.textContent = textContent;
-  }
-
-  return node;
-}
-
-function createMetaBadge(textContent) {
-  const wrapper = createTag('p', 'card-meta');
-  const badge = createTag('span', 'c-badge', textContent);
-  wrapper.append(badge);
-  return wrapper;
-}
 
 function extractEmailFromMailto(mailtoHref) {
   if (!mailtoHref || !mailtoHref.startsWith('mailto:')) {
@@ -123,58 +75,6 @@ function fallbackCopyText(text) {
 
   document.body.removeChild(textArea);
   return copied;
-}
-
-function setImageWithFallback(imageEl, sources) {
-  let index = 0;
-
-  function tryNextSource() {
-    if (index >= sources.length) {
-      imageEl.removeEventListener('error', tryNextSource);
-      return;
-    }
-
-    imageEl.src = sources[index];
-    index += 1;
-  }
-
-  imageEl.addEventListener('error', tryNextSource);
-  tryNextSource();
-}
-
-function renderHero() {
-  heroName.textContent = siteData.name;
-  heroTagline.textContent = siteData.positioning;
-  heroBio.textContent = siteData.bio;
-  setImageWithFallback(profileImage, [
-    `${baseUrl}images/PatrizioAcquadro.png`,
-    `${baseUrl}public/images/PatrizioAcquadro.png`,
-    `${baseUrl}images/avatar-placeholder.svg`,
-    `${baseUrl}public/images/avatar-placeholder.svg`
-  ]);
-}
-
-function renderContacts() {
-  function appendContactLink(label, href) {
-    const listItem = createTag('li', 'contact-item');
-    const link = createTag('a', 'contact-link', label);
-    link.href = href;
-    addExternalLinkAttributes(link, href, label);
-    listItem.append(link);
-    contactList.append(listItem);
-  }
-
-  siteData.contactLinks.forEach((item) => {
-    appendContactLink(item.label, item.href);
-  });
-
-  if (siteData.privacyExposure.showPhone && siteData.privacyExposure.phoneHref) {
-    appendContactLink(siteData.privacyExposure.phoneLabel, siteData.privacyExposure.phoneHref);
-  }
-
-  if (privacyNote) {
-    privacyNote.textContent = siteData.privacyExposure.note;
-  }
 }
 
 function initializeMailContactInteraction() {
@@ -311,127 +211,6 @@ function initializeMailContactInteraction() {
 
   mailCopyButton.addEventListener('click', () => {
     void copyEmailToClipboard();
-  });
-}
-
-function renderNews() {
-  const sortedNews = [...siteData.news].sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
-
-  sortedNews.forEach((item) => {
-    const listItem = createTag('li', 'news-item c-timeline-item');
-    const date = createTag('time', 'news-date', item.dateLabel);
-    date.dateTime = item.isoDate;
-    listItem.append(date);
-
-    if (item.href) {
-      const link = createTag('a', 'news-link', item.text);
-      link.href = item.href;
-      addExternalLinkAttributes(link, item.href, `News item from ${item.dateLabel}`);
-      listItem.append(link);
-    } else {
-      const text = createTag('p', 'news-text', item.text);
-      listItem.append(text);
-    }
-
-    newsList.append(listItem);
-  });
-}
-
-function renderResearch() {
-  siteData.research.forEach((item) => {
-    const card = createTag('article', 'c-card content-card research-card');
-    const title = createTag('h3', '', `${item.role} | ${item.org}`);
-    const timeframe = createMetaBadge(item.timeframe);
-    const bulletList = createTag('ul', 'card-list');
-
-    item.bullets.forEach((bullet) => {
-      bulletList.append(createTag('li', '', bullet));
-    });
-
-    card.append(title, timeframe, bulletList);
-
-    if (item.href) {
-      const linkLabel = item.org === 'Purdue University' ? 'Thesis page' : 'Project link';
-      const link = createTag('a', 'card-link', linkLabel);
-      link.href = item.href;
-      addExternalLinkAttributes(link, item.href, `${item.role} link`);
-      card.append(link);
-    }
-
-    researchList.append(card);
-  });
-}
-
-function renderProjects() {
-  siteData.projects.forEach((item) => {
-    const card = createTag('article', 'c-card content-card project-card');
-    const title = createTag('h3', '', item.title);
-    const timeframe = createMetaBadge(item.timeframe);
-    const built = createTag('p', 'card-body', item.built);
-    const stackLabel = createTag('p', 'card-meta', 'Stack / Tools');
-    const stackList = createTag('ul', 'stack-list');
-
-    item.stack
-      .split(',')
-      .map((stackItem) => stackItem.trim())
-      .filter(Boolean)
-      .forEach((stackItem) => {
-        const badgeItem = createTag('li', 'c-badge', stackItem);
-        stackList.append(badgeItem);
-      });
-
-    card.append(title, timeframe, built, stackLabel, stackList);
-
-    const itemLinks = Array.isArray(item.links) && item.links.length > 0
-      ? item.links
-      : item.href
-        ? [{ href: item.href, label: item.hrefLabel || 'Project link' }]
-        : [];
-
-    if (itemLinks.length > 0) {
-      const links = createTag('div', 'card-links');
-
-      itemLinks.forEach((linkItem) => {
-        const link = createTag('a', 'card-link', linkItem.label || 'Project link');
-        link.href = linkItem.href;
-        addExternalLinkAttributes(link, linkItem.href, `${item.title} link`);
-        links.append(link);
-      });
-
-      card.append(links);
-    } else {
-      card.append(createTag('p', 'card-link-placeholder', item.hrefLabel || 'Link coming soon'));
-    }
-
-    projectsGrid.append(card);
-  });
-}
-
-function renderVentures() {
-  siteData.ventures.forEach((item) => {
-    const card = createTag('article', 'c-card content-card venture-card');
-    const title = createTag('h3', '', `${item.name} | ${item.role}`);
-    const timeframe = createMetaBadge(item.timeframe);
-    const bulletList = createTag('ul', 'card-list');
-
-    item.bullets.forEach((bullet) => {
-      bulletList.append(createTag('li', '', bullet));
-    });
-
-    card.append(title, timeframe, bulletList);
-    ventureList.append(card);
-  });
-}
-
-function renderActivities() {
-  siteData.activities.forEach((item) => {
-    const listItem = createTag('li', 'talk-item c-timeline-item');
-    const title = createTag('h3', 'talk-title', item.title);
-    const timeframe = createTag('p', 'talk-date', item.timeframe);
-    const text = createTag('p', 'card-body', item.text);
-
-    listItem.append(title, timeframe, text);
-    talksList.append(listItem);
   });
 }
 
@@ -678,31 +457,6 @@ function initializeRevealAnimations() {
   window.addEventListener('resize', onScrollFallback);
 }
 
-function initializeCvDownload() {
-  const cvLink = document.querySelector('a[download="AcquadroPatrizioCV.pdf"]');
-
-  if (!cvLink) {
-    return;
-  }
-
-  const baseHref = cvLink.getAttribute('href');
-
-  cvLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    const freshLink = document.createElement('a');
-    freshLink.href = `${baseHref}?v=${Date.now()}`;
-    freshLink.download = 'AcquadroPatrizioCV.pdf';
-    document.body.appendChild(freshLink);
-    freshLink.click();
-    document.body.removeChild(freshLink);
-  });
-}
-
-function renderFooter() {
-  lastUpdated.textContent = `Last updated: ${siteData.lastUpdated}`;
-  currentYear.textContent = String(new Date().getFullYear());
-}
-
 function initializeThemeToggle() {
   var STORAGE_KEY = 'theme-preference';
   var toggleButton = document.getElementById('theme-toggle');
@@ -773,19 +527,10 @@ function initialize() {
   }
 
   initializeThemeToggle();
-  renderHero();
-  renderNews();
-  renderResearch();
-  renderProjects();
-  renderVentures();
-  renderActivities();
-  renderContacts();
   initializeMailContactInteraction();
   initializeMobileMenu();
-  initializeCvDownload();
   initializeActiveSectionIndicator();
   initializeRevealAnimations();
-  renderFooter();
 }
 
 initialize();

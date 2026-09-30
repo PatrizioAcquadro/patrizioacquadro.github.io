@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "test:unit": "node --test tests/*.test.js",
     "security:check": "npm run build && node scripts/security-baseline-check.mjs"
   },
   "devDependencies": {

@@ -30,7 +30,7 @@ export const siteData = {
   positioning:
     'I build learning and perception systems for humanoid robots.',
   bio:
-    'I’m an R&D Assistant in Robot Learning at Purdue University, based in West Lafayette, Indiana. I work on humanoid manipulation, simulation, and perception that connects vision and hearing. I’m especially interested in transferring learned skills across robots and tasks, alongside my master’s studies in AI at Politecnico di Milano and the University of Milano-Bicocca.',
+    'I’m an R&D Assistant in Robot Learning at Purdue University, focused on humanoid manipulation and multimodal perception. I’m also an AI master’s student at Politecnico di Milano and Milano-Bicocca. If you are building robotics or embodied AI, or just want to talk about shared interests, feel free to connect.',
   lastUpdated: '2026-09-30',
   privacyExposure: {
     showPhone: false,

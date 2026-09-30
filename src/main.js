@@ -281,6 +281,137 @@ function initializeActiveSectionIndicator() {
   requestActiveSectionUpdate();
 }
 
+function initializeProjectsCarousel() {
+  const carousel = document.getElementById('projects-carousel');
+  const viewport = carousel.querySelector('.projects-viewport');
+  const track = document.getElementById('projects-grid');
+  const cards = [...track.children];
+  if (cards.length < 5) return;
+
+  const previous = carousel.querySelector('.projects-arrow--previous');
+  const next = carousel.querySelector('.projects-arrow--next');
+  const status = carousel.querySelector('.projects-status');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let firstIndex = 0;
+  let finishMove;
+  let stride;
+  let offset;
+
+  carousel.classList.add('is-enhanced');
+  carousel.setAttribute('role', 'region');
+  carousel.setAttribute('aria-roledescription', 'carousel');
+  carousel.setAttribute('aria-label', 'Robotics projects');
+  previous.hidden = next.hidden = status.hidden = false;
+  cards.forEach((card, index) => {
+    card.setAttribute('role', 'group');
+    card.setAttribute('aria-roledescription', 'slide');
+    card.setAttribute('aria-label', `Project ${index + 1} of ${cards.length}`);
+  });
+  // Rotate the original cards so every project retains its links.
+  track.prepend(cards.at(-1));
+
+  function setPosition(position) {
+    track.style.transform = `translate3d(${position}px, 0, 0)`;
+  }
+
+  function updateLayout() {
+    const visibleCount = Number(getComputedStyle(carousel).getPropertyValue('--project-visible-count'));
+    const width = track.firstElementChild.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).columnGap);
+    const peek = (viewport.clientWidth - width * visibleCount - gap * (visibleCount - 1)) / 2;
+    stride = width + gap;
+    offset = peek - stride;
+    setPosition(offset);
+    [...track.children].forEach((card, index) => {
+      const visible = index >= 1 && index <= visibleCount;
+      card.inert = !visible;
+      card.setAttribute('aria-hidden', String(!visible));
+    });
+    const positions = Array.from({ length: visibleCount }, (_, index) => (firstIndex + index) % cards.length + 1);
+    status.textContent = `Projects ${positions.join(', ')} of ${cards.length}`;
+  }
+
+  function move(direction) {
+    if (finishMove) return;
+    let timeout;
+    let buffer;
+    function finish() {
+      window.clearTimeout(timeout);
+      track.removeEventListener('transitionend', onTransitionEnd);
+      track.classList.remove('is-moving');
+      buffer?.remove();
+      if (direction === 1) track.append(track.firstElementChild);
+      else track.prepend(track.lastElementChild);
+      firstIndex = (firstIndex + direction + cards.length) % cards.length;
+      finishMove = null;
+      updateLayout();
+    }
+    function onTransitionEnd(event) {
+      if (event.target === track && event.propertyName === 'transform') finish();
+    }
+    finishMove = finish;
+    if (reducedMotion.matches) {
+      finish();
+      return;
+    }
+    // An inert edge copy keeps both previews filled throughout the transition.
+    buffer = (direction === 1 ? track.firstElementChild : track.lastElementChild).cloneNode(true);
+    buffer.inert = true;
+    buffer.setAttribute('aria-hidden', 'true');
+    if (direction === 1) track.append(buffer);
+    else {
+      track.prepend(buffer);
+      setPosition(offset - stride);
+    }
+    // Flush the previous rotation before starting another transition.
+    track.getBoundingClientRect();
+    track.classList.add('is-moving');
+    setPosition(direction === 1 ? offset - stride : offset);
+    track.addEventListener('transitionend', onTransitionEnd);
+    timeout = window.setTimeout(finish, 400);
+  }
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  carousel.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === 'ArrowRight' ? 1 : -1;
+    (direction === 1 ? next : previous).focus({ preventScroll: true });
+    move(direction);
+  });
+
+  let touchStart;
+  let swiped = false;
+  viewport.addEventListener('pointerdown', (event) => {
+    if (!event.isPrimary || event.pointerType === 'mouse') return;
+    touchStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+    swiped = false;
+  });
+  window.addEventListener('pointerup', (event) => {
+    if (!touchStart || event.pointerId !== touchStart.id) return;
+    const dx = event.clientX - touchStart.x;
+    const dy = event.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped = true;
+      move(dx < 0 ? 1 : -1);
+    }
+  });
+  viewport.addEventListener('pointercancel', () => { touchStart = null; });
+  viewport.addEventListener('click', (event) => {
+    if (!swiped) return;
+    event.preventDefault();
+    swiped = false;
+  }, true);
+
+  updateLayout();
+  new ResizeObserver(() => {
+    if (finishMove) finishMove();
+    else updateLayout();
+  }).observe(viewport);
+}
+
 function initializeRevealAnimations() {
   const items = [...document.querySelectorAll('.reveal')];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -439,6 +570,7 @@ function initialize() {
   initializeMailContactInteraction();
   initializeMobileMenu();
   initializeActiveSectionIndicator();
+  initializeProjectsCarousel();
   initializeRevealAnimations();
 }
 

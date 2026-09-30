@@ -31,6 +31,12 @@ function link(href, label, className, context = label) {
 const badge = (text) => `<p class="card-meta"><span class="c-badge">${escapeHtml(text)}</span></p>`;
 const bullets = (items) => `<ul class="card-list">${items.map((text) => `<li>${escapeHtml(text)}</li>`).join('')}</ul>`;
 
+function renderProject(item) {
+  const stack = item.stack.split(',').map((text) => text.trim()).filter(Boolean);
+  const links = item.links?.length ? item.links : item.href ? [{ href: item.href, label: item.hrefLabel || 'Project link' }] : [];
+  return `<article class="c-card content-card project-card"><h3>${escapeHtml(item.title)}</h3>${badge(item.timeframe)}<p class="card-body">${escapeHtml(item.built)}</p><p class="card-meta">Stack / Tools</p><ul class="stack-list">${stack.map((text) => `<li class="c-badge">${escapeHtml(text)}</li>`).join('')}</ul>${links.length ? `<div class="card-links">${links.map((itemLink) => link(itemLink.href, itemLink.label || 'Project link', 'card-link', item.title)).join('')}</div>` : `<p class="card-link-placeholder">${escapeHtml(item.hrefLabel || 'Link coming soon')}</p>`}</article>`;
+}
+
 export function renderSite(template, data, { base = '/', cvVersion, year = new Date().getUTCFullYear() } = {}) {
   const siteUrl = new URL(base, data.siteUrl).href;
   const contacts = [...data.contactLinks];
@@ -60,11 +66,8 @@ export function renderSite(template, data, { base = '/', cvVersion, year = new D
       const label = item.org === 'Purdue University' ? 'Thesis page' : 'Project link';
       return `<article class="c-card content-card research-card"><h3>${escapeHtml(title)}</h3>${badge(item.timeframe)}${bullets(item.bullets)}${item.href ? link(item.href, label, 'card-link', title) : ''}</article>`;
     }).join(''),
-    projects: data.projects.map((item) => {
-      const stack = item.stack.split(',').map((text) => text.trim()).filter(Boolean);
-      const links = item.links?.length ? item.links : item.href ? [{ href: item.href, label: item.hrefLabel || 'Project link' }] : [];
-      return `<article class="c-card content-card project-card"><h3>${escapeHtml(item.title)}</h3>${badge(item.timeframe)}<p class="card-body">${escapeHtml(item.built)}</p><p class="card-meta">Stack / Tools</p><ul class="stack-list">${stack.map((text) => `<li class="c-badge">${escapeHtml(text)}</li>`).join('')}</ul>${links.length ? `<div class="card-links">${links.map((itemLink) => link(itemLink.href, itemLink.label || 'Project link', 'card-link', item.title)).join('')}</div>` : `<p class="card-link-placeholder">${escapeHtml(item.hrefLabel || 'Link coming soon')}</p>`}</article>`;
-    }).join(''),
+    'robotics-projects': data.projects.filter((item) => item.robotics).map(renderProject).join(''),
+    projects: data.projects.filter((item) => !item.robotics).map(renderProject).join(''),
     ventures: data.ventures.map((item) =>
       `<article class="c-card content-card venture-card"><h3>${escapeHtml(`${item.name} | ${item.role}`)}</h3>${badge(item.timeframe)}${bullets(item.bullets)}</article>`
     ).join(''),

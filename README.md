@@ -17,6 +17,7 @@ npm run dev
 ## Content and assets
 
 - Edit `src/content/siteData.js` and update `lastUpdated` with the editorial date (`YYYY-MM-DD`) when changing published content. `siteUrl` is the canonical origin.
+- Projects marked `robotics: true` appear in the looping carousel (three readable cards on desktop, two on tablet, one on mobile); other projects retain the two-column grid. Without JavaScript, all projects use the grid. The carousel supports arrows, keyboard navigation, touch swipes and reduced motion.
 - `src/content/renderSite.js` escapes and renders content into the HTML through Vite's `transformIndexHtml`, in development and production. Content changes reload the development page. JavaScript handles interactions; all portfolio content and navigation work without it.
 - The homepage canonical, social metadata, sitemap and robots file share the same origin and deployment base path. `/cv/` remains a `noindex` redirect to Home.
 - Replace `public/cv/AcquadroPatrizioCV.pdf` to publish a new CV. The download version is derived from its SHA-256 hash. The editable Word source is in `assets/source/`.

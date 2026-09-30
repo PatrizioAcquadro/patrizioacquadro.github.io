@@ -108,3 +108,11 @@ Environment note for future agent guidance: use the bundled Node 24 runtime beca
 Changed the subtitle to "I help robots learn, perceive, and act." Hero font sizes now scale with the available text-column width. The name and subtitle each stay on one line at 320, 390, 765, 1120 and 1440 px in both themes, verified by text line measurements in Chromium, Firefox and WebKit. At 200% text enlargement, text can wrap as needed without horizontal overflow.
 
 Validation passed: 5 unit tests, production build, security baseline, artifact budgets and all 33 browser tests. Reviewed desktop and mobile screenshots; the closing invitation appears once and the previous invitation is absent. Screenshots and measurements are saved under the ignored `.artifacts/hero-title/` directory.
+
+## Robotics projects carousel - 2026-09-30
+
+The five projects marked `robotics: true` use a looping horizontal carousel. Desktop shows three complete cards and two faded edge previews; tablet shows two complete cards and mobile one. Arrow buttons, left/right keys and touch swipes move one project at a time in either direction. An inert temporary edge copy maintains the previews during animation; offscreen cards are excluded from keyboard navigation and the accessibility tree. Reduced motion changes slides immediately. All projects remain rendered at build time and use a grid without JavaScript.
+
+The ten other engineering projects retain their original two-column grid, content, order and links below the carousel. No dependencies were added. Validation passed with bundled Node 24: 5 unit tests, production build, security baseline, asset budgets (homepage JavaScript 4,148 B gzip), and 51/51 browser tests across Chromium, Firefox and WebKit. Firefox used the previously documented isolated launcher. Browser checks cover both loop directions, three central cards with two previews, keyboard focus, swipe navigation, resizing during motion, 200% text, both themes and no-JavaScript access. Layout assertions wait for resized geometry to settle; long badges wrap when text is enlarged.
+
+Desktop and mobile visual review screenshots are saved under the ignored `.artifacts/projects-carousel/` directory. Changes were validated locally; no push or deployment was performed.

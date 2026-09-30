@@ -3,7 +3,7 @@
  * @typedef {{ showPhone: boolean, phoneLabel: string, phoneHref: string }} PrivacyExposure
  * @typedef {{ dateLabel: string, isoDate: string, text: string, href?: string }} NewsItem
  * @typedef {{ role: string, org: string, timeframe: string, bullets: string[], href?: string }} ResearchItem
- * @typedef {{ title: string, timeframe: string, built: string, stack: string, href?: string, hrefLabel?: string, links?: { href: string, label: string }[] }} ProjectItem
+ * @typedef {{ title: string, timeframe: string, built: string, stack: string, robotics?: boolean, href?: string, hrefLabel?: string, links?: { href: string, label: string }[] }} ProjectItem
  * @typedef {{ name: string, role: string, timeframe: string, bullets: string[] }} VentureItem
  * @typedef {{ title: string, timeframe: string, text: string }} ActivityItem
  */
@@ -148,6 +148,7 @@ export const siteData = {
   projects: [
     {
       title: 'AlexDoor-XAS - Humanoid Door Manipulation',
+      robotics: true,
       timeframe: '2026 - Present',
       built: 'Developing a door-opening benchmark for the IHMC Alex humanoid. I implemented the simulation control and RGB-D sensing setup. The study will compare four action representations with ACT and diffusion policies, testing generalization to unseen doors.',
       stack: 'Python, Isaac Sim, Isaac Lab, RGB-D, PyTorch',
@@ -156,6 +157,7 @@ export const siteData = {
     },
     {
       title: 'Isaac Audio Sensors - Robot Hearing SDK',
+      robotics: true,
       timeframe: '2026 - Present',
       built: 'Built an open-source SDK that turns simulated sound into microphone-array recordings, spatial observations, and robot-learning datasets. I developed acoustic simulation, recording and replay, and Isaac Sim/Lab integrations. The package is available open source and remains under active development.',
       stack: 'Python, Isaac Sim, Isaac Lab, Microphone arrays, Acoustic simulation',
@@ -176,6 +178,7 @@ export const siteData = {
     },
     {
       title: 'SquadBot-AV - Audio-Visual Perception',
+      robotics: true,
       timeframe: '2026 - Present',
       built: 'Contributing to research on multimodal perception for robotics, combining audio and visual information to help robots understand their surroundings.',
       stack: 'Python, Robotics, Multimodal perception',
@@ -183,6 +186,7 @@ export const siteData = {
     },
     {
       title: 'Ego2Grip - Learning from First-Person Video',
+      robotics: true,
       timeframe: '2026 - Present',
       built: 'Mentoring an undergraduate researcher on extracting 3D hand trajectories from first-person video. I guide the technical development and evaluation of the trajectory pipeline. The next goal is to turn these trajectories into robot-compatible manipulation demonstrations.',
       stack: 'Python, PyTorch, HaWoR, Ego4D, 3D hand reconstruction',
@@ -191,6 +195,7 @@ export const siteData = {
     },
     {
       title: 'VLA-LEGO - Bimanual Assembly Benchmark',
+      robotics: true,
       timeframe: '2026',
       built: 'Built a contact-rich MuJoCo benchmark for bimanual LEGO assembly with the IHMC Alex model. I developed simulation and reproducible experiment workflows to study robustness and failure modes. The benchmark provides a foundation for vision-language-action policy experiments.',
       stack: 'Python, MuJoCo, PyTorch, Hugging Face Transformers, Hydra, Weights & Biases',

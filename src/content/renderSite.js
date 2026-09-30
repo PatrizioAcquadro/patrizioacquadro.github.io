@@ -34,7 +34,7 @@ const bullets = (items) => `<ul class="card-list">${items.map((text) => `<li>${e
 function renderProject(item) {
   const stack = item.stack.split(',').map((text) => text.trim()).filter(Boolean);
   const links = item.links?.length ? item.links : item.href ? [{ href: item.href, label: item.hrefLabel || 'Project link' }] : [];
-  return `<article class="c-card content-card project-card"><h3>${escapeHtml(item.title)}</h3>${badge(item.timeframe)}<p class="card-body">${escapeHtml(item.built)}</p><p class="card-meta">Stack / Tools</p><ul class="stack-list">${stack.map((text) => `<li class="c-badge">${escapeHtml(text)}</li>`).join('')}</ul>${links.length ? `<div class="card-links">${links.map((itemLink) => link(itemLink.href, itemLink.label || 'Project link', 'card-link', item.title)).join('')}</div>` : `<p class="card-link-placeholder">${escapeHtml(item.hrefLabel || 'Link coming soon')}</p>`}</article>`;
+  return `<article class="c-card content-card project-card"><h4>${escapeHtml(item.title)}</h4>${badge(item.timeframe)}<p class="card-body">${escapeHtml(item.built)}</p><p class="card-meta">Stack / Tools</p><ul class="stack-list">${stack.map((text) => `<li class="c-badge">${escapeHtml(text)}</li>`).join('')}</ul>${links.length ? `<div class="card-links">${links.map((itemLink) => link(itemLink.href, itemLink.label || 'Project link', 'card-link', item.title)).join('')}</div>` : `<p class="card-link-placeholder">${escapeHtml(item.hrefLabel || 'Link coming soon')}</p>`}</article>`;
 }
 
 export function renderSite(template, data, { base = '/', cvVersion, year = new Date().getUTCFullYear() } = {}) {

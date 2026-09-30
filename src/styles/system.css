@@ -187,7 +187,8 @@ button:focus-visible,
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
   color: var(--color-arctic);
   font-family: var(--font-serif);
@@ -206,7 +207,8 @@ h2 {
   font-size: var(--text-h2);
 }
 
-h3 {
+h3,
+h4 {
   font-size: var(--text-h3);
 }
 

@@ -150,7 +150,7 @@ export const siteData = {
       title: 'AlexDoor-XAS - Humanoid Door Manipulation',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Developing a door-opening benchmark for the IHMC Alex humanoid. I implemented the simulation control and RGB-D sensing setup. The study will compare four action representations with ACT and diffusion policies, testing generalization to unseen doors.',
+      built: 'Developing an IHMC Alex door-opening benchmark. Built simulation control and RGB-D sensing to compare four action representations with ACT and diffusion policies on unseen doors.',
       stack: 'Python, Isaac Sim, Isaac Lab, RGB-D, PyTorch',
       href: 'https://github.com/PatrizioAcquadro/AlexDoor-XAS',
       hrefLabel: 'GitHub repository'
@@ -159,16 +159,12 @@ export const siteData = {
       title: 'Isaac Audio Sensors - Robot Hearing SDK',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Built an open-source SDK that turns simulated sound into microphone-array recordings, spatial observations, and robot-learning datasets. I developed acoustic simulation, recording and replay, and Isaac Sim/Lab integrations. The package is available open source and remains under active development.',
+      built: 'Built an open-source robot-hearing SDK for Isaac Sim/Lab, with acoustic simulation, microphone-array recording and replay, spatial observations, and datasets for robot learning.',
       stack: 'Python, Isaac Sim, Isaac Lab, Microphone arrays, Acoustic simulation',
       links: [
         {
           href: 'https://github.com/PatrizioAcquadro/isaac-audio-sensors',
           label: 'GitHub repository'
-        },
-        {
-          href: 'https://github.com/PatrizioAcquadro/isaac-audio-sensors/blob/main/knowledge/wiki/index.md',
-          label: 'Documentation'
         },
         {
           href: 'https://isaac-audio-showcase-site.vercel.app/',
@@ -188,7 +184,7 @@ export const siteData = {
       title: 'Ego2Grip - Learning from First-Person Video',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Mentoring an undergraduate researcher on extracting 3D hand trajectories from first-person video. I guide the technical development and evaluation of the trajectory pipeline. The next goal is to turn these trajectories into robot-compatible manipulation demonstrations.',
+      built: 'Mentoring an undergraduate researcher on reconstructing 3D hand trajectories from first-person video, with the goal of creating robot-compatible manipulation demonstrations.',
       stack: 'Python, PyTorch, HaWoR, Ego4D, 3D hand reconstruction',
       href: 'https://github.com/grmpn/Egocentric-Videos',
       hrefLabel: 'Collaborator’s repository'
@@ -197,7 +193,7 @@ export const siteData = {
       title: 'VLA-LEGO - Bimanual Assembly Benchmark',
       robotics: true,
       timeframe: '2026',
-      built: 'Built a contact-rich MuJoCo benchmark for bimanual LEGO assembly with the IHMC Alex model. I developed simulation and reproducible experiment workflows to study robustness and failure modes. The benchmark provides a foundation for vision-language-action policy experiments.',
+      built: 'Built a contact-rich MuJoCo benchmark for IHMC Alex bimanual LEGO assembly, with reproducible experiments to study robustness and failure modes in vision-language-action policies.',
       stack: 'Python, MuJoCo, PyTorch, Hugging Face Transformers, Hydra, Weights & Biases',
       href: 'https://github.com/PatrizioAcquadro/VLA-LEGO_Project',
       hrefLabel: 'GitHub repository'

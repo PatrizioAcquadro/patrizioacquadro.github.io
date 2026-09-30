@@ -35,7 +35,7 @@ test('normal text meets 4.5:1 contrast in both themes and the email panel', asyn
         }
         return colors;
       };
-      const selectors = '.c-section__kicker,.hero-quote__author,.card-meta,.inline-note,.footer-inner p,.news-date,.talk-date,.card-body,.card-list li,.c-badge,.contact-link,.c-navbar__link,.mail-sheet__email,.mail-sheet__kicker,.mail-sheet__title,.mail-sheet__close,.c-button';
+      const selectors = '.c-section__kicker,.projects-group-heading,.hero-quote__author,.card-meta,.inline-note,.footer-inner p,.news-date,.talk-date,.card-body,.card-list li,.c-badge,.contact-link,.c-navbar__link,.mail-sheet__email,.mail-sheet__kicker,.mail-sheet__title,.mail-sheet__close,.c-button';
       return [...document.querySelectorAll(selectors)].map((element) => ({
         text: element.textContent.trim().slice(0, 60),
         ratio: Math.min(...backgrounds(element).map((background) => contrast(rgba(getComputedStyle(element).color), background)))

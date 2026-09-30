@@ -9,8 +9,12 @@ const readableCards = (page) => page.locator('#projects-carousel .project-card:n
 test('three robotics projects are readable with two partial previews on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/#projects');
-  await expect(readableCards(page).locator('h3')).toHaveText(titles.slice(0, 3));
-  await expect(page.locator('#other-projects-grid .project-card h3')).toHaveText(otherTitles);
+  await expect(page.getByRole('heading', { name: 'Robotics', exact: true, level: 3 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'AI & Software', exact: true, level: 3 })).toBeVisible();
+  await expect(page.locator('#projects-carousel a').filter({ hasText: 'Documentation' })).toHaveCount(0);
+  await expect(page.locator('#other-projects-grid a').filter({ hasText: 'Documentation' })).toHaveCount(1);
+  await expect(readableCards(page).locator('h4')).toHaveText(titles.slice(0, 3));
+  await expect(page.locator('#other-projects-grid .project-card h4')).toHaveText(otherTitles);
   await expect.poll(() => page.locator('.projects-viewport').evaluate((viewport) => {
     const bounds = viewport.getBoundingClientRect();
     const cards = [...viewport.querySelectorAll('.project-card')].map((card) => {
@@ -35,12 +39,12 @@ test('every project is reachable through a complete loop in either direction', a
     for (let step = 1; step <= titles.length; step++) {
       await button.click();
       const index = (direction * step + titles.length) % titles.length;
-      await expect(readableCards(page).first().locator('h3')).toHaveText(titles[index]);
+      await expect(readableCards(page).first().locator('h4')).toHaveText(titles[index]);
     }
   }
   await expect(page.locator('#projects-carousel .project-card')).toHaveCount(titles.length);
-  expect(new Set(await page.locator('#projects-carousel .project-card h3').allTextContents()).size).toBe(titles.length);
-  await expect(page.locator('#other-projects-grid .project-card h3')).toHaveText(otherTitles);
+  expect(new Set(await page.locator('#projects-carousel .project-card h4').allTextContents()).size).toBe(titles.length);
+  await expect(page.locator('#other-projects-grid .project-card h4')).toHaveText(otherTitles);
 });
 
 test('keyboard navigation only visits readable project links and preserves arrow focus', async ({ page, browserName }) => {
@@ -59,10 +63,10 @@ test('keyboard navigation only visits readable project links and preserves arrow
   await expect(next).toBeFocused();
   await page.keyboard.press('ArrowLeft');
   await expect(previous).toBeFocused();
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles.at(-1));
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles.at(-1));
   await page.keyboard.press('ArrowRight');
   await expect(next).toBeFocused();
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[0]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[0]);
 });
 
 test('mobile swipe, tablet resize and enlarged text keep the current project readable', async ({ page }) => {
@@ -71,10 +75,10 @@ test('mobile swipe, tablet resize and enlarged text keep the current project rea
   await expect(readableCards(page)).toHaveCount(1);
   await page.locator('.projects-viewport').dispatchEvent('pointerdown', { pointerId: 1, pointerType: 'touch', isPrimary: true, clientX: 280, clientY: 300 });
   await page.locator('.projects-viewport').dispatchEvent('pointerup', { pointerId: 1, pointerType: 'touch', isPrimary: true, clientX: 100, clientY: 305 });
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[1]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[1]);
   await page.setViewportSize({ width: 900, height: 1000 });
   await expect(readableCards(page)).toHaveCount(2);
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[1]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[1]);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await expect(readableCards(page)).toHaveCount(3);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -82,7 +86,7 @@ test('mobile swipe, tablet resize and enlarged text keep the current project rea
   await expect(readableCards(page)).toHaveCount(1);
   await expect.poll(() => readableCards(page).first().evaluate((card) => card.scrollWidth <= card.clientWidth)).toBe(true);
   await page.getByRole('button', { name: 'Previous project' }).click();
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[0]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[0]);
 });
 
 test('animated boundary crossings and a resize during movement remain aligned', async ({ page }) => {
@@ -90,13 +94,13 @@ test('animated boundary crossings and a resize during movement remain aligned', 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/#projects');
   await page.getByRole('button', { name: 'Previous project' }).click();
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles.at(-1));
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles.at(-1));
   await page.getByRole('button', { name: 'Next project' }).click();
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[0]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[0]);
   await page.getByRole('button', { name: 'Next project' }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(readableCards(page)).toHaveCount(1);
-  await expect(readableCards(page).first().locator('h3')).toHaveText(titles[1]);
+  await expect(readableCards(page).first().locator('h4')).toHaveText(titles[1]);
   await expect(page.locator('#projects-grid')).not.toHaveClass(/is-moving/);
   await expect.poll(async () => {
     const card = await readableCards(page).first().boundingBox();
@@ -108,7 +112,7 @@ test('all projects remain visible and linked without JavaScript', async ({ brows
   const context = await browser.newContext({ javaScriptEnabled: false, ignoreHTTPSErrors: true });
   const page = await context.newPage();
   await page.goto(`${baseURL}/#projects`);
-  await expect(page.locator('.project-card h3')).toHaveText(siteData.projects.map((project) => project.title));
+  await expect(page.locator('.project-card h4')).toHaveText(siteData.projects.map((project) => project.title));
   for (const arrow of await page.locator('.projects-arrow').all()) await expect(arrow).toBeHidden();
   expect(await page.locator('.project-card').evaluateAll((cards) => cards.every((card) => card.getBoundingClientRect().height > 0 && !card.inert))).toBe(true);
   await expect(page.locator('.project-card').first().locator('a')).toHaveAttribute('href', siteData.projects[0].href);

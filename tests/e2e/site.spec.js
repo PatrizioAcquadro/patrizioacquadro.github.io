@@ -1,22 +1,24 @@
 import { test, expect } from '@playwright/test';
+import { siteData } from '../../src/content/siteData.js';
 
-const counts = { '.news-item': 7, '.research-card': 4, '.project-card': 10, '.venture-card': 3, '.talk-item': 8 };
+const counts = { '.news-item': siteData.news.length, '.research-card': siteData.research.length, '.project-card': siteData.projects.length, '.venture-card': siteData.ventures.length, '.talk-item': siteData.activities.length };
 
 test('production loads without runtime, CSP or asset errors', async ({ page }) => {
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('response', (response) => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
   await expect(page.locator('#hero-name')).toHaveText('Patrizio Acquadro');
   for (const [selector, count] of Object.entries(counts)) await expect(page.locator(selector)).toHaveCount(count);
   await expect(page.locator('#profile-image')).toHaveJSProperty('complete', true);
-  expect(await page.locator('#profile-image').evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
   expect(errors).toEqual([]);
+  expect(await page.locator('#profile-image').evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
 });
 
 test('content and navigation work without JavaScript', async ({ browser, baseURL }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({ javaScriptEnabled: false, ignoreHTTPSErrors: true, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto(baseURL);
   for (const [selector, count] of Object.entries(counts)) await expect(page.locator(selector)).toHaveCount(count);
@@ -32,6 +34,15 @@ test('content and navigation work without JavaScript', async ({ browser, baseURL
   await page.goto(`${baseURL}/cv/`);
   await expect(page).toHaveURL(/\/#home$/);
   await context.close();
+});
+
+test('a missing portrait falls back to the local placeholder', async ({ page }) => {
+  await page.route('**/images/PatrizioAcquadro-*.webp', (route) => route.abort());
+  await page.goto('/');
+  const image = page.locator('#profile-image');
+  await expect(image).toHaveAttribute('src', /avatar-placeholder\.svg$/);
+  await expect(image).not.toHaveAttribute('srcset', /.+/);
+  await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBeGreaterThan(0);
 });
 
 test('mobile navigation closes, restores focus and follows anchors', async ({ page }) => {
@@ -141,9 +152,10 @@ test('responsive layouts, both themes and 200% text enlargement do not overflow'
   expect(await page.locator('.mail-sheet').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
 });
 
-test('reduced motion, keyboard skip link and touch targets', async ({ page }) => {
+test('reduced motion, keyboard skip link and touch targets', async ({ page, browserName }) => {
   await page.goto('/');
-  await page.keyboard.press('Tab');
+  // Safari's default macOS preference uses Option+Tab to include links.
+  await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
   await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#main-content')).toBeFocused();

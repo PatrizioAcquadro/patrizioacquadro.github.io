@@ -8,7 +8,8 @@ export default defineConfig({
   workers: 2,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: 'https://127.0.0.1:4173',
+    ignoreHTTPSErrors: true, // The local test server uses an ephemeral self-signed certificate.
     reducedMotion: 'reduce',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure'
@@ -19,8 +20,10 @@ export default defineConfig({
     { name: 'webkit', use: { ...devices['Desktop Safari'] } }
   ],
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: false
+    command: 'node scripts/preview-test.mjs',
+    url: 'https://127.0.0.1:4173',
+    ignoreHTTPSErrors: true,
+    reuseExistingServer: false,
+    gracefulShutdown: { signal: 'SIGTERM', timeout: 1000 }
   }
 });

@@ -1,126 +1,50 @@
-# Personal Website (Static, Vite + GitHub Pages)
+# Patrizio Acquadro — Personal Website
 
-This repository contains a static personal website built with Vite, plain HTML/CSS/JavaScript, and deployed with GitHub Pages.
+Static portfolio at [patrizioacquadro.github.io](https://patrizioacquadro.github.io/), built with Vite and plain HTML/CSS/JavaScript. GitHub Pages serves the verified build. No backend, third-party scripts, trackers or external font requests.
 
-## Requirements
+## Development
 
-- Node.js 20+ (LTS recommended)
-- npm 10+
+Use Node **24 LTS**, matching `.nvmrc` and CI. Run all npm commands in the same environment and checkout.
 
-## Installation
-
-```bash
-npm install
-```
-
-## Run Locally
-
-```bash
+```sh
+nvm use
+npm ci
 npm run dev
 ```
 
-The local dev server URL is printed in the terminal (usually `http://localhost:5173`).
+`npm run build` creates `dist/`. `npm run preview` serves it locally. For a cross-browser HTTPS preview, use `node scripts/preview-test.mjs` and open `https://127.0.0.1:4173`; its temporary self-signed certificate is for local testing only. OpenSSL must be available.
 
-## Production Build
+## Content and assets
 
-```bash
-npm run build
+- Edit `src/content/siteData.js` and update `lastUpdated` with the editorial date (`YYYY-MM-DD`) when changing published content. `siteUrl` is the canonical origin.
+- `src/content/renderSite.js` escapes and renders content into the HTML through Vite's `transformIndexHtml`, in development and production. Content changes reload the development page. JavaScript handles interactions; all portfolio content and navigation work without it.
+- The homepage canonical, social metadata, sitemap and robots file share the same origin and deployment base path. `/cv/` remains a `noindex` redirect to Home.
+- Replace `public/cv/AcquadroPatrizioCV.pdf` to publish a new CV. The download version is derived from its SHA-256 hash. The editable Word source is in `assets/source/`.
+- Original portraits and logos stay in `assets/source/`, outside the published assets. Responsive WebP portraits and resized PNG icons are committed under `public/`. To regenerate them, run `python3 scripts/optimize-images.py` with Pillow available; Python/Pillow are optional maintenance tools, not build dependencies.
+- `public/og/og-cover.png` is the social preview image. Phone exposure is disabled by default and controlled by `privacyExposure.showPhone`.
+
+## Validation
+
+```sh
+npm run test:unit                 # fast renderer/content checks
+npx playwright install chromium # once per browser/runtime update
+npm run check                    # unit tests, build, security, budgets, Chromium
+npm audit --audit-level=high
+
+npx playwright install firefox webkit
+npm run test:e2e                  # all three browsers against the existing dist/
 ```
 
-Build output is generated in `dist/`.
+Playwright is the only additional test dependency. Browser tests use an ephemeral HTTPS server so the production CSP remains intact. They cover content without JavaScript, navigation, themes, dialog focus and dismissal, copy success/failure, image fallback, redirects, responsive layouts, text enlargement, reduced motion and text contrast. WebKit keyboard tests use Option+Tab for links, matching Safari's default macOS keyboard preference.
 
-To preview the production build locally:
+`npm run verify:build` also checks metadata, CV version, local asset paths, duplicate content and budgets: portrait ≤200 KB, combined icons ≤60 KB, initial JavaScript <8 KB gzip. Failure screenshots/traces are under `test-results/`; local review artifacts are under `.artifacts/` (both ignored).
 
-```bash
-npm run preview
-```
+## CI and publication
 
-## Security Baseline
+`.github/workflows/validate.yml` is shared by pull-request/security checks and the Pages build. It uses Node 24, `npm ci`, Chromium tests, the security baseline, artifact budgets and a high-severity dependency audit. The deployment waits for all checks and uploads the **same `dist/` that passed validation**, without rebuilding.
 
-This repository applies layered hardening while staying fully static:
+Publication is triggered by a push to `main` or a manual deployment workflow run. Workflows pin actions to full commit SHAs and use limited job permissions. Dependabot is configured for npm and Actions updates. Repository rules and required status checks must be managed separately on GitHub; workflow files do not prove those settings are enabled.
 
-- Static-only architecture (no backend, no server functions, no dynamic user input processing).
-- Strict Content Security Policy (CSP) via meta tags on all HTML routes.
-- Referrer policy set to `no-referrer`.
-- Best-effort anti-clickjacking runtime guard for GitHub Pages hosting constraints.
-- No third-party scripts or trackers.
-- CI security checks:
-  - reproducible install via `npm ci`
-  - `npm audit --audit-level=high`
-  - custom baseline policy checks (`scripts/security-baseline-check.mjs`)
-- GitHub Actions are pinned to full commit SHAs.
-- Dependabot configured for `npm` and GitHub Actions updates.
-- CODEOWNERS protection for workflows and security-sensitive files.
+GitHub Pages limits custom response headers. The strict meta CSP and runtime frame guard provide the controls available to this static site. Public profile/contact/CV data remain public. Real visitor performance and GitHub protections require live verification after an authorized publication.
 
-Run the full local baseline:
-
-```bash
-npm run security:check
-```
-
-## GitHub Settings Checklist
-
-Apply these repository settings in GitHub:
-
-1. Protect `main` with a ruleset/branch protection:
-   - require pull requests before merge
-   - require at least 1 approval
-   - dismiss stale reviews on new commits
-   - require all review conversations resolved
-   - require status checks to pass before merge (include `security-check`)
-   - block force pushes
-   - block branch deletion
-2. Set default workflow `GITHUB_TOKEN` permissions to read-only.
-3. Restrict Actions usage to GitHub-authored and explicitly trusted actions.
-4. Require approval for first-time external contributors.
-5. Enable Dependabot alerts and security updates.
-6. Enable secret scanning and push protection (if available for your plan).
-7. Ensure GitHub Pages HTTPS is enabled and enforced.
-
-## Privacy & Exposure
-
-Public data exposure is intentionally minimized:
-
-- Email, LinkedIn, and GitHub are public contact channels.
-- Phone exposure is configurable and disabled by default in `src/content/siteData.js` (`privacyExposure.showPhone`).
-- CV and profile data are public artifacts by design and can be indexed/scraped.
-
-## Repository Structure
-
-- `index.html`: main single-page site
-- `cv/index.html`: legacy CV URL redirect route (`/cv/` -> Home)
-- `src/content/siteData.js`: editable content source
-- `src/main.js`: homepage rendering logic
-- `src/cv-redirect.js`: legacy CV route redirect logic
-- `src/styles/`: stylesheets
-- `public/`: static assets copied to build output
-- `scripts/security-baseline-check.mjs`: custom policy enforcement script
-- `.github/workflows/deploy-pages.yml`: GitHub Pages deployment workflow
-- `.github/workflows/security.yml`: CI security checks workflow
-
-## Deploy to GitHub Pages
-
-1. Push changes to `main` through a reviewed PR.
-2. Ensure GitHub Pages is enabled for this repository.
-3. Set GitHub Actions as the deployment source.
-4. The deploy workflow builds and publishes `dist/` on push to `main`.
-
-## Optional Custom Domain
-
-1. Create `public/CNAME` with your domain (for example `www.yourdomain.com`).
-2. Configure DNS records with your domain provider.
-3. Enable HTTPS in GitHub Pages settings after DNS propagation.
-
-## Residual Risks / Limits
-
-Hardening is best-practice and defense-in-depth, not invulnerability.
-
-- GitHub Pages does not provide full custom response-header control for all security headers.
-- `frame-ancestors` and `X-Frame-Options` cannot be fully enforced via static meta tags.
-- Publicly exposed contact/profile data can be scraped.
-- Dependency and action supply-chain risk is reduced (pinning + audit + Dependabot), not eliminated.
-- Maintainer account compromise remains a critical risk; use strong MFA/passkeys.
-
-## Notes
-
-- Canonical and Open Graph URLs are placeholders by default. Update them to your real domain after deployment.
+See [the validation record](docs/VALIDATION.md) for this refinement's evidence, visual review and archive details.

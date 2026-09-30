@@ -4,6 +4,7 @@ test('normal text meets 4.5:1 contrast in both themes and the email panel', asyn
   await page.goto('/');
   for (const theme of ['dark', 'light']) {
     await page.evaluate((value) => document.documentElement.setAttribute('data-theme', value), theme);
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     await page.getByRole('link', { name: 'Mail', exact: true }).click();
     const results = await page.evaluate(() => {
       const rgba = (value) => value.match(/[\d.]+/g)?.map(Number) || [0, 0, 0, 0];

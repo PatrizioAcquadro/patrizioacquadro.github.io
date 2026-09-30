@@ -24,7 +24,7 @@ test('render all content once with no unresolved slots', () => {
   assert.ok(!html.includes('{{site:'));
   assert.ok(!html.includes('your-domain.example'));
   assert.ok(html.includes(`<h1 id="hero-name">${siteData.name}</h1>`));
-  for (const [className, count] of [['news-item', 7], ['research-card', 4], ['project-card', 10], ['venture-card', 3], ['talk-item', 8], ['contact-item', 4]]) {
+  for (const [className, count] of [['news-item', siteData.news.length], ['research-card', siteData.research.length], ['project-card', siteData.projects.length], ['venture-card', siteData.ventures.length], ['talk-item', siteData.activities.length], ['contact-item', siteData.contactLinks.length]]) {
     assert.equal((html.match(new RegExp(`class="[^"\\n]*\\b${className}\\b`, 'g')) || []).length, count, className);
   }
   assert.ok(html.includes(`AcquadroPatrizioCV.pdf?v=${cvVersion}`));
@@ -39,7 +39,8 @@ test('content respects a project base path', () => {
   const html = renderSite(template, siteData, { base: '/portfolio/', cvVersion });
   assert.ok(html.includes('href="https://patrizioacquadro.github.io/portfolio/"'));
   assert.ok(html.includes('https://patrizioacquadro.github.io/portfolio/og/og-cover.png'));
-  assert.ok(html.includes('src="/portfolio/images/PatrizioAcquadro.png"'));
+  assert.ok(html.includes('src="/portfolio/images/PatrizioAcquadro-640.webp"'));
+  assert.ok(html.includes('/portfolio/images/PatrizioAcquadro-960.webp 960w'));
 });
 
 test('the editorial date is validated and formatted independently of timezone', () => {
@@ -51,7 +52,7 @@ test('the editorial date is validated and formatted independently of timezone', 
 test('discovery files include only the canonical homepage and editorial date', () => {
   const files = renderDiscoveryFiles(siteData, '/portfolio/');
   assert.ok(files['robots.txt'].includes('https://patrizioacquadro.github.io/portfolio/sitemap.xml'));
-  assert.ok(files['sitemap.xml'].includes('<lastmod>2026-09-30</lastmod>'));
+  assert.ok(files['sitemap.xml'].includes(`<lastmod>${siteData.lastUpdated}</lastmod>`));
   assert.equal((files['sitemap.xml'].match(/<loc>/g) || []).length, 1);
   const cvTemplate = readFileSync(new URL('../cv/index.html', import.meta.url), 'utf8');
   const html = renderSite(cvTemplate, siteData, { base: '/portfolio/', cvVersion });

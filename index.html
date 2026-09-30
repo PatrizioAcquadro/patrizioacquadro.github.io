@@ -14,8 +14,8 @@
       content="Personal website of Patrizio Acquadro: AI research, engineering projects, entrepreneurship work, and updates."
     />
     <link rel="canonical" href="{{site:site-url}}" />
-    <link rel="icon" type="image/png" href="%BASE_URL%favicon.png?v=20260207-5" />
-    <link rel="apple-touch-icon" href="%BASE_URL%favicon.png?v=20260207-5" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%apple-touch-icon.png" />
 
     <meta property="og:title" content="Patrizio Acquadro | AI Research, Engineering, and Entrepreneurship" />
     <meta
@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="/src/styles/system.css" />
     <link rel="stylesheet" href="/src/styles/main.css" />
-    <script src="%BASE_URL%theme-init.js"></script>
+    <script src="/theme-init.js"></script>
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
@@ -115,7 +115,7 @@
           </div>
 
           <figure class="hero-figure">
-            <img id="profile-image" class="profile-image" src="{{site:profile-source}}" width="1080" height="1296" fetchpriority="high" decoding="async" alt="Portrait of Patrizio Acquadro" />
+            <img id="profile-image" class="profile-image" src="{{site:profile-source}}" srcset="{{site:profile-srcset}}" sizes="(max-width: 40rem) min(78vw, 17rem), clamp(12.5rem, 28vw, 17.25rem)" data-fallback="%BASE_URL%images/avatar-placeholder.svg" width="640" height="768" fetchpriority="high" decoding="async" alt="Portrait of Patrizio Acquadro" />
           </figure>
         </div>
         <div class="hero-quote-shell">

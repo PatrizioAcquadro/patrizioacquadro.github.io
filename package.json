@@ -13,7 +13,8 @@
     "test:unit": "node --test tests/*.test.js",
     "security:check": "npm run build && node scripts/security-baseline-check.mjs",
     "test:e2e": "playwright test",
-    "check": "npm run test:unit && npm run security:check && npm run test:e2e -- --project=chromium"
+    "check": "npm run test:unit && npm run security:check && npm run verify:build && npm run test:e2e -- --project=chromium",
+    "verify:build": "node scripts/verify-build.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

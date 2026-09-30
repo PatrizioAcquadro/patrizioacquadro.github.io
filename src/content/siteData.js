@@ -1,11 +1,10 @@
 /**
  * @typedef {{ label: string, href: string }} ContactLink
- * @typedef {{ showPhone: boolean, phoneLabel: string, phoneHref: string, note: string }} PrivacyExposure
+ * @typedef {{ showPhone: boolean, phoneLabel: string, phoneHref: string }} PrivacyExposure
  * @typedef {{ dateLabel: string, isoDate: string, text: string, href?: string }} NewsItem
  * @typedef {{ role: string, org: string, timeframe: string, bullets: string[], href?: string }} ResearchItem
  * @typedef {{ title: string, timeframe: string, built: string, stack: string, href?: string, hrefLabel?: string, links?: { href: string, label: string }[] }} ProjectItem
  * @typedef {{ name: string, role: string, timeframe: string, bullets: string[] }} VentureItem
- * @typedef {{ group: string, items: string[] }} SkillGroup
  * @typedef {{ title: string, timeframe: string, text: string }} ActivityItem
  */
 
@@ -22,7 +21,6 @@
  *   research: ResearchItem[],
  *   projects: ProjectItem[],
  *   ventures: VentureItem[],
- *   skills: SkillGroup[],
  *   activities: ActivityItem[]
  * }}
  */
@@ -37,9 +35,7 @@ export const siteData = {
   privacyExposure: {
     showPhone: false,
     phoneLabel: 'Phone',
-    phoneHref: 'tel:+10000000000',
-    note:
-      'Privacy & Exposure: this site intentionally limits public personal data. Email, LinkedIn, GitHub, and Instagram are published; phone is optional and disabled by default.'
+    phoneHref: 'tel:+10000000000'
   },
   contactLinks: [
     { label: 'Mail', href: 'mailto:acquadropatrizio@gmail.com' },
@@ -249,40 +245,6 @@ export const siteData = {
         'Built custom Java plugins for mobs, enchantments, and weapon/armor effects to enrich gameplay.',
         'Managed server and domain operations in a 4-person team, maintaining stable uptime through releases.'
       ]
-    }
-  ],
-  skills: [
-    {
-      group: 'Programming & Data',
-      items: [
-        'Python',
-        'R',
-        'MATLAB',
-        'Java (basics)',
-        'C# (basics)',
-        'PostgreSQL',
-        'SQL',
-        'MetaBase',
-        'HTML',
-        'CSS',
-        'JavaScript'
-      ]
-    },
-    {
-      group: 'ML & AI Libraries',
-      items: ['PyTorch', 'TensorFlow', 'Keras', 'Scikit-learn', 'Pandas', 'NumPy', 'SciPy', 'Matplotlib', 'seaborn']
-    },
-    {
-      group: 'IR & Knowledge Tools',
-      items: ['PyTerrier', 'NLTK', 'LangChain', 'SPARQL', 'Protege', 'RDFLib']
-    },
-    {
-      group: 'Languages',
-      items: ['Italian (native)', 'English (fluent)', 'French (basic)']
-    },
-    {
-      group: 'Professional Skills',
-      items: ['Perseverance', 'Creativity', 'Problem solving', 'Leadership', 'Emotional intelligence']
     }
   ],
   activities: [

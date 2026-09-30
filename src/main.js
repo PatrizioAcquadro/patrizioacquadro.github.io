@@ -30,6 +30,18 @@ function enforceFrameProtection() {
 
 const blockedByFrameProtection = enforceFrameProtection();
 
+function initializeProfileFallback() {
+  const image = document.getElementById('profile-image');
+  function fallback() {
+    image.removeEventListener('error', fallback);
+    image.removeAttribute('srcset');
+    image.src = image.dataset.fallback;
+    image.alt = 'Profile placeholder for Patrizio Acquadro';
+  }
+  image.addEventListener('error', fallback, { once: true });
+  if (image.complete && !image.naturalWidth) fallback();
+}
+
 function initializeMailContactInteraction() {
   const mailTrigger = document.querySelector('.contact-link[href^="mailto:"]');
   const dialog = document.getElementById('mail-sheet');
@@ -75,15 +87,11 @@ function initializeMailContactInteraction() {
   dialog.addEventListener('keydown', (event) => {
     if (event.key !== 'Tab') return;
     const controls = [...dialog.querySelectorAll('button:not([disabled]), a[href]')];
-    const first = controls[0];
-    const last = controls.at(-1);
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
+    // Safari may skip links in its native Tab order; keep every modal action reachable.
+    const current = controls.indexOf(document.activeElement);
+    const next = (current + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+    event.preventDefault();
+    controls[next].focus();
   });
   dialog.addEventListener('close', () => {
     window.clearTimeout(statusTimeout);
@@ -427,6 +435,7 @@ function initialize() {
 
   document.getElementById('current-year').textContent = String(new Date().getFullYear());
   initializeThemeToggle();
+  initializeProfileFallback();
   initializeMailContactInteraction();
   initializeMobileMenu();
   initializeActiveSectionIndicator();

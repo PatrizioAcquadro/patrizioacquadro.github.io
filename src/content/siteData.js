@@ -30,7 +30,7 @@ export const siteData = {
   positioning:
     'I want to help make robotics real through VLA systems and multimodal transformers.',
   bio:
-    'I am an MSc student in two AI programs at Politecnico di Milano and the University of Milano-Bicocca. My recent work spans sim-to-real VLA for precision bimanual manipulation at Purdue University, taking projects from benchmark design and training to humanoid deployment and validation. I am motivated by roles where AI, LLMs, and multimodal transformers drive real embodied intelligence.',
+    'I’m an MSc student in AI at Politecnico di Milano and the University of Milano-Bicocca. At Purdue University, I work on vision-language-action models for humanoid robots, from simulation to real-world deployment.',
   lastUpdated: '2026-09-30',
   privacyExposure: {
     showPhone: false,
@@ -39,7 +39,7 @@ export const siteData = {
   },
   contactLinks: [
     { label: 'Mail', href: 'mailto:acquadropatrizio@gmail.com' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrizio-acquadro' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrizioacquadro' },
     { label: 'GitHub', href: 'https://github.com/PatrizioAcquadro' },
     { label: 'Instagram', href: 'https://www.instagram.com/patrizioacquadro/' }
   ],

@@ -133,6 +133,8 @@ test('responsive layouts, both themes and 200% text enlargement do not overflow'
   await page.goto('/');
   for (const width of [320, 390, 765, 1120, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
+    // Let media queries and font metrics settle before measuring the resized document.
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     for (const theme of ['light', 'dark']) {
       await page.evaluate((selected) => document.documentElement.setAttribute('data-theme', selected), theme);
       const layout = await page.evaluate(() => ({

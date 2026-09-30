@@ -57,3 +57,13 @@ WebKit tests use HTTPS to preserve production `upgrade-insecure-requests`, and O
 For future agent instructions, specify Node 24 and run install/build/test commands in the same host environment. Mixing the sandbox and host dependency trees during this task produced different installed Vite versions; the final validation consistently used the host checkout and Node 24.
 
 GitHub branch protections, the actual remote workflow run, live post-deployment behavior, physical-device testing, screen-reader testing and real visitor performance metrics remain outside this local validation. Local asset budgets establish transfer-size improvements, not a field-performance score.
+
+## Introductory copy and link follow-up — 2026-09-30
+
+The introductory biography was shortened to 31 words in two sentences, preserving the studies at Politecnico di Milano/Milano-Bicocca and the Purdue robotics research. The rest of the page copy and design were retained.
+
+All 18 unique HTTPS destinations in the homepage HTML were checked. Seventeen returned HTTP 200 with titles matching the intended projects, documentation, homepage or profiles. The 10 in-page anchor links resolve to existing IDs. The CV download returns a valid PDF, `/cv/` redirects to Home, and Mail uses the correct `mailto:` address.
+
+LinkedIn returned its automated-access restriction (HTTP 999), rather than a verifiable profile response. Its [publicly indexed profile](https://www.linkedin.com/in/patrizioacquadro) matches the name, Purdue affiliation and research/projects in this portfolio. The site now uses that URL, without the hyphen in the previous link. Direct profile accessibility remains restricted in this automated environment. The served PDF already uses the same correct LinkedIn URL. The preserved Word source contains the older hyphenated URL and should be aligned before a future CV export; the CV documents were not altered by this follow-up.
+
+Detailed responses and browser observations are saved locally in `.artifacts/validation/link-audit.json`; the updated introduction previews are `intro-desktop.png` and `intro-mobile.png`. Unit tests and build/security/budget checks passed for this update. A responsive check initially measured a transient overflow during viewport resize; it now waits for two animation frames before measuring, with the same overflow assertion retained. The final browser suite passed all 33 tests (11 per engine), including the updated introduction and responsive layouts.

@@ -99,7 +99,7 @@ export const siteData = {
       timeframe: 'Jun 2026 - Present',
       bullets: [
         'Build simulation and control infrastructure in Isaac Sim and Isaac Lab for manipulation with the IHMC Alex humanoid.',
-        'Develop Isaac Audio Sensors and audio-visual perception systems for Office of Naval Research (ONR) robotics research.',
+        'Develop Isaac Audio Sensors and multimodal perception systems for robotics research.',
         'Mentor an undergraduate researcher on Ego2Grip, guiding the extraction of 3D hand trajectories from first-person video.'
       ]
     },
@@ -177,8 +177,8 @@ export const siteData = {
     {
       title: 'SquadBot-AV - Audio-Visual Perception',
       timeframe: '2026 - Present',
-      built: 'Developing perception that uses sound to guide visual search and confirm candidate sources. I integrated audio cues, visual objects, and search decisions in a persistent scene graph, with recording and replay for evaluation. Next work connects these decisions to robot head control.',
-      stack: 'Python, Audio-visual perception, Scene graphs, ReSpeaker, Isaac Sim',
+      built: 'Contributing to research on multimodal perception for robotics, combining audio and visual information to help robots understand their surroundings.',
+      stack: 'Python, Robotics, Multimodal perception',
       hrefLabel: 'Research in progress'
     },
     {

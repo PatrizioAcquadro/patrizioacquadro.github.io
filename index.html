@@ -43,6 +43,7 @@
         <button
           class="c-navbar__menu-toggle"
           id="menu-toggle"
+          hidden
           type="button"
           aria-expanded="false"
           aria-controls="primary-nav-panel"
@@ -66,6 +67,7 @@
           <button
             class="c-theme-toggle"
             id="theme-toggle"
+            hidden
             type="button"
             aria-label="Switch to light mode"
           >
@@ -89,7 +91,7 @@
       </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <section class="hero c-section reveal" id="home" aria-labelledby="hero-name">
         <div class="container hero-grid">
           <div class="hero-copy">
@@ -191,8 +193,8 @@
       </section>
     </main>
 
-    <div class="mail-sheet-backdrop" id="mail-sheet-backdrop" hidden>
-      <div class="mail-sheet" id="mail-sheet" role="dialog" aria-modal="true" aria-labelledby="mail-sheet-title">
+    <dialog class="mail-sheet-backdrop" id="mail-sheet" aria-labelledby="mail-sheet-title">
+      <div class="mail-sheet">
         <button class="mail-sheet__close" id="mail-sheet-close" type="button" aria-label="Close mail panel">&times;</button>
         <p class="mail-sheet__kicker">Mail</p>
         <h3 class="mail-sheet__title" id="mail-sheet-title">Reach me by email</h3>
@@ -200,9 +202,10 @@
           <p class="mail-sheet__email" id="mail-sheet-email">{{site:mail-email}}</p>
           <button class="c-button c-button--subtle mail-sheet__copy" id="mail-copy-button" type="button">Copy</button>
         </div>
+        <a class="c-button c-button--solid" href="{{site:mail-href}}">Open email app</a>
         <p class="mail-sheet__status" id="mail-copy-status" role="status" aria-live="polite"></p>
       </div>
-    </div>
+    </dialog>
 
     <footer class="site-footer">
       <div class="container footer-inner">

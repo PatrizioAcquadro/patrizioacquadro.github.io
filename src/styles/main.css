@@ -115,7 +115,7 @@ body::after {
 .hero-quote__author {
   justify-self: stretch;
   text-align: right;
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-family: var(--font-serif);
   font-size: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
   font-style: normal;
@@ -135,6 +135,7 @@ body::after {
 
 .section-shell {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-2);
 }
 
@@ -187,7 +188,7 @@ body::after {
 }
 
 .card-meta {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -226,7 +227,7 @@ body::after {
 }
 
 .card-link-placeholder {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
 
@@ -263,7 +264,7 @@ body::after {
   color: var(--color-arctic);
   font-size: var(--text-sm);
   font-weight: 600;
-  min-height: 2.2rem;
+  min-height: 2.75rem;
   padding: 0.55rem 0.9rem;
   text-decoration: none;
   transition:
@@ -285,20 +286,33 @@ body::after {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border: 0;
   padding: var(--space-2);
-  background: var(--sheet-backdrop-bg);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity var(--motion-duration-base) var(--motion-ease),
-    visibility var(--motion-duration-base) var(--motion-ease);
+  background: transparent;
+  color: inherit;
 }
 
-.mail-sheet-backdrop[data-open='true'] {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.mail-sheet-backdrop:not([open]) {
+  display: none;
+}
+
+.mail-sheet-backdrop::backdrop {
+  background: var(--sheet-backdrop-bg);
+}
+
+.has-modal {
+  overflow: hidden;
+}
+
+.clipboard-fallback {
+  position: fixed;
+  left: -9999px;
+  top: 0;
 }
 
 .mail-sheet {
@@ -320,17 +334,17 @@ body::after {
     transform var(--motion-duration-base) var(--motion-ease);
 }
 
-.mail-sheet-backdrop[data-open='true'] .mail-sheet {
+.mail-sheet-backdrop[open] .mail-sheet {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
 .mail-sheet__close {
   position: absolute;
-  top: var(--space-2);
-  right: var(--space-2);
-  width: 2rem;
-  height: 2rem;
+  top: var(--space-1);
+  right: var(--space-1);
+  width: 2.75rem;
+  height: 2.75rem;
   border: var(--border-default);
   border-radius: var(--radius-pill);
   background: transparent;
@@ -351,7 +365,7 @@ body::after {
 }
 
 .mail-sheet__kicker {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -416,12 +430,12 @@ body::after {
 
 .privacy-note {
   max-width: 72ch;
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
 
 .inline-note {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
 
@@ -440,7 +454,7 @@ body::after {
 }
 
 .footer-inner p {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
 
@@ -552,8 +566,8 @@ body::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0;
   border: var(--border-default);
   border-radius: var(--radius-pill);

@@ -30,187 +30,78 @@ function enforceFrameProtection() {
 
 const blockedByFrameProtection = enforceFrameProtection();
 
-const contactList = document.getElementById('contact-list');
-const mailSheetBackdrop = document.getElementById('mail-sheet-backdrop');
-const mailSheetClose = document.getElementById('mail-sheet-close');
-const mailSheetEmail = document.getElementById('mail-sheet-email');
-const mailCopyButton = document.getElementById('mail-copy-button');
-const mailCopyStatus = document.getElementById('mail-copy-status');
-
-function extractEmailFromMailto(mailtoHref) {
-  if (!mailtoHref || !mailtoHref.startsWith('mailto:')) {
-    return '';
-  }
-
-  const raw = mailtoHref.slice('mailto:'.length).split('?')[0].trim();
-  if (!raw) {
-    return '';
-  }
-
-  try {
-    return decodeURIComponent(raw);
-  } catch (error) {
-    return raw;
-  }
-}
-
-function fallbackCopyText(text) {
-  const textArea = document.createElement('textarea');
-  textArea.value = text;
-  textArea.setAttribute('readonly', '');
-  textArea.style.position = 'fixed';
-  textArea.style.left = '-9999px';
-  textArea.style.top = '0';
-
-  document.body.append(textArea);
-  textArea.select();
-  textArea.setSelectionRange(0, textArea.value.length);
-
-  let copied = false;
-  try {
-    copied = document.execCommand('copy');
-  } catch (error) {
-    copied = false;
-  }
-
-  document.body.removeChild(textArea);
-  return copied;
-}
-
 function initializeMailContactInteraction() {
-  if (
-    !contactList ||
-    !mailSheetBackdrop ||
-    !mailSheetClose ||
-    !mailSheetEmail ||
-    !mailCopyButton ||
-    !mailCopyStatus
-  ) {
-    return;
-  }
-
-  const mailTrigger = contactList.querySelector('.contact-link[href^="mailto:"]');
-  if (!mailTrigger) {
-    return;
-  }
-
-  const mailtoHref = mailTrigger.getAttribute('href') || '';
-  const email = extractEmailFromMailto(mailtoHref);
-  if (!email) {
-    return;
-  }
+  const mailTrigger = document.querySelector('.contact-link[href^="mailto:"]');
+  const dialog = document.getElementById('mail-sheet');
+  const closeButton = document.getElementById('mail-sheet-close');
+  const copyButton = document.getElementById('mail-copy-button');
+  const status = document.getElementById('mail-copy-status');
+  const email = document.getElementById('mail-sheet-email').textContent;
+  if (!mailTrigger || typeof dialog.showModal !== 'function') return;
 
   mailTrigger.setAttribute('aria-haspopup', 'dialog');
   mailTrigger.setAttribute('aria-controls', 'mail-sheet');
   mailTrigger.setAttribute('aria-expanded', 'false');
-  mailSheetEmail.textContent = email;
+  let statusTimeout;
 
-  let previouslyFocusedElement = null;
-  let hideTimeoutId = 0;
-  let statusTimeoutId = 0;
-
-  function scheduleStatusClear() {
-    if (statusTimeoutId) {
-      window.clearTimeout(statusTimeoutId);
-    }
-
-    statusTimeoutId = window.setTimeout(() => {
-      mailCopyStatus.textContent = '';
-      statusTimeoutId = 0;
-    }, 1800);
-  }
-
-  function onEscapeKey(event) {
-    if (event.key !== 'Escape') {
-      return;
-    }
-
-    closeMailSheet({ restoreFocus: true });
-  }
-
-  function openMailSheet() {
-    if (mailSheetBackdrop.getAttribute('data-open') === 'true') {
-      return;
-    }
-
-    if (hideTimeoutId) {
-      window.clearTimeout(hideTimeoutId);
-      hideTimeoutId = 0;
-    }
-
-    previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    mailCopyStatus.textContent = '';
-    mailSheetBackdrop.hidden = false;
-    mailTrigger.setAttribute('aria-expanded', 'true');
-
-    window.requestAnimationFrame(() => {
-      mailSheetBackdrop.setAttribute('data-open', 'true');
-    });
-
-    document.addEventListener('keydown', onEscapeKey);
-    mailSheetClose.focus();
-  }
-
-  function closeMailSheet({ restoreFocus }) {
-    if (mailSheetBackdrop.hidden && mailSheetBackdrop.getAttribute('data-open') !== 'true') {
-      return;
-    }
-
-    mailSheetBackdrop.setAttribute('data-open', 'false');
-    mailTrigger.setAttribute('aria-expanded', 'false');
-    document.removeEventListener('keydown', onEscapeKey);
-
-    if (hideTimeoutId) {
-      window.clearTimeout(hideTimeoutId);
-    }
-
-    hideTimeoutId = window.setTimeout(() => {
-      mailSheetBackdrop.hidden = true;
-      hideTimeoutId = 0;
-    }, 260);
-
-    if (restoreFocus && previouslyFocusedElement) {
-      previouslyFocusedElement.focus();
-    }
-  }
-
-  async function copyEmailToClipboard() {
+  function fallbackCopy() {
+    const textArea = document.createElement('textarea');
+    textArea.value = email;
+    textArea.className = 'clipboard-fallback';
+    textArea.readOnly = true;
+    // A modal makes the rest of the document inert, so the fallback belongs inside it.
+    dialog.append(textArea);
+    textArea.select();
     let copied = false;
-
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-      try {
-        await navigator.clipboard.writeText(email);
-        copied = true;
-      } catch (error) {
-        copied = false;
-      }
-    }
-
-    if (!copied) {
-      copied = fallbackCopyText(email);
-    }
-
-    mailCopyStatus.textContent = copied ? 'Copied ✓' : 'Copy failed';
-    scheduleStatusClear();
+    try { copied = document.execCommand('copy'); } catch { /* manual copy remains available */ }
+    textArea.remove();
+    copyButton.focus();
+    return copied;
   }
 
   mailTrigger.addEventListener('click', (event) => {
     event.preventDefault();
-    openMailSheet();
+    if (dialog.open) return;
+    status.textContent = '';
+    dialog.showModal();
+    document.documentElement.classList.add('has-modal');
+    mailTrigger.setAttribute('aria-expanded', 'true');
+    closeButton.focus();
   });
-
-  mailSheetClose.addEventListener('click', () => {
-    closeMailSheet({ restoreFocus: true });
+  closeButton.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
   });
-
-  mailSheetBackdrop.addEventListener('click', (event) => {
-    if (event.target === mailSheetBackdrop) {
-      closeMailSheet({ restoreFocus: true });
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab') return;
+    const controls = [...dialog.querySelectorAll('button:not([disabled]), a[href]')];
+    const first = controls[0];
+    const last = controls.at(-1);
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
-
-  mailCopyButton.addEventListener('click', () => {
-    void copyEmailToClipboard();
+  dialog.addEventListener('close', () => {
+    window.clearTimeout(statusTimeout);
+    status.textContent = '';
+    document.documentElement.classList.remove('has-modal');
+    mailTrigger.setAttribute('aria-expanded', 'false');
+    mailTrigger.focus({ preventScroll: true });
+  });
+  copyButton.addEventListener('click', async () => {
+    window.clearTimeout(statusTimeout);
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    } catch { copied = fallbackCopy(); }
+    if (!dialog.open) return;
+    status.textContent = copied ? 'Copied ✓' : 'Copy failed. Select the address and copy it manually.';
+    if (copied) statusTimeout = window.setTimeout(() => { status.textContent = ''; }, 1800);
   });
 }
 
@@ -224,6 +115,7 @@ function initializeMobileMenu() {
   }
 
   navbar.classList.add('is-enhanced');
+  menuToggle.hidden = false;
 
   function isOpen() {
     return navbar.getAttribute('data-menu-open') === 'true';
@@ -254,6 +146,11 @@ function initializeMobileMenu() {
   panel.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       closeMenu(false);
+      const section = document.getElementById(link.hash.slice(1));
+      if (section) {
+        section.tabIndex = -1;
+        section.focus({ preventScroll: true });
+      }
     });
   });
 
@@ -275,8 +172,9 @@ function initializeMobileMenu() {
     }
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1120) {
+  const mobileViewport = window.matchMedia('(max-width: 70rem)');
+  mobileViewport.addEventListener('change', () => {
+    if (!mobileViewport.matches) {
       setOpenState(false);
     }
   });
@@ -315,7 +213,7 @@ function initializeActiveSectionIndicator() {
 
     const active = sectionEntries.find((entry) => entry.targetId === targetId);
     if (active) {
-      active.link.setAttribute('aria-current', 'page');
+      active.link.setAttribute('aria-current', 'location');
     }
   }
 
@@ -335,9 +233,9 @@ function initializeActiveSectionIndicator() {
     let activeTargetId = sectionEntries[0].targetId;
 
     sectionEntries.forEach((entry, index) => {
-      const sectionStart = entry.target.offsetTop;
+      const sectionStart = entry.target.getBoundingClientRect().top + window.scrollY;
       const nextSectionStart =
-        index < sectionEntries.length - 1 ? sectionEntries[index + 1].target.offsetTop : Number.POSITIVE_INFINITY;
+        index < sectionEntries.length - 1 ? sectionEntries[index + 1].target.getBoundingClientRect().top + window.scrollY : Number.POSITIVE_INFINITY;
 
       if (scrollPosition >= sectionStart && scrollPosition < nextSectionStart) {
         activeTargetId = entry.targetId;
@@ -500,6 +398,7 @@ function initializeThemeToggle() {
     );
   }
 
+  toggleButton.hidden = false;
   var resolvedTheme = getStoredTheme() || getSystemTheme();
   applyTheme(resolvedTheme);
 
@@ -526,6 +425,7 @@ function initialize() {
     return;
   }
 
+  document.getElementById('current-year').textContent = String(new Date().getFullYear());
   initializeThemeToggle();
   initializeMailContactInteraction();
   initializeMobileMenu();

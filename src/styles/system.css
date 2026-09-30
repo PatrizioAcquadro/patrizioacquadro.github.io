@@ -4,6 +4,7 @@
   --color-arctic: #d3d1ce;
   --color-slopes: #b3b7ba;
   --color-apres-ski: #6c6d74;
+  --color-text-muted: #a0a2aa;
   --color-mountainside: #262e36;
   --color-midnight: #090f15;
 
@@ -90,6 +91,7 @@
   --color-arctic: #1c2028;
   --color-slopes: #3e4450;
   --color-apres-ski: #8a8d96;
+  --color-text-muted: #535660;
   --color-mountainside: #dadbde;
   --color-midnight: #e2e2de;
 
@@ -128,6 +130,10 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 body {
@@ -188,6 +194,7 @@ h3 {
   font-weight: 700;
   line-height: var(--line-heading);
   letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -269,7 +276,9 @@ ol {
   font-weight: 700;
   letter-spacing: 0.015em;
   text-decoration: none;
-  white-space: nowrap;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .c-navbar__logo {
@@ -292,6 +301,7 @@ ol {
   padding: 0.55rem var(--space-2);
   font-size: var(--text-sm);
   font-weight: 600;
+  min-height: 2.75rem;
   cursor: pointer;
 }
 
@@ -366,12 +376,12 @@ ol {
   transform: scaleX(1);
 }
 
-.c-navbar__link[aria-current='page'] {
+.c-navbar__link[aria-current='location'] {
   color: var(--color-arctic);
   font-weight: 650;
 }
 
-.c-navbar__link[aria-current='page']::after {
+.c-navbar__link[aria-current='location']::after {
   height: 2px;
   background: var(--color-arctic);
   opacity: 1;
@@ -397,7 +407,7 @@ ol {
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1;
-  min-height: 2.25rem;
+  min-height: 2.75rem;
   padding: 0.56rem 0.95rem;
   text-decoration: none;
   transform: translateY(0);
@@ -440,7 +450,7 @@ ol {
 
 .c-section {
   padding-block: clamp(var(--space-7), 8vw, var(--space-10));
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 6rem;
 }
 
 .c-section + .c-section {
@@ -454,7 +464,7 @@ ol {
 }
 
 .c-section__kicker {
-  color: var(--color-apres-ski);
+  color: var(--color-text-muted);
   font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -559,16 +569,18 @@ html[data-motion='enhanced'] .reveal.is-visible {
 
 @media (max-width: 70rem) {
   .c-navbar__inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     row-gap: var(--space-2);
     padding-block: var(--space-2);
   }
 
-  .c-navbar__menu-toggle {
+  .c-navbar.is-enhanced .c-navbar__menu-toggle {
     display: inline-flex;
   }
 
   .c-navbar__panel {
+    max-height: calc(100dvh - 7rem);
+    overflow-y: auto;
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
@@ -598,7 +610,7 @@ html[data-motion='enhanced'] .reveal.is-visible {
   .c-navbar__link {
     width: 100%;
     justify-content: flex-start;
-    min-height: 2.35rem;
+    min-height: 2.75rem;
     padding: 0.58rem 0;
   }
 

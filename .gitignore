@@ -5,3 +5,7 @@ dist
 .claude/
 CLAUDE.md
 LOCAL_IMPLEMENTATION_NOTES.md
+
+test-results/
+playwright-report/
+.artifacts/

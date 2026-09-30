@@ -28,7 +28,7 @@ export const siteData = {
   name: 'Patrizio Acquadro',
   siteUrl: 'https://patrizioacquadro.github.io/',
   positioning:
-    'I build learning and perception systems for humanoid robots.',
+    'I help robots learn, perceive, and act.',
   bio:
     'I’m an R&D Assistant in Robot Learning at Purdue University, focused on humanoid manipulation and multimodal perception. I’m also pursuing a master’s in AI at Politecnico di Milano and the University of Milano-Bicocca.',
   lastUpdated: '2026-09-30',

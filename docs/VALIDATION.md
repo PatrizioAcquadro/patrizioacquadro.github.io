@@ -102,3 +102,9 @@ New project dates use 2026 without inferred start months. Entrepreneurship, acti
 Audit JSON and review screenshots are local, ignored artifacts under `.artifacts/robotics-update/`. The local development preview runs at `http://127.0.0.1:5173/`. No push or deployment was performed; production publication remains outside this validation.
 
 Environment note for future agent guidance: use the bundled Node 24 runtime because the host's default Node is 25. Browser checks and preview servers need loopback-listener permissions outside the restricted sandbox. The existing Firefox isolation workaround was reused without changing application behavior.
+
+## Hero name and subtitle - 2026-09-30
+
+Changed the subtitle to "I help robots learn, perceive, and act." Hero font sizes now scale with the available text-column width. The name and subtitle each stay on one line at 320, 390, 765, 1120 and 1440 px in both themes, verified by text line measurements in Chromium, Firefox and WebKit. At 200% text enlargement, text can wrap as needed without horizontal overflow.
+
+Validation passed: 5 unit tests, production build, security baseline, artifact budgets and all 33 browser tests. Reviewed desktop and mobile screenshots; the closing invitation appears once and the previous invitation is absent. Screenshots and measurements are saved under the ignored `.artifacts/hero-title/` directory.

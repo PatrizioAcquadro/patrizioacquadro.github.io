@@ -143,6 +143,14 @@ test('responsive layouts, both themes and 200% text enlargement do not overflow'
         overflow: [...document.querySelectorAll('body *')].filter((element) => element.getBoundingClientRect().right > innerWidth + 1).map((element) => element.className)
       }));
       expect(layout.content, JSON.stringify(layout)).toBeLessThanOrEqual(layout.width);
+      for (const selector of ['#hero-name', '#hero-tagline']) {
+        const lines = await page.locator(selector).evaluate((element) => {
+          const range = document.createRange();
+          range.selectNodeContents(element);
+          return range.getClientRects().length;
+        });
+        expect(lines, `${selector} at ${width}px in ${theme} theme`).toBe(1);
+      }
     }
   }
   await page.setViewportSize({ width: 390, height: 844 });

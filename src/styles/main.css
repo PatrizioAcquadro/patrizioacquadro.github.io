@@ -45,12 +45,18 @@ body::after {
 .hero-copy {
   display: grid;
   gap: var(--space-2);
+  min-width: 0;
   max-width: 66ch;
+  container-type: inline-size;
+}
+
+.hero-copy h1 {
+  font-size: clamp(1.7rem, 10cqi, 3.5rem);
 }
 
 .hero-tagline {
   color: var(--color-arctic);
-  font-size: clamp(1.05rem, 0.98rem + 0.4vw, 1.35rem);
+  font-size: clamp(0.875rem, 4.75cqi, 1.35rem);
   font-weight: 600;
   line-height: 1.45;
 }

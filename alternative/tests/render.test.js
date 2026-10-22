@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pages, renderDocument, escapeHtml } from '../src/content/render.js';
-import { content, projectArt, roboticsProfiles, ventureArt } from '../src/content/editorial.js';
+import { content, projectArt, roboticsProfiles, ventureArt, activityProfiles, ventureProfiles, education, languages } from '../src/content/editorial.js';
 
 const template = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
@@ -88,6 +88,33 @@ test('home links directly to every section and selected records', () => {
   const html = renderDocument(template, 'home');
   for (const page of Object.keys(pages).filter((key) => key !== 'home')) assert.ok(html.includes(`href="/${page}/"`));
   for (const anchor of ['/projects/#alexdoor-xas', '/projects/#isaac-audio-sensors', '/projects/#stm32n6-transformer', '/ventures/#bif', '/ventures/#adunet', '/activities/#toyp-2026']) assert.ok(html.includes(`href="${anchor}"`));
+});
+
+test('education retains the two distinct master degrees, exchange and bachelor record from the CV', () => {
+  const html = renderDocument(template, 'experience');
+  assert.equal(education.length, 4);
+  assert.equal((html.match(/data-record="education"/g) || []).length, 4);
+  for (const item of education) {
+    for (const text of [item.institution, item.degree, item.timeframe, ...item.notes]) assert.ok(html.includes(escapeHtml(text)), text);
+  }
+  assert.ok(html.includes(escapeHtml(languages)));
+  assert.ok(html.includes('27/30'));
+  assert.ok(html.includes('674-student'));
+});
+
+test('every activity and venture has readable display copy and retains its complete sourced identity', () => {
+  for (const [page, collection, profiles, sourceTitle] of [['activities', content.activities, activityProfiles, 'title'], ['ventures', content.ventures, ventureProfiles, 'name']]) {
+    const html = renderDocument(template, page);
+    assert.deepEqual(Object.keys(profiles), collection.map((item) => item.id));
+    for (const item of collection) assert.ok(html.includes(`aria-label="${escapeHtml(item[sourceTitle])}"`), item.id);
+  }
+  assert.ok(renderDocument(template, 'ventures').includes('festival visitors / day'));
+  const html = renderDocument(template, 'home');
+  for (const id of ['selected-work-title', 'experience-preview-title', 'ventures-preview-title', 'activities-preview-title', 'updates-preview-title']) {
+    assert.ok(new RegExp(`<h2 id="${id}">`).test(html), id);
+  }
+  assert.ok(html.includes('Robot learning · Purdue University'));
+  assert.ok(html.includes('Download CV — Patrizio Acquadro (PDF)'));
 });
 
 test('text escaping and unknown routes fail safely', () => {

@@ -15,6 +15,32 @@ for (const [collection, keys] of Object.entries(ids)) {
 }
 content.news = [...siteData.news].sort((a, b) => b.isoDate.localeCompare(a.isoDate)).map((item) => ({ ...item, id: `update-${item.isoDate}` }));
 
+// Education and languages are transcribed from the byte-identical local CV.
+export const education = [
+  { id: 'polimi-msc', institution: 'Politecnico di Milano', degree: 'M.S. Computer Science & Engineering · AI', timeframe: 'Sep 2024 – Present', notes: ['GPA: 27/30.', 'Honors in LLMs (PhD course) and Software Engineering II.'] },
+  { id: 'bicocca-msc', institution: 'University of Milano-Bicocca', degree: 'M.S. AI for Science and Technology', timeframe: 'Sep 2024 – Present', notes: ['Top grades (30/30) in Advanced AI, Machine Learning, Deep Learning and Embedded Systems.'] },
+  { id: 'purdue-exchange', institution: 'Purdue University', degree: 'Visiting Exchange Student', timeframe: 'Aug 2025 – May 2026', notes: ['Selected on merit: 1 of 2 students from a 674-student first-year M.Sc. Computer Science cohort at Politecnico di Milano.'] },
+  { id: 'pavia-bsc', institution: 'University of Pavia', degree: 'B.S. Artificial Intelligence', timeframe: 'Sep 2021 – Oct 2024', notes: ['Graduated with 110/110.', 'Thesis on quantum machine learning in finance.'] }
+];
+export const languages = 'Italian (native), English (fluent; IELTS 7.5), French (basic).';
+
+export const activityProfiles = {
+  'toyp-2026': { title: 'TOYP 2026', category: 'Recognition' },
+  'jci-biella': { title: 'JCI Biella', category: 'Community leadership' },
+  'chiediamolo-ai': { title: 'Chiediamolo all’AI', category: 'Public speaking' },
+  'asl-biella': { title: 'ASL Biella', category: 'Public speaking' },
+  'loreal-brandstorm': { title: 'L’Oréal Brandstorm · You-Real', category: 'Product concept' },
+  'ielts': { title: 'IELTS Academic · 7.5', category: 'Language certification' },
+  'google-cloud': { title: 'Introduction to Generative AI', category: 'Google Cloud Skills Boost' },
+  'red-cross': { title: 'Italian Red Cross', category: 'Training & volunteering' }
+};
+
+export const ventureProfiles = {
+  bif: { name: 'BiellaInFesta', purpose: 'Local events & community', metrics: [['10k+', 'followers'], ['800k', 'monthly views'], ['4+', 'team members at peak']] },
+  adunet: { name: 'Adunet', purpose: 'Festival navigation', metrics: [['8–10k', 'festival visitors / day'], ['90+', 'mapped points of interest'], ['10', 'onsite team members']] },
+  cubewar: { name: 'CubeWar', purpose: 'Minecraft & multiplayer', metrics: [['70–90', 'daily players'], ['300', 'peak players'], ['4', 'team members']] }
+};
+
 export const projectArt = {
   'alexdoor-xas': { art: 'door', alt: 'Concept diagram of a door, its motion arc, and a robot end effector.', caption: 'Door manipulation / Concept diagram' },
   'isaac-audio-sensors': { art: 'sound', alt: 'Concept diagram of sound waves arriving at a circular microphone array.', caption: 'Spatial listening / Concept diagram' },
@@ -39,7 +65,7 @@ export const projectArt = {
 export const roboticsProfiles = {
   'alexdoor-xas': {
     name: 'AlexDoor-XAS', focus: 'Humanoid manipulation',
-    headline: 'Learning to open\nthe unfamiliar.',
+    headline: 'Learning to open\nunseen doors.',
     overview: 'How should a humanoid represent an action when the door in front of it is new? A research platform connecting RGB-D perception, contact-aware control, and imitation learning.',
     contribution: 'I develop simulation, perception, action adapters, and evaluation infrastructure for IHMC Alex, with a qualified 32-door corpus and a matched A1–A4 × ACT/Diffusion study design.',
     direction: 'Establish how joint-, Cartesian-, door-, and object-centric actions affect generalization to unseen doors, then extend the approach to other articulated objects.'
@@ -47,7 +73,7 @@ export const roboticsProfiles = {
   'isaac-audio-sensors': {
     name: 'Isaac Audio Sensors', focus: 'Robot hearing · Open source',
     headline: 'A sense of hearing\nfor simulated robots.',
-    overview: 'An open-source audition SDK that turns scene acoustics into microphone-array signals and spatial observations—connecting simulation, recordings, and robot-learning workflows.',
+    overview: 'An open-source toolkit for robot hearing. It turns simulated sound into microphone-array signals and spatial observations for perception and robot-learning experiments.',
     contribution: 'I build acoustic simulation, multichannel recording and replay, dataset tools, and learning-ready observations across Python, Isaac Sim, and Isaac Lab.',
     direction: 'A validated robot-hearing workflow from acoustic scenes to live learning systems, with measured physical comparisons and clearly defined operating conditions.'
   },
@@ -61,7 +87,7 @@ export const roboticsProfiles = {
   'ego2grip': {
     name: 'Ego2Grip', focus: 'Learning from human demonstrations',
     headline: 'Human motion.\nRobot demonstrations.',
-    overview: 'Turning first-person video into a route toward robot demonstration data: from reconstructed 3D hand motion to language-aligned, gripper-compatible trajectories.',
+    overview: 'A research pipeline for learning from everyday human demonstrations. It starts with 3D hand motion from first-person video and works toward annotated robot-gripper trajectories.',
     contribution: 'I mentor the undergraduate researcher developing the pipeline, guiding 3D hand reconstruction, dataset design, and retargeting to IHMC Alex grippers. The reproducible HaWoR baseline is complete.',
     direction: 'Build a diverse, annotated demonstration dataset, validate hand-to-gripper trajectories in simulation, and transfer selected motions to the physical robot.'
   },
@@ -82,8 +108,8 @@ export const ventureArt = {
 
 export const selectedWork = [
   {
-    id: 'alexdoor-xas', label: 'Robot learning', title: 'Learning to interact\nwith the real world.',
-    summary: 'Exploring how action representations shape humanoid door manipulation.',
+    id: 'alexdoor-xas', label: 'Robot learning', title: 'Learning to open\nunseen doors.',
+    summary: 'A research platform for studying action representations in humanoid door manipulation.',
   },
   {
     id: 'isaac-audio-sensors', label: 'Multimodal perception', title: 'Giving robots\na sense of hearing.',

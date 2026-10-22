@@ -32,8 +32,8 @@ On macOS the test configuration gives Firefox a temporary application descriptor
 The homepage introduces the person and links directly to records on `/projects/`, `/experience/`, `/ventures/`, `/activities/`, and `/updates/`. Every page is rendered into HTML before JavaScript runs. Navigation, content, contacts, and CV downloads remain available without JavaScript.
 
 - `src/content/siteData.js` is an unchanged snapshot of the original portfolio's source data at commit `768a196`. It includes all 15 projects, 5 research experiences, 3 ventures, 8 activities, and 9 updates. It does not synchronize automatically with the original.
-- `src/content/editorial.js` holds stable anchors, illustrations for all 15 projects, illustrated identities for the three ventures, homepage selections, and the five research narratives in `roboticsProfiles`; `render.js` holds shared templates and presentation. When adding source records, extend the ID list, illustration metadata, and the category counts.
-- `src/styles.css` defines the editorial design; `src/main.js` only enhances the mobile menu, email copying, and portrait fallback.
+- `src/content/editorial.js` holds stable anchors, illustrations for all 15 projects, venture/activity display profiles, homepage selections, the five research narratives in `roboticsProfiles`, and four education records transcribed from the local CV. The copied source collections remain untouched. `render.js` holds shared templates and presentation.
+- `src/styles.css` defines the editorial design; `src/main.js` enhances the mobile menu, email copying, portrait fallback, and fragment clearance below the sticky header. Without JavaScript the header stays in normal document flow, so the complete navigation does not cover anchor targets.
 - `public/` contains local copies of the portraits, icons, and current CV, plus original SVG concept illustrations. Illustrations explain the subject; they are not screenshots, measured results, or technical specifications. Fonts use the local Helvetica/Arial and Iowan/Palatino/Georgia families; there are no remote font requests.
 - `public/brand/pa-monogram.svg` is the custom geometric p/a mark: outlined letterforms and a separate terracotta slash, with no font dependency. `pa-monogram.png` is a transparent 600 × 360 export. The matching favicon is available as SVG and 32 × 32 PNG; the touch icon is 180 × 180 PNG. PNGs are rendered from the SVG masters and add no build dependency.
 
@@ -43,4 +43,6 @@ The original fact snapshot is retained in full; dates, links, technology tags an
 
 This review edition intentionally has `noindex, nofollow` on every page. It has no hosting registration, analytics, contact backend, or deployment workflow. To choose an eventual hybrid, transfer selected styles or sections deliberately into the original; this folder stays independent until that decision.
 
-See [VALIDATION.md](VALIDATION.md) for the completed checks and the macOS Firefox environment note.
+From the repository root, `npm --prefix alternative run check` validates this version; `npm run check` validates the original. The commands use independent builds and test servers.
+
+See [REVIEW.md](REVIEW.md) for the complete UX/content review and its local before/after captures, and [VALIDATION.md](VALIDATION.md) for the checks and macOS Firefox environment note.

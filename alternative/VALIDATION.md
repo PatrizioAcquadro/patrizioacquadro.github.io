@@ -4,13 +4,13 @@ Implemented on `main`, from the original portfolio at `768a196`. All source addi
 
 ## Results
 
-- Alternative validation, using Node 24.19.0: **7 renderer tests and 30 browser tests passed** (10 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
+- Alternative validation, using Node 24.19.0: **9 renderer tests and 33 browser tests passed** (11 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
 - Original site's `npm run check`, using Node 24.19.0: **5 unit tests and 17 Chromium tests passed**, plus production build, security baseline and asset budgets.
 - Compared the copied `siteData` directly with the original using `assert.deepEqual`: all 15 projects, 5 research experiences, 3 ventures, 8 activities, 9 updates, contacts, and privacy settings match exactly.
 - Compared original, copied, and built CV bytes. SHA-256: `3d665a4d1bdeac09177906d102b6dd092269ff83e60086af2a1e35db34b58b26`.
-- Checked all six built routes, local asset paths, cross-page anchors, noindex metadata, and absence of inline scripts. Initial JavaScript: **1,038 bytes gzip**, below the 8 KB budget.
+- Checked all six built routes, local asset paths, same-page and cross-page anchors, noindex metadata, and absence of inline scripts. Initial JavaScript: **1,122 bytes gzip**, below the 8 KB budget.
 
-Browser coverage includes direct page loads, complete content, no external asset requests, operation without JavaScript, CV download, home-to-record navigation, responsive menu and focus, copy success/denial, portrait failure, reduced motion, keyboard entry, primary touch targets, and text contrast. Layout checks cover widths 320, 390, 765, 1120 and 1440 px, plus 200% text enlargement at 390 and 1440 px.
+Browser coverage includes direct page loads, complete content, no external asset requests, operation without JavaScript, CV download, home-to-record navigation, responsive menu and focus, copy success/denial, portrait failure, reduced motion, keyboard entry, primary touch targets, and contrast/minimum size for all visible HTML text. Layout checks cover widths 320, 390, 765, 1120 and 1440 px, plus 200% text enlargement at 320, 390 and 1440 px. New regressions verify fragment clearance below the measured header and native Back to top keyboard focus at both text sizes.
 
 The live local homepage and every inner page were visually reviewed in the in-app browser. The review included the desktop hero, narrower layouts, project illustrations, research, ventures, activities, updates and contact footer. Local screenshots are kept in ignored `.artifacts/`.
 
@@ -24,10 +24,12 @@ The robotics presentation update gives the five research projects a primary cate
 
 The Experience treatment highlights both Purdue research entries as separate, softly rounded surfaces with a lighter sand tint and short terracotta accents. The section heading has no dark divider, and spacing separates the two periods. The treatment follows the institution field, preserves chronology and source copy, and keeps desktop titles aligned with the remaining timeline. The full alternative check passes, including reflow and contrast in all three browsers. Desktop and narrow-screen compositions were visually reviewed. This scoped visual change does not add dependencies or new tests.
 
+The comprehensive content/UX review is recorded in [REVIEW.md](REVIEW.md), with current-run before/after screenshots. It clarifies the opening role and research copy, adds four education records and languages from the unchanged local CV, qualifies venture metrics, simplifies activity titles, increases secondary text sizes, and repairs semantic headings and fragment navigation. Native keyboard return and no-JavaScript anchors are covered. The expanded 320 px / 200% case exposed anonymous flex/grid text overflow in the BiellaInFesta and TOYP previews; both are corrected. The full alternative check and original site's full check passed in this review. Content/build checks and six targeted reflow/contrast tests passed again after the final icon adjustment. A direct comparison reconfirmed that the source snapshot and all three CV copies are identical. Fifteen linked repositories are public according to GitHub metadata; three linked project sites returned HTTP 200 with matching titles. No dependency was added.
+
 ## Environment note
 
 This macOS host's stock Playwright Firefox launch reports “Could not find profile folder.” The standalone test configuration creates a temporary application descriptor with a distinct test name, links the installed browser's own `browser/omni.ja`, and starts Firefox with `-app` before `-profile`. All Firefox tests pass with this configuration. The helper cleans up its temporary files and does not modify the installed browser, personal profiles, or browser security preferences. Other operating systems use the standard Playwright launch.
 
 This is useful repository guidance if Firefox testing is expanded in the original project. It is an environment issue, separate from the website implementation.
 
-External destinations are preserved from the source snapshot; tests check their rendering and local navigation. No publication, hosting registration, push, or remote link-availability audit was performed.
+External destinations are preserved from the source snapshot. The dated availability check above covers project repositories and the three linked project sites, not social login, email delivery or full external application behavior. No publication, hosting registration or push was performed.

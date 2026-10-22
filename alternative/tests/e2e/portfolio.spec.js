@@ -55,6 +55,11 @@ test('all pages and navigation work without JavaScript, including CV download', 
   expect(response.status()).toBe(200);
   expect(response.headers()['content-type']).toContain('application/pdf');
   await expect(page.getByRole('link', { name: 'Get in touch' })).toHaveAttribute('href', 'mailto:acquadropatrizio@gmail.com');
+  await page.goto(`${baseURL}/projects/#ego2grip`);
+  const anchorTop = await page.locator('#ego2grip').evaluate((element) => Math.round(element.getBoundingClientRect().top));
+  expect(anchorTop).toBeGreaterThanOrEqual(0);
+  expect(anchorTop).toBeLessThanOrEqual(25);
+  expect(await page.locator('.site-header').evaluate((element) => getComputedStyle(element).position)).toBe('relative');
   await context.close();
 });
 
@@ -116,6 +121,26 @@ test('mobile menu supports Escape, section navigation, contact focus and resizin
   await expect(page.locator('.menu-toggle')).toBeHidden();
 });
 
+test('fragment offsets adapt to enlarged text and Back to top restores keyboard navigation', async ({ page, browserName }) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 950 });
+    for (const scale of ['100%', '200%']) {
+      await page.goto('/projects/');
+      await page.evaluate((value) => { document.documentElement.style.fontSize = value; }, scale);
+      await page.getByRole('navigation', { name: 'Robotics projects', exact: true }).locator('a[href="#ego2grip"]').click();
+      const clearance = () => page.evaluate(() => Math.round(document.getElementById('ego2grip').getBoundingClientRect().top - document.querySelector('.site-header').getBoundingClientRect().bottom));
+      await expect.poll(clearance, `${width}px / ${scale}`).toBeGreaterThanOrEqual(19);
+      await expect.poll(clearance, `${width}px / ${scale}`).toBeLessThanOrEqual(21);
+      await page.getByRole('link', { name: 'Back to top' }).focus();
+      await page.keyboard.press('Enter');
+      await expect(page.locator('#top')).toBeFocused();
+      await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+      await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
+      await expect(page.locator('.brand')).toBeFocused();
+    }
+  }
+});
+
 test('copy email reports success and preserves manual fallback on denial', async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async (text) => { window.copiedEmail = text; } } }));
   await page.goto('/');
@@ -145,11 +170,11 @@ test('all pages reflow at mobile, tablet, desktop and 200% text enlargement', as
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       expect(await page.evaluate(() => document.documentElement.scrollWidth), `${route} at ${width}`).toBeLessThanOrEqual(width);
     }
-    for (const width of [390, 1440]) {
+    for (const width of [320, 390, 1440]) {
       await page.setViewportSize({ width, height: 950 });
       await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-      const layout = await page.evaluate(() => ({ width: innerWidth, content: document.documentElement.scrollWidth, overflow: [...document.querySelectorAll('body *')].filter((element) => element.getBoundingClientRect().right > innerWidth + 1).map((element) => ({ tag: element.tagName, class: element.className, text: element.textContent.slice(0, 65) })) }));
+      const layout = await page.evaluate(() => ({ width: innerWidth, content: document.documentElement.scrollWidth, overflow: [...document.querySelectorAll('body *')].filter((element) => element.getBoundingClientRect().right > innerWidth + 1).map((element) => ({ tag: element.tagName, class: element.className, text: element.textContent.slice(0, 65) })), textOverflow: [...document.querySelectorAll('h1,h2,h3,a,p,span')].filter((element) => !element.closest('.sr-only') && element.scrollWidth > element.clientWidth + 1 && element.clientWidth > 0).map((element) => ({ tag: element.tagName, class: element.className, text: element.textContent.slice(0, 80), width: element.clientWidth, scroll: element.scrollWidth })) }));
       expect(layout.content, `${route} at ${width}, 200% text: ${JSON.stringify(layout)}`).toBeLessThanOrEqual(width);
       await page.evaluate(() => { document.documentElement.style.fontSize = ''; });
     }
@@ -171,7 +196,7 @@ test('keyboard entry, reduced motion and primary touch targets remain accessible
   }
 });
 
-test('text meets WCAG AA contrast across all page compositions', async ({ page }) => {
+test('visible text meets AA contrast and stays readable across all page compositions', async ({ page }) => {
   for (const route of routes) {
     await page.goto(route);
     const failures = await page.evaluate(() => {
@@ -183,12 +208,16 @@ test('text meets WCAG AA contrast across all page compositions', async ({ page }
         for (let parent = element; parent; parent = parent.parentElement) chain.unshift(parent);
         return chain.reduce((bg, node) => blend(rgba(getComputedStyle(node).backgroundColor), bg), [255, 255, 255]);
       };
-      const selectors = '.eyebrow,.date-label,.entry-index,.text-link,.button,.entry-description,.tags li,.detail-list li,.work-caption,.poster-label,.poster-word,.poster-bottom,.map-title,.portrait figcaption span,.footer-note span,.copy-email,.hero-bottom>p,.hero-statement>span,.section-intro,.role-name,.project-status,.page-description,.update-entry time,.update-entry>div>p,.venture-preview-info>p,.activity-entry p,.current-role>p,.education-grid p,.venture-metrics p>span,.breadcrumb,.scroll-cue,#site-nav a,.art-index,.research-headline,.research-overview,.research-details p,.robotics-heading>p,.research-index a,.research-index a>span,.page-jump a,.page-jump a>span';
-      return [...document.querySelectorAll(selectors)].filter((element) => element.getBoundingClientRect().width && element.getBoundingClientRect().height).map((element) => {
+      const text = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const elements = new Set();
+      for (let node = text.nextNode(); node; node = text.nextNode()) {
+        if (node.textContent.trim() && !node.parentElement.closest('.sr-only,[aria-hidden="true"],script,style')) elements.add(node.parentElement);
+      }
+      return [...elements].filter((element) => element.getBoundingClientRect().width && element.getBoundingClientRect().height).map((element) => {
         const color = luminance(rgba(getComputedStyle(element).color));
         const bg = luminance(background(element));
-        return { text: element.textContent.trim().slice(0, 60), ratio: (Math.max(color, bg) + .05) / (Math.min(color, bg) + .05) };
-      }).filter((item) => item.ratio < 4.5);
+        return { text: element.textContent.trim().slice(0, 60), size: parseFloat(getComputedStyle(element).fontSize), ratio: (Math.max(color, bg) + .05) / (Math.min(color, bg) + .05) };
+      }).filter((item) => item.ratio < 4.5 || item.size < 11);
     });
     expect(failures, route).toEqual([]);
   }

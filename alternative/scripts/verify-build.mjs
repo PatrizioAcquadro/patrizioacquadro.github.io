@@ -18,10 +18,10 @@ for (const file of files) {
   assert.ok(html.includes(`AcquadroPatrizioCV.pdf?v=${version}`), `CV version: ${file}`);
   assert.ok(!/<script(?![^>]*\bsrc=)[^>]*>/i.test(html), `Inline script: ${file}`);
   assert.ok(!/\son\w+\s*=/i.test(html), `Inline event handler: ${file}`);
-  const paths = [...html.matchAll(/(?:src|href|data-fallback)="([^"#]+)"/g)].map((match) => match[1]);
+  const paths = [...html.matchAll(/(?:src|href|data-fallback)="([^"]+)"/g)].map((match) => match[1]);
   for (const srcset of html.matchAll(/srcset="([^"]+)"/g)) paths.push(...srcset[1].split(',').map((value) => value.trim().split(' ')[0]));
-  for (const value of paths.filter((path) => path.startsWith('/'))) {
-    const url = new URL(value, 'https://local.test');
+  for (const value of paths.filter((path) => path.startsWith('/') || path.startsWith('#'))) {
+    const url = new URL(value, `https://local.test/${file.replace('index.html', '')}`);
     const target = `dist${url.pathname}${url.pathname.endsWith('/') ? 'index.html' : ''}`;
     assert.ok(existsSync(target), `${file} → missing ${target}`);
     if (url.hash) assert.ok(readFileSync(target, 'utf8').includes(`id="${url.hash.slice(1)}"`), `Missing anchor ${value}`);

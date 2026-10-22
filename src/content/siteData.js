@@ -100,7 +100,7 @@ export const siteData = {
       bullets: [
         'Build simulation and control infrastructure in Isaac Sim and Isaac Lab for manipulation with the IHMC Alex humanoid.',
         'Develop Isaac Audio Sensors and multimodal perception systems for robotics research.',
-        'Mentor two students, including technical guidance on Ego2Grip’s 3D hand-motion reconstruction and retargeting to IHMC Alex grippers.'
+        'Mentor two undergraduate researchers, including technical guidance on Ego2Grip’s 3D hand-motion reconstruction and retargeting to IHMC Alex grippers.'
       ]
     },
     {

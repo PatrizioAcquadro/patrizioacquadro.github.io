@@ -27,7 +27,7 @@ function cvLink(version, className = 'text-link') {
 function header(page) {
   return `<a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header"><div class="container header-inner">
-      <a class="brand" href="/" aria-label="Patrizio Acquadro — Home"><span class="brand-mark" aria-hidden="true">p/a</span><span>Patrizio Acquadro</span></a>
+      <a class="brand" href="/" aria-label="Patrizio Acquadro — Home"><img class="brand-mark" src="/brand/pa-monogram.svg" alt="" width="120" height="72" aria-hidden="true"><span>Patrizio Acquadro</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span aria-hidden="true">+</span></button>
       <nav id="site-nav" aria-label="Primary navigation">${Object.entries(pages).filter(([key]) => key !== 'home').map(([key, value]) => `<a href="/${key}/"${key === page ? ' aria-current="page"' : ''}>${value.label}</a>`).join('')}<a class="nav-contact" href="#contact">Let’s talk ${arrow}</a></nav>
     </div></header>`;

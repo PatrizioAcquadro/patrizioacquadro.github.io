@@ -35,6 +35,7 @@ The homepage introduces the person and links directly to records on `/projects/`
 - `src/content/editorial.js` holds stable anchors, illustrations for all 15 projects, illustrated identities for the three ventures, and homepage selections; `render.js` holds shared templates and presentation. When adding source records, extend the ID list, illustration metadata, and the category counts.
 - `src/styles.css` defines the editorial design; `src/main.js` only enhances the mobile menu, email copying, and portrait fallback.
 - `public/` contains local copies of the portraits, icons, and current CV, plus original SVG concept illustrations. Illustrations explain the subject; they are not screenshots, measured results, or technical specifications. Fonts use the local Helvetica/Arial and Iowan/Palatino/Georgia families; there are no remote font requests.
+- `public/brand/pa-monogram.svg` is the custom geometric p/a mark: outlined letterforms and a separate terracotta slash, with no font dependency. `pa-monogram.png` is a transparent 600 × 360 export. The matching favicon is available as SVG and 32 × 32 PNG; the touch icon is 180 × 180 PNG. PNGs are rendered from the SVG masters and add no build dependency.
 
 Source facts, dates, metrics, links, and attribution are preserved in their dedicated pages. The CV is copied byte for byte and its download URL is versioned using SHA-256. Phone exposure remains disabled. Visible metrics describe the sourced venture records rather than live analytics.
 

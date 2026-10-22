@@ -18,6 +18,8 @@ The project illustration update adds 12 original SVG diagrams to complete all 15
 
 The Ventures update adds three illustrated identities with integrated lettering: live events and community for BiellaInFesta, mobile festival navigation for Adunet, and an original voxel world for CubeWar. These replace the plain wordmarks in the Ventures detail page. The layout pairs graphics and descriptions on desktop and stacks them on mobile. All three SVGs were parsed as XML, visually reviewed, and checked for successful loading in every browser; source facts, metrics, and homepage previews are preserved. The complete `npm run check` passed again after this update.
 
+The personal monogram update replaces negatively spaced text with an original SVG p/a mark, using geometric letterforms and a separate terracotta slash. All six headers use the same font-independent asset. Matching SVG/PNG favicons, a touch icon, and a transparent PNG export were rendered from the vector masters. The new mark was visually checked at display and header sizes, and the complete `npm run check` passed again, including image loading, mobile navigation, keyboard access, and 200% text reflow.
+
 ## Environment note
 
 This macOS host's stock Playwright Firefox launch reports “Could not find profile folder.” The standalone test configuration creates a temporary application descriptor with a distinct test name, links the installed browser's own `browser/omni.ja`, and starts Firefox with `-app` before `-profile`. All Firefox tests pass with this configuration. The helper cleans up its temporary files and does not modify the installed browser, personal profiles, or browser security preferences. Other operating systems use the standard Playwright launch.

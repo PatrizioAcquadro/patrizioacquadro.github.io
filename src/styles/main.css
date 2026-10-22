@@ -183,6 +183,10 @@ body::after {
   gap: var(--space-2);
 }
 
+.project-card {
+  overflow-wrap: anywhere;
+}
+
 .projects-shell {
   width: min(100% - var(--space-4), var(--nav-max));
 }
@@ -256,7 +260,7 @@ body::after {
   overflow-wrap: anywhere;
 }
 
-.projects-carousel.is-enhanced .project-card .c-badge {
+.project-card .c-badge {
   max-width: 100%;
   line-height: 1.35;
 }

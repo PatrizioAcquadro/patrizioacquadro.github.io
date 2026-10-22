@@ -228,12 +228,14 @@ article[id], h2[id] { scroll-margin-top: 112px; }
 .education-grid h3 { margin-block: 16px; font-size: 1.4rem; line-height: 1.25; letter-spacing: -.03em; }
 .education-grid p { margin-top: 9px; color: var(--muted); font-size: .8125rem; }
 .venture-details { padding-top: 0; }
-.venture-detail { display: grid; grid-template-columns: .8fr 1.5fr; gap: 80px; padding-block: 65px; border-bottom: 1px solid var(--line); }
+.venture-detail { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; padding-block: 65px; border-bottom: 1px solid var(--line); }
 .venture-detail:last-child { border-bottom: none; padding-bottom: 0; }
 .venture-detail-aside { display: flex; flex-direction: column; align-items: flex-start; }
-.venture-wordmark { font-size: clamp(3.3rem, 7.2vw, 6.2rem); letter-spacing: -.07em; line-height: .9; margin-block: 35px 26px; color: var(--accent); }
-.venture-wordmark > span { display: block; margin-top: 20px; font-family: var(--mono); font-size: .625rem; letter-spacing: 0; line-height: 1.5; color: var(--muted); }
-.cubewar-wordmark { color: var(--ink); }
+.venture-detail-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 20px; width: 100%; margin-bottom: 22px; }
+.venture-detail-meta .date-label { font-size: .625rem; }
+.venture-illustration { width: 100%; }
+.venture-illustration img { width: 100%; }
+.venture-illustration figcaption { margin-top: 12px; font-family: var(--mono); font-size: .5625rem; color: var(--muted); }
 .venture-detail-main > .eyebrow { color: var(--muted); }
 .venture-detail-main h2 { font-size: 2.35rem; margin-block: 20px 28px; }
 .venture-metrics { margin-top: 35px; padding-top: 23px; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -307,7 +309,7 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .contact-actions { display: grid; grid-template-columns: auto 1fr; column-gap: 24px; align-items: center; }
   .email-copy { margin-top: 0; }
   .copy-status { grid-column: 2; }
-  .venture-detail { gap: 40px; grid-template-columns: .65fr 1.5fr; }
+  .venture-detail { gap: 36px; grid-template-columns: 1fr 1.2fr; }
   .entry-title-row { flex-direction: column; gap: 10px; }
   .education-grid { gap: 25px; }
   .activity-entry { grid-template-columns: 165px minmax(0, 1fr); gap: 25px; }
@@ -404,10 +406,6 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .education-grid { grid-template-columns: 1fr; gap: 25px; margin-top: 30px; }
   .venture-details { padding-top: 0; }
   .venture-detail { grid-template-columns: 1fr; gap: 30px; padding-block: 40px; }
-  .venture-detail-aside { flex-direction: row; align-items: flex-start; flex-wrap: wrap; justify-content: space-between; gap: 15px; }
-  .venture-wordmark { font-size: 4.2rem; margin: 0; width: calc(100% - 45px); }
-  .venture-wordmark > span { margin-top: 13px; }
-  .venture-detail-aside > .date-label { margin-left: 45px; }
   .venture-detail-main h2 { font-size: 2rem; margin-top: 15px; }
   .venture-metrics { gap: 12px; }
   .venture-metrics strong { font-size: 1.9rem; }

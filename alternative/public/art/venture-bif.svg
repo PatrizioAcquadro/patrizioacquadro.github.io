@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#8b4938"/>
+  <g stroke="#b17a61" stroke-width="1"><ellipse cx="655" cy="478" rx="217" ry="46"/><ellipse cx="655" cy="478" rx="274" ry="65" stroke-dasharray="3 7"/><path d="M440 505h434M475 527h361M508 549h299"/></g>
+  <g fill="#f5e9d5" font-family="Helvetica,Arial,sans-serif"><text x="71" y="193" font-size="156" font-weight="500" letter-spacing="-9">BIF<tspan fill="#d9b18b">.</tspan></text><text x="80" y="234" font-size="22" letter-spacing="-.5">BiellaInFesta</text><text x="80" y="270" font-size="10" letter-spacing="2.2">A LOCAL COMMUNITY, CONNECTED.</text></g>
+  <g stroke="#ead0af" stroke-width="1.5" stroke-linejoin="round">
+    <path d="m485 288 171-70 164 70v139H485V288Z" fill="#a36048"/>
+    <path d="m485 288 171-70 164 70H485Z" fill="#ba8362"/>
+    <path d="M510 304h285v103H510z" fill="#754233"/><path d="M564 304v103m177-103v103" stroke="#ba8362"/>
+    <path d="M476 427h352v16H476z" fill="#d4ab85"/><path d="M486 443h332v17H486z" fill="#a36048"/>
+    <rect x="519" y="342" width="30" height="58" fill="#8b4938"/><rect x="752" y="342" width="30" height="58" fill="#8b4938"/><circle cx="534" cy="359" r="7"/><circle cx="534" cy="383" r="9"/><circle cx="767" cy="359" r="7"/><circle cx="767" cy="383" r="9"/>
+    <path d="M655 367v36m-12 0h24m-12-36 15-10"/><circle cx="675" cy="354" r="5" fill="#ead0af"/>
+    <path d="M454 206q202 82 398 0M454 206v167m398-167v167"/>
+    <path d="m483 217-2 11m49 5-1 11m52 3-1 11m52-4v11m51-11v11m51-20 1 11m48-23 1 11m46-27 3 11" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g stroke="#ead0af" stroke-width="1.5"><circle cx="503" cy="470" r="11" fill="#b17a61"/><path d="M485 513v-21q18-18 36 0v21" fill="#b17a61"/><circle cx="568" cy="489" r="11" fill="#d3a67f"/><path d="M550 532v-21q18-18 36 0v21" fill="#d3a67f"/><circle cx="636" cy="477" r="11" fill="#a36048"/><path d="M618 520v-21q18-18 36 0v21" fill="#a36048"/><circle cx="704" cy="490" r="11" fill="#b17a61"/><path d="M686 533v-21q18-18 36 0v21" fill="#b17a61"/><circle cx="770" cy="469" r="11" fill="#d3a67f"/><path d="M752 512v-21q18-18 36 0v21" fill="#d3a67f"/></g>
+  <g stroke="#d3a67f" stroke-width="1.2"><rect x="83" y="337" width="99" height="82" rx="2"/><path d="M83 359h99m-78-28v13m56-13v13m-58 31h12m13 0h12m13 0h12m-62 16h12m13 0h12"/><path d="m182 378 92-39 134 45" stroke-dasharray="4 7"/><circle cx="274" cy="339" r="5" fill="#d3a67f"/></g>
+  <g fill="#f5e9d5" font-family="Georgia,serif" font-size="30" font-style="italic"><text x="79" y="490">Music. Places.</text><text x="79" y="526">People.</text></g>
+  <g fill="#ead0af" font-family="Helvetica,Arial,sans-serif" font-size="10" letter-spacing="1.6"><text x="80" y="599">BIELLA / EVENTS &amp; COMMUNITY</text><text x="735" y="599">ILLUSTRATION</text></g>
+</svg>

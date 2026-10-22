@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e1e5d7"/>
+  <g fill="#3e5545" font-family="Helvetica,Arial,sans-serif"><text x="74" y="171" font-size="100" font-weight="500" letter-spacing="-6">CubeWar<tspan fill="#a3442c">.</tspan></text><text x="81" y="215" font-size="10" letter-spacing="2">A MINECRAFT COMMUNITY.</text></g>
+  <g stroke="#3e5545" stroke-width="1.5" stroke-linejoin="round"><path d="m801 97 31-12 31 12v36l-31 12-31-12V97Z" fill="#c1cfaf"/><path d="m801 97 31 12 31-12m-31 12v36"/><path d="m811 108 13 5v17l-13-5m29-12 15-6v17l-15 6"/></g>
+  <g stroke="#7d8567" stroke-width="1.3" stroke-linejoin="round"><path d="m342 414 237-84 274 98v43L615 559 342 454v-40Z" fill="#a48e6d"/><path d="m342 414 273 103 238-89v43l-238 88-273-105v-40Z" fill="#a48e6d"/><path d="M615 517v42m-188-113v40m95-5v42m179-38v42m86-74v42"/><path d="m342 414 237-84 274 98-238 89-273-103Z" fill="#c5d2ae"/><path d="m408 438 238-83m-170 109 238-84m-169 110 238-84M406 391l275 101M474 367l274 101M540 343l275 102" stroke="#a5b592"/></g>
+  <g stroke="#617454" stroke-width="1.5" stroke-linejoin="round">
+    <path d="m504 315 29-11 28 11v84l-29 11-28-11v-84Z" fill="#b6c59e"/><path d="m504 315 29 11 28-11m-28 11v84"/>
+    <path d="m561 345 51-18 45 16v67l-45 17-51-28v-54Z" fill="#e4e7d6"/><path d="m612 363 45-20m-45 20v64"/>
+    <path d="m657 316 29-10 28 10v84l-28 10-29-10v-84Z" fill="#b6c59e"/><path d="m657 316 29 11 28-11m-28 11v83"/>
+    <path d="m504 315 0-18 10-4v12l19-7v-12l18 7v12l10-4v14m96 1v-18l10-4v12l19-7v-12l18 7v12l10-4v14"/>
+    <path d="M589 413v-30l17-6v44m-5-92v-65m0 0 44 14-44 14"/>
+    <path d="m601 264 44 14-44 14v-28Z" fill="#a3442c" stroke="#a3442c"/>
+    <path d="m418 365 13-4 13 4v61l-13 5-13-5v-61Z" fill="#a48e6d"/><path d="m391 342 40-15 40 15v35l-40 15-40-15v-35Z" fill="#9bae80"/><path d="m391 342 40 15 40-15m-40 15v35"/>
+    <path d="m752 348 24-9 24 9v93l-24 9-24-9v-93Z" fill="#b9c4ac"/><path d="m752 348 24 9 24-9m-24 9v93m-24-70 24 9 24-9m-48 26 24 9 24-9"/>
+  </g>
+  <g fill="#a3442c"><circle cx="763" cy="370" r="2"/><circle cx="763" cy="396" r="2"/><circle cx="763" cy="422" r="2"/></g>
+  <g stroke="#705f49" stroke-width="1.2" stroke-linejoin="round"><path d="m477 424 12-5 12 5v19l-12 5-12-5v-19Z" fill="#d3b293"/><path d="m472 446 17-6 17 6v27l-17 6-17-6v-27Z" fill="#b47c61"/><path d="m663 444 12-5 12 5v19l-12 5-12-5v-19Z" fill="#d3b293"/><path d="m658 466 17-6 17 6v27l-17 6-17-6v-27Z" fill="#8fa782"/></g>
+  <path d="m510 460 70-26 68 24m43 8 45-17" stroke="#a3442c" stroke-width="1.4" stroke-dasharray="4 6"/>
+  <g fill="#3e5545" font-family="Georgia,serif" font-size="31" font-style="italic"><text x="80" y="284">Built to play.</text><text x="80" y="321">Built together.</text></g>
+  <g fill="#617454" font-family="Helvetica,Arial,sans-serif" font-size="10" letter-spacing="1.6"><text x="80" y="599">CUSTOM WORLDS / JAVA / MULTIPLAYER</text><text x="735" y="599">ILLUSTRATION</text></g>
+</svg>

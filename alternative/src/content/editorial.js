@@ -33,6 +33,12 @@ export const projectArt = {
   'castle-war': { art: 'castle-war', alt: 'Two stylized castles face each other across a gridded landscape with a player token and movement route.', caption: 'Game systems / Concept illustration' }
 };
 
+export const ventureArt = {
+  bif: { art: 'venture-bif', alt: 'BiellaInFesta lettering beside an outdoor music stage and a connected crowd in a town square.', caption: 'BiellaInFesta / Events & community' },
+  adunet: { art: 'venture-adunet', alt: 'Adunet lettering beside a mobile festival map with a route connecting venues, events, and city landmarks.', caption: 'Adunet / A festival, connected' },
+  cubewar: { art: 'venture-cubewar', alt: 'CubeWar lettering above a floating voxel island with a fortress, block characters, trees, and a multiplayer server.', caption: 'CubeWar / Minecraft & multiplayer' }
+};
+
 export const selectedWork = [
   {
     id: 'alexdoor-xas', label: 'Robot learning', title: 'Learning to interact\nwith the real world.',

@@ -35,6 +35,7 @@ export default defineConfig({
   server: { host: '127.0.0.1', port: 5174, strictPort: true },
   preview: { host: '127.0.0.1', port: 4174, strictPort: true },
   build: {
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: {
         ...Object.fromEntries(Object.keys(pages).map((key) => [key, fileURLToPath(new URL(key === 'home' ? './index.html' : `./${key}/index.html`, import.meta.url))])),

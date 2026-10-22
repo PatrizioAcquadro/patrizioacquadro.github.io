@@ -31,6 +31,7 @@ Open [the portfolio](http://127.0.0.1:5174/). `npm run build` produces `dist/`; 
 - `src/styles.css` defines the light editorial theme and responsive layouts. `public/art/` contains concept illustrations, not experimental evidence or measured specifications.
 - `public/cv/AcquadroPatrizioCV.pdf` is the current CV. Its download query is generated from SHA-256. The Word document in `assets/source/` is an older source, not the current PDF.
 - Responsive portraits, the p/a identity and icons are local. The share preview is `public/og/og-cover.png`, generated from `assets/source/og-cover.svg`.
+- Favicon SVG/PNG and the Apple touch icon live in `src/assets/`. Vite gives them content-based filenames on every page, so a changed icon gets a fresh URL instead of reusing a cached favicon. Keep icons as files with `assetsInlineLimit: 0`. `public/favicon.ico` is the 32 px PNG wrapped in an ICO container for browsers requesting the default root icon.
 - Canonicals and social metadata identify all six public pages. Vite generates `robots.txt` and `sitemap.xml`. `/cv/` remains a noindex redirect with a manual home/CV fallback; old homepage section links forward to the corresponding new pages when JavaScript is enabled.
 
 ## Validate

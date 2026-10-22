@@ -10,8 +10,18 @@ const files = Object.keys(pages).map((key) => key === 'home' ? 'index.html' : `$
 const scripts = new Set();
 let maxScriptBytes = 0;
 
+function verifyIcons(html, page) {
+  for (const name of ['favicon.png', 'favicon.svg', 'apple-touch-icon.png']) {
+    const [stem, extension] = name.split('.');
+    const match = html.match(new RegExp(`href="(/assets/${stem}-[A-Za-z0-9_-]+\\.${extension})"`));
+    assert.ok(match, `Missing fingerprinted ${name}: ${page}`);
+    assert.deepEqual(readFileSync(`dist${match[1]}`), readFileSync(`src/assets/${name}`), `Wrong icon: ${page}`);
+  }
+}
+
 for (const file of files) {
   const html = readFileSync(`dist/${file}`, 'utf8');
+  verifyIcons(html, file);
   assert.ok(!/\{\{|%BASE_URL%/.test(html), `Unresolved placeholders: ${file}`);
   assert.ok(html.includes('content="index, follow"'), `Page not indexable: ${file}`);
   const page = file === 'index.html' ? 'home' : file.split('/')[0];
@@ -47,7 +57,12 @@ for (const file of files) {
 assert.deepEqual(readFileSync('dist/cv/AcquadroPatrizioCV.pdf'), cv);
 for (const [file, source] of Object.entries(renderDiscoveryFiles())) assert.equal(readFileSync(`dist/${file}`, 'utf8'), source);
 const legacy = readFileSync('dist/cv/index.html', 'utf8');
+verifyIcons(legacy, 'cv/index.html');
 assert.ok(legacy.includes('content="noindex, follow"') && legacy.includes('content="0; url=../"'));
+const ico = readFileSync('dist/favicon.ico');
+assert.equal(ico.readUInt16LE(2), 1);
+assert.equal(ico.readUInt16LE(4), 1);
+assert.deepEqual(ico.subarray(ico.readUInt32LE(18)), readFileSync('src/assets/favicon.png'));
 const cover = readFileSync('dist/og/og-cover.png');
 assert.equal(cover.readUInt32BE(16), 1200);
 assert.equal(cover.readUInt32BE(20), 630);

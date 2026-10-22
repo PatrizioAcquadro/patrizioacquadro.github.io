@@ -1,3 +1,5 @@
+> Historical validation of the previous website. The editorial edition is now the primary site; see [the promotion record](PROMOTION.md).
+
 # Portfolio refinement — validation record
 
 Verified locally on 2026-09-30 with Node 24.19.0, Vite 6.4.3 and Playwright 1.63.0. The existing GitHub Pages architecture and visual identity were retained. No push or deployment was performed.

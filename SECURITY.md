@@ -4,7 +4,7 @@
 
 This policy covers:
 
-- Static website source (`index.html`, `cv/index.html`, `src/`, `public/`)
+- Static website source (the six portfolio pages, the legacy `cv/index.html` redirect, `src/`, `public/`)
 - Deployment and CI workflows (`.github/workflows/`)
 - Dependency and automation configuration (`package*.json`, `.github/dependabot.yml`)
 
@@ -43,7 +43,7 @@ This repository uses best-practice hardening for a static GitHub Pages site (str
 ## Residual Risks and GitHub Pages Limits
 
 - GitHub Pages does not allow full origin-level custom security headers for all controls (`X-Frame-Options`, `HSTS`, `X-Content-Type-Options`, `Permissions-Policy`, `COOP/COEP`).
-- `frame-ancestors` enforcement is not reliable via meta CSP; anti-clickjacking here is best-effort runtime protection.
+- `frame-ancestors` enforcement is not reliable via meta CSP; GitHub Pages cannot enforce a custom `frame-ancestors` response header.
 - Public contact and profile information can still be scraped if published.
 - Supply-chain risk is reduced through pinning and monitoring, not eliminated.
 - Maintainer account takeover remains a critical threat; strong MFA/passkeys are required.

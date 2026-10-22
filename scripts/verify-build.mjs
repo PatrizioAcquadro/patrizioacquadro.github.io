@@ -1,36 +1,55 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
-import { siteData } from '../src/content/siteData.js';
+import { pages, pageUrl, renderDiscoveryFiles } from '../src/content/render.js';
 
-const html = readFileSync('dist/index.html', 'utf8');
-assert.ok(!html.includes('{{site:') && !html.includes('%BASE_URL%') && !html.includes('your-domain.example'), 'Unresolved HTML placeholders');
-const canonical = new URL(html.match(/<link rel="canonical" href="([^"]+)"/)[1]);
-assert.equal(canonical.origin, new URL(siteData.siteUrl).origin, 'Incorrect canonical origin');
-assert.ok(html.includes(`property="og:url" content="${canonical.href}"`), 'Incorrect social URL');
-assert.ok(html.includes(`property="og:image" content="${new URL('og/og-cover.png', canonical).href}"`), 'Incorrect social image URL');
-assert.ok(existsSync('dist/og/og-cover.png'), 'Missing social image');
-const cvHash = createHash('sha256').update(readFileSync('public/cv/AcquadroPatrizioCV.pdf')).digest('hex').slice(0, 12);
-assert.ok(html.includes(`AcquadroPatrizioCV.pdf?v=${cvHash}`), 'Stale CV version');
-for (const [className, count] of [['news-item', siteData.news.length], ['research-card', siteData.research.length], ['project-card', siteData.projects.length], ['venture-card', siteData.ventures.length], ['talk-item', siteData.activities.length]]) {
-  assert.equal((html.match(new RegExp(`class="[^"\\n]*\\b${className}\\b`, 'g')) || []).length, count, className);
+const cv = readFileSync('public/cv/AcquadroPatrizioCV.pdf');
+const version = createHash('sha256').update(cv).digest('hex').slice(0, 12);
+const files = Object.keys(pages).map((key) => key === 'home' ? 'index.html' : `${key}/index.html`);
+const scripts = new Set();
+let maxScriptBytes = 0;
+
+for (const file of files) {
+  const html = readFileSync(`dist/${file}`, 'utf8');
+  assert.ok(!/\{\{|%BASE_URL%/.test(html), `Unresolved placeholders: ${file}`);
+  assert.ok(html.includes('content="index, follow"'), `Page not indexable: ${file}`);
+  const page = file === 'index.html' ? 'home' : file.split('/')[0];
+  assert.ok(html.includes(`<link rel="canonical" href="${pageUrl(page)}"`), `Canonical: ${file}`);
+  assert.ok(html.includes(`<meta property="og:url" content="${pageUrl(page)}"`), `Social URL: ${file}`);
+  for (const directive of ["default-src 'none'", "script-src 'self'", "style-src 'self'", "connect-src 'none'", "object-src 'none'", "frame-src 'none'", "form-action 'none'"]) assert.ok(html.includes(directive), `${file}: ${directive}`);
+  assert.ok(html.includes(`AcquadroPatrizioCV.pdf?v=${version}`), `CV version: ${file}`);
+  assert.ok(!/<script(?![^>]*\bsrc=)[^>]*>/i.test(html), `Inline script: ${file}`);
+  assert.ok(!/\son\w+\s*=/i.test(html), `Inline event handler: ${file}`);
+  const paths = [...html.matchAll(/(?:src|href|data-fallback)="([^"]+)"/g)].map((match) => match[1]);
+  for (const srcset of html.matchAll(/srcset="([^"]+)"/g)) paths.push(...srcset[1].split(',').map((value) => value.trim().split(' ')[0]));
+  for (const value of paths.filter((path) => path.startsWith('/') || path.startsWith('#'))) {
+    const url = new URL(value, `https://local.test/${file.replace('index.html', '')}`);
+    const target = `dist${url.pathname}${url.pathname.endsWith('/') ? 'index.html' : ''}`;
+    assert.ok(existsSync(target), `${file} → missing ${target}`);
+    if (url.hash) assert.ok(readFileSync(target, 'utf8').includes(`id="${url.hash.slice(1)}"`), `Missing anchor ${value}`);
+  }
+  let bytes = 0;
+  for (const match of html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)) {
+    assert.ok(match[1].startsWith('/assets/'), `External script: ${match[1]}`);
+    const script = readFileSync(`dist${match[1]}`, 'utf8');
+    assert.ok(!/\binnerHTML\b|\beval\s*\(|\binsertAdjacentHTML\b/.test(script), 'Unsafe DOM sink');
+    scripts.add(match[1]);
+    bytes += gzipSync(script).length;
+  }
+  maxScriptBytes = Math.max(maxScriptBytes, bytes);
+  assert.ok(bytes < 8000, `Initial JS budget: ${file}: ${bytes}`);
+  for (const [tag, kind] of html.matchAll(/<(img|link|script)\b[^>]*>/g)) {
+    if (kind === 'link' && !/rel="(?:stylesheet|icon|apple-touch-icon|manifest|preload|modulepreload)"/.test(tag)) continue;
+    assert.ok(!/(?:src|href)="https?:/.test(tag), `External asset: ${tag}`);
+  }
 }
-assert.ok(readFileSync('dist/robots.txt', 'utf8').includes(new URL('sitemap.xml', canonical).href));
-assert.ok(readFileSync('dist/sitemap.xml', 'utf8').includes(`<lastmod>${siteData.lastUpdated}</lastmod>`));
-const portraits = [320, 640, 960].map((width) => statSync(`dist/images/PatrizioAcquadro-${width}.webp`).size);
-const icons = ['favicon.png', 'apple-touch-icon.png'].reduce((total, file) => total + statSync(`dist/${file}`).size, 0);
-const jsFiles = readdirSync('dist/assets').filter((file) => file.endsWith('.js') && !file.startsWith('cv-'));
-const scriptBytes = jsFiles.reduce((total, file) => total + gzipSync(readFileSync(`dist/assets/${file}`)).length, gzipSync(readFileSync('dist/theme-init.js')).length);
-const paths = [...html.matchAll(/(?:src|href|data-fallback)="([^"#]+)"/g)].map((match) => match[1]);
-for (const set of html.matchAll(/srcset="([^"]+)"/g)) paths.push(...set[1].split(',').map((entry) => entry.trim().split(' ')[0]));
-for (const asset of paths.filter((value) => value.startsWith(canonical.pathname))) {
-  assert.ok(existsSync(`dist/${asset.slice(canonical.pathname.length).split('?')[0]}`), `Missing asset: ${asset}`);
-}
-assert.ok(Math.max(...portraits) <= 200_000, 'Portrait exceeds 200 KB');
-assert.ok(icons <= 60_000, 'Icons exceed 60 KB');
-assert.ok(scriptBytes < 8_000, 'Homepage JavaScript exceeds its original size');
-for (const obsolete of ['dist/PA_Logo.png', 'dist/images/PatrizioAcquadro.png', 'dist/assets/source']) {
-  assert.ok(!existsSync(obsolete), `Unnecessary public artifact: ${obsolete}`);
-}
-console.log(`Build verified: portrait max ${Math.max(...portraits)} B; icons ${icons} B; homepage JS ${scriptBytes} B gzip.`);
+assert.deepEqual(readFileSync('dist/cv/AcquadroPatrizioCV.pdf'), cv);
+for (const [file, source] of Object.entries(renderDiscoveryFiles())) assert.equal(readFileSync(`dist/${file}`, 'utf8'), source);
+const legacy = readFileSync('dist/cv/index.html', 'utf8');
+assert.ok(legacy.includes('content="noindex, follow"') && legacy.includes('content="0; url=../"'));
+const cover = readFileSync('dist/og/og-cover.png');
+assert.equal(cover.readUInt32BE(16), 1200);
+assert.equal(cover.readUInt32BE(20), 630);
+assert.ok(statSync('dist/images/PatrizioAcquadro-960.webp').size < 200000);
+console.log(`Verified ${files.length} static pages, internal links and anchors, CSP, local assets, byte-identical CV; initial JS ${maxScriptBytes} B gzip.`);

@@ -3,231 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow" />
     <meta name="referrer" content="no-referrer" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'; worker-src 'none'; manifest-src 'self'; media-src 'self'; upgrade-insecure-requests"
-    />
-    <title>Patrizio Acquadro | Robot Learning &amp; Manipulation</title>
-    <meta
-      name="description"
-      content="Patrizio Acquadro, R&amp;D Assistant in Robot Learning at Purdue University. Humanoid manipulation, simulation, multimodal perception, and AI engineering."
-    />
-    <link rel="canonical" href="{{site:site-url}}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%apple-touch-icon.png" />
-
-    <meta property="og:title" content="Patrizio Acquadro | Robot Learning &amp; Manipulation" />
-    <meta
-      property="og:description"
-      content="Patrizio Acquadro, R&amp;D Assistant in Robot Learning at Purdue University. Humanoid manipulation, simulation, multimodal perception, and AI engineering."
-    />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'; worker-src 'none'; manifest-src 'self'; media-src 'self'; upgrade-insecure-requests" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="canonical" href="{{url}}" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{site:site-url}}" />
-    <meta property="og:image" content="{{site:og-image}}" />
-
-    <link rel="stylesheet" href="/src/styles/system.css" />
-    <link rel="stylesheet" href="/src/styles/main.css" />
-    <script src="/theme-init.js"></script>
+    <meta property="og:site_name" content="Patrizio Acquadro" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:url" content="{{url}}" />
+    <meta property="og:image" content="{{image}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Patrizio Acquadro — robot learning, research and engineering at Purdue University." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-
-    <header class="c-navbar" id="site-header" data-menu-open="false">
-      <div class="container c-navbar__inner">
-        <a class="c-navbar__brand" href="#home">
-          <span>Patrizio Acquadro</span>
-        </a>
-
-        <button
-          class="c-navbar__menu-toggle"
-          id="menu-toggle"
-          hidden
-          type="button"
-          aria-expanded="false"
-          aria-controls="primary-nav-panel"
-          aria-label="Open navigation menu"
-        >
-          Menu
-        </button>
-
-        <div class="c-navbar__panel" id="primary-nav-panel">
-          <nav aria-label="Primary navigation" id="primary-nav">
-            <ul class="c-navbar__links nav-list">
-              <li><a class="c-navbar__link" href="#home">Home</a></li>
-              <li><a class="c-navbar__link" href="#news">News</a></li>
-              <li><a class="c-navbar__link" href="#research">Research</a></li>
-              <li><a class="c-navbar__link" href="#projects">Projects</a></li>
-              <li><a class="c-navbar__link" href="#entrepreneurship">Entrepreneurship</a></li>
-              <li><a class="c-navbar__link" href="#talks">Talks</a></li>
-              <li><a class="c-navbar__link" href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <button
-            class="c-theme-toggle"
-            id="theme-toggle"
-            hidden
-            type="button"
-            aria-label="Switch to light mode"
-          >
-            <svg class="c-theme-toggle__icon c-theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="5"/>
-              <line x1="12" y1="1" x2="12" y2="3"/>
-              <line x1="12" y1="21" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3" y2="12"/>
-              <line x1="21" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <svg class="c-theme-toggle__icon c-theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-            </svg>
-          </button>
-
-        </div>
-      </div>
-    </header>
-
-    <main id="main-content" tabindex="-1">
-      <section class="hero c-section reveal" id="home" aria-labelledby="hero-name">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="c-section__kicker">Robot Learning &amp; Manipulation</p>
-            <h1 id="hero-name">{{site:hero-name}}</h1>
-            <p class="hero-tagline" id="hero-tagline">{{site:hero-tagline}}</p>
-            <p class="hero-bio" id="hero-bio">{{site:hero-bio}}</p>
-            <p class="hero-invite">
-              If you are building robotics or embodied AI, or just want to talk about shared interests, feel free to connect.
-            </p>
-            <div class="hero-actions">
-              <a
-                class="c-button c-button--solid"
-                href="%BASE_URL%cv/AcquadroPatrizioCV.pdf?v={{site:cv-version}}"
-                download="AcquadroPatrizioCV.pdf"
-              >
-                Download CV
-              </a>
-              <a class="c-button c-button--ghost" href="#contact">Get in touch</a>
-            </div>
-          </div>
-
-          <figure class="hero-figure">
-            <img id="profile-image" class="profile-image" src="{{site:profile-source}}" srcset="{{site:profile-srcset}}" sizes="(max-width: 40rem) min(78vw, 17rem), clamp(12.5rem, 28vw, 17.25rem)" data-fallback="%BASE_URL%images/avatar-placeholder.svg" width="640" height="768" fetchpriority="high" decoding="async" alt="Portrait of Patrizio Acquadro" />
-          </figure>
-        </div>
-        <div class="hero-quote-shell">
-          <blockquote class="hero-quote">
-            <p class="hero-quote__text">
-              The impediment to action advances action. What stands in the way becomes the way.
-            </p>
-            <cite class="hero-quote__author">Marcus Aurelius</cite>
-          </blockquote>
-        </div>
-      </section>
-
-      <section class="c-section reveal" id="news" aria-labelledby="news-title">
-        <div class="container section-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Latest Updates</p>
-            <h2 id="news-title">News</h2>
-          </header>
-          <ul class="news-list c-timeline" id="news-list">{{site:news}}</ul>
-        </div>
-      </section>
-
-      <section class="c-section c-section--surface reveal" id="research" aria-labelledby="research-title">
-        <div class="container section-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Research Work</p>
-            <h2 id="research-title">Research</h2>
-          </header>
-          <div class="research-list" id="research-list">{{site:research}}</div>
-        </div>
-      </section>
-
-      <section class="c-section reveal" id="projects" aria-labelledby="projects-title">
-        <div class="container section-shell projects-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Selected Engineering</p>
-            <h2 id="projects-title">Projects</h2>
-          </header>
-          <h3 class="projects-group-heading projects-group-heading--robotics">Robotics</h3>
-          <div class="projects-carousel" id="projects-carousel">
-            <button class="projects-arrow projects-arrow--previous" type="button" aria-label="Previous project" aria-controls="projects-grid" hidden>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg>
-            </button>
-            <div class="projects-viewport">
-              <div class="projects-grid" id="projects-grid">{{site:robotics-projects}}</div>
-            </div>
-            <button class="projects-arrow projects-arrow--next" type="button" aria-label="Next project" aria-controls="projects-grid" hidden>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg>
-            </button>
-            <p class="projects-status" aria-live="polite" aria-atomic="true" hidden></p>
-          </div>
-          <div class="projects-more">
-            <h3 class="projects-group-heading">AI &amp; Software</h3>
-            <div class="projects-grid" id="other-projects-grid">{{site:projects}}</div>
-          </div>
-          <p class="inline-note">
-            More work on
-            <a href="https://github.com/PatrizioAcquadro?tab=repositories" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">GitHub</a>
-          </p>
-        </div>
-      </section>
-
-      <section class="c-section c-section--surface reveal" id="entrepreneurship" aria-labelledby="entrepreneurship-title">
-        <div class="container section-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Venture Building</p>
-            <h2 id="entrepreneurship-title">Entrepreneurship</h2>
-          </header>
-          <div class="venture-list" id="venture-list">{{site:ventures}}</div>
-        </div>
-      </section>
-
-      <section class="c-section c-section--surface reveal" id="talks" aria-labelledby="talks-title">
-        <div class="container section-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Speaking and Activities</p>
-            <h2 id="talks-title">Talks &amp; Activities</h2>
-          </header>
-          <ul class="talks-list c-timeline" id="talks-list">{{site:activities}}</ul>
-        </div>
-      </section>
-
-      <section class="c-section c-section--contact reveal" id="contact" aria-labelledby="contact-title">
-        <div class="container section-shell">
-          <header class="c-section__header">
-            <p class="c-section__kicker">Direct Channels</p>
-            <h2 id="contact-title">Contact</h2>
-          </header>
-          <ul class="contact-list" id="contact-list">{{site:contacts}}</ul>
-        </div>
-      </section>
-    </main>
-
-    <dialog class="mail-sheet-backdrop" id="mail-sheet" aria-labelledby="mail-sheet-title">
-      <div class="mail-sheet">
-        <button class="mail-sheet__close" id="mail-sheet-close" type="button" aria-label="Close mail panel">&times;</button>
-        <p class="mail-sheet__kicker">Mail</p>
-        <h3 class="mail-sheet__title" id="mail-sheet-title">Reach me by email</h3>
-        <div class="mail-sheet__email-row">
-          <p class="mail-sheet__email" id="mail-sheet-email">{{site:mail-email}}</p>
-          <button class="c-button c-button--subtle mail-sheet__copy" id="mail-copy-button" type="button">Copy</button>
-        </div>
-        <a class="c-button c-button--solid" href="{{site:mail-href}}">Open email app</a>
-        <p class="mail-sheet__status" id="mail-copy-status" role="status" aria-live="polite"></p>
-      </div>
-    </dialog>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p id="last-updated">{{site:last-updated}}</p>
-        <p>&copy; <span id="current-year">{{site:current-year}}</span> Patrizio Acquadro</p>
-      </div>
-    </footer>
+  <body data-page="{{page}}">
+    {{body}}
   </body>
 </html>

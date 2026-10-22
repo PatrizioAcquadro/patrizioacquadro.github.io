@@ -1,15 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { pages } from '../src/content/render.js';
 
 const repoRoot = process.cwd();
 const errors = [];
 
-const htmlPolicyTargets = [
-  { path: 'index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'cv/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'dist/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" },
-  { path: 'dist/cv/index.html', frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" }
-];
+const pageFiles = [...Object.keys(pages).map((page) => page === 'home' ? 'index.html' : `${page}/index.html`), 'cv/index.html'];
+const htmlPolicyTargets = pageFiles.flatMap((file) => [file, `dist/${file}`]).map((file) => ({ path: file, frameDirective: "frame-src 'none'", objectDirective: "object-src 'none'" }));
 
 const requiredCspDirectives = [
   "default-src 'none'",
@@ -228,7 +225,7 @@ function walkFiles(relativeDir, extensions) {
 
 function assertNoExternalCssImports() {
   const cssFiles = [
-    ...walkFiles('src/styles', ['.css']),
+    ...walkFiles('src', ['.css']),
     ...walkFiles('dist/assets', ['.css'])
   ];
 

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f6f2"/>
+  <g fill="#242722" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="64" y="85" font-size="18" letter-spacing="2">ROBOT LEARNING · PURDUE UNIVERSITY</text>
+    <path d="M64 122H1136" stroke="#d7d8ce"/>
+    <text x="58" y="266" font-size="106" letter-spacing="-6">Patrizio</text>
+    <text x="58" y="375" font-size="106" letter-spacing="-6">Acquadro<tspan fill="#a3442c">.</tspan></text>
+    <text x="64" y="454" font-size="28">I help robots learn, perceive, and act.</text>
+    <path d="M64 528H1136" stroke="#d7d8ce"/>
+    <text x="64" y="575" font-size="17" fill="#64675f">Research · Engineering · Community</text>
+    <text x="1136" y="575" text-anchor="end" font-size="17" fill="#64675f">patrizioacquadro.github.io</text>
+  </g>
+  <g transform="translate(780 214) scale(2.8)" fill="none">
+    <g stroke="#242722" stroke-width="6.5" stroke-linecap="square">
+      <path d="M13 60V19M111 19V46"/><circle cx="27" cy="32" r="14"/><circle cx="97" cy="32" r="14"/>
+    </g>
+    <path d="M49 61 70 9h6L55 61Z" fill="#a3442c"/>
+  </g>
+</svg>

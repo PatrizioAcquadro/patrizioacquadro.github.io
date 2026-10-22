@@ -11,7 +11,7 @@ const cert = join(directory, 'cert.pem');
 let server;
 try {
   execFileSync('openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', key, '-out', cert, '-days', '1', '-subj', '/CN=localhost'], { stdio: 'ignore' });
-  server = await preview({ preview: { host: '127.0.0.1', port: 4173, strictPort: true, https: { key: readFileSync(key), cert: readFileSync(cert) } } });
+  server = await preview({ preview: { host: '127.0.0.1', port: 4175, strictPort: true, https: { key: readFileSync(key), cert: readFileSync(cert) } } });
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }

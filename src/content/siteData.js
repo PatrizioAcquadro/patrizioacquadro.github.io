@@ -31,7 +31,7 @@ export const siteData = {
     'I help robots learn, perceive, and act.',
   bio:
     'I’m an R&D Assistant in Robot Learning at Purdue University, focused on humanoid manipulation and multimodal perception. I’m also pursuing two master’s degrees focused on AI at Politecnico di Milano and the University of Milano-Bicocca.',
-  lastUpdated: '2026-10-21',
+  lastUpdated: '2026-10-22',
   privacyExposure: {
     showPhone: false,
     phoneLabel: 'Phone',

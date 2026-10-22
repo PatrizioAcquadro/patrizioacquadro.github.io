@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#dfe5e1"/>
+  <g stroke="#bbc8c0" stroke-width="1">
+    <path d="M0 521H960M0 561H960M0 601H960M96 640 440 406M256 640 472 406M416 640 504 406M576 640 536 406M736 640 568 406M896 640 600 406"/>
+    <path d="M91 118H869M91 118V493M869 118V493" stroke-dasharray="3 8"/>
+  </g>
+  <ellipse cx="518" cy="525" rx="225" ry="25" fill="#ccd7cf"/>
+  <path d="M364 508V142H622V508" stroke="#354c42" stroke-width="5"/>
+  <path d="M381 500V159H605V500" stroke="#354c42" stroke-width="1.5"/>
+  <path d="m381 159 168 31v321l-168-11V159Z" fill="#f2f0e6" stroke="#354c42" stroke-width="2"/>
+  <path d="m398 180 132 24v283l-132-8V180Z" stroke="#c1c7b9"/>
+  <path d="m513 345 23 2" stroke="#a3442c" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="515" cy="346" r="12" stroke="#a3442c" stroke-width="1"/>
+  <circle cx="515" cy="346" r="27" stroke="#a3442c" stroke-dasharray="2 6"/>
+  <path d="M381 501c114 57 236 46 274-15" stroke="#a3442c" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <path d="m642 488 14-3-2 14" stroke="#a3442c" stroke-width="1.5"/>
+  <g stroke="#354c42" stroke-width="2" stroke-linejoin="round">
+    <path d="m695 493-40-65 15-62-54-34-42 18" stroke-width="17" stroke="#6d8275"/>
+    <path d="m695 493-40-65 15-62-54-34-42 18"/>
+    <path d="m572 350-20-2-13 16M572 350l-11-20-16-1" stroke-width="3"/>
+    <circle cx="655" cy="428" r="15" fill="#eef0e9"/>
+    <circle cx="670" cy="366" r="15" fill="#eef0e9"/>
+    <circle cx="616" cy="332" r="12" fill="#eef0e9"/>
+    <circle cx="655" cy="428" r="4" fill="#354c42"/>
+    <circle cx="670" cy="366" r="4" fill="#354c42"/>
+    <path d="M670 495h51v25h-51z" fill="#8a9d8d"/>
+  </g>
+  <g stroke="#a3442c" stroke-width="1.3"><path d="M226 383h92l50-31M733 271h-93l-83 54"/><circle cx="368" cy="352" r="3" fill="#a3442c"/><circle cx="557" cy="325" r="3" fill="#a3442c"/></g>
+  <g fill="#41554a" font-family="Helvetica,Arial,sans-serif" font-size="12" letter-spacing="2"><text x="226" y="371">INTERACTION</text><text x="662" y="259">ACTION</text><text x="49" y="599" font-size="10" letter-spacing="1.5">ALEXDOOR-XAS</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+  <g stroke="#354c42" stroke-width="1"><path d="M815 479v-47m0 47h40m-40 0-22 17"/><path d="m811 436 4-5 4 5m32 39 5 4-5 4"/></g>
+</svg>

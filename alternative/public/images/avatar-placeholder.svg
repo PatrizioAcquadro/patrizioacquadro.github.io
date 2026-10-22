@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder avatar</title>
+  <desc id="desc">Abstract profile placeholder for Patrizio Acquadro</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f8fa"/>
+      <stop offset="100%" stop-color="#dbe8ee"/>
+    </linearGradient>
+    <linearGradient id="shape" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#347684"/>
+      <stop offset="100%" stop-color="#0d4d58"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" fill="url(#bg)" />
+  <circle cx="360" cy="260" r="130" fill="url(#shape)" opacity="0.9" />
+  <path d="M152 606c0-119 93-216 208-216s208 97 208 216" fill="url(#shape)" opacity="0.9" />
+  <circle cx="360" cy="360" r="330" fill="none" stroke="#97b6c2" stroke-width="12" />
+</svg>

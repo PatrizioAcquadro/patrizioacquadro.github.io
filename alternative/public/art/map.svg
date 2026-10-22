@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e9e5d9"/>
+  <g fill="#d8dccd"><path d="m505 0-67 168 145 55 78-223zM824 68l-94 174 230 80V0H856zM644 410l-62 146 212 84h166V516l-135-48-56 107zM0 0h188l-29 87L0 111z"/></g>
+  <g stroke="#f9f7ef" stroke-width="29"><path d="M318-36 151 640M695-36 465 640M917-36 684 640M71-36-63 478M-44 144l1050 371M-21 404l924 307M253-49l772 267"/></g>
+  <g stroke="#c9c8b9" stroke-width="1"><path d="M318-36 151 640M695-36 465 640M917-36 684 640M-44 144l1050 371M-21 404l924 307M253-49l772 267"/></g>
+  <path d="m613 143-66 200 206 72-37 106" stroke="#a3442c" stroke-width="5" stroke-linejoin="round" stroke-dasharray="5 8"/>
+  <g fill="#a3442c" stroke="#f9f7ef" stroke-width="5"><circle cx="613" cy="143" r="15"/><circle cx="547" cy="343" r="15"/><circle cx="753" cy="415" r="15"/><circle cx="716" cy="521" r="15"/></g>
+  <g fill="#f9f7ef"><circle cx="613" cy="143" r="4"/><circle cx="547" cy="343" r="4"/><circle cx="753" cy="415" r="4"/><circle cx="716" cy="521" r="4"/></g>
+  <path d="m855 96 10-30 10 30-10-8z" fill="#a3442c"/>
+  <text x="840" y="609" fill="#64675f" font-family="Helvetica,Arial,sans-serif" font-size="10" letter-spacing="1">ILLUSTRATION</text>
+</svg>

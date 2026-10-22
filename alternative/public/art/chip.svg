@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e8e6dc"/>
+  <g stroke="#cfcec1"><path d="M0 160h960M0 240h960M0 320h960M0 400h960M0 480h960M160 0v640M240 0v640M320 0v640M400 0v640M480 0v640M560 0v640M640 0v640M720 0v640M800 0v640"/></g>
+  <g transform="translate(480 323) rotate(-30) skewX(30) scale(1 .86)">
+    <rect x="-129" y="-111" width="264" height="246" fill="#b9c5af" stroke="#506044" stroke-width="1.5"/>
+    <rect x="-129" y="-130" width="264" height="246" fill="#d8dfcc" stroke="#506044" stroke-width="2"/>
+    <rect x="-103" y="-104" width="212" height="194" stroke="#879879"/>
+    <rect x="-78" y="-79" width="162" height="144" fill="#f4f2e7" stroke="#506044" stroke-width="1.5"/>
+    <g stroke="#506044" stroke-width="6">
+      <path d="M-154-90h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24M135-90h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24m-24 30h24"/>
+      <path d="M-90-155v24m30-24v24m30-24v24m30-24v24m30-24v24m30-24v24m30-24v24M-90 116v24m30-24v24m30-24v24m30-24v24m30-24v24m30-24v24m30-24v24"/>
+    </g>
+    <g fill="#a3442c"><rect x="-48" y="-47" width="25" height="25"/><rect x="-9" y="-47" width="25" height="25"/><rect x="30" y="-47" width="25" height="25"/></g>
+    <g fill="#708367"><rect x="-48" y="-8" width="25" height="25"/><rect x="-9" y="-8" width="25" height="25"/><rect x="30" y="-8" width="25" height="25"/></g>
+  </g>
+  <g stroke="#637259" stroke-width="1.5"><path d="M244 304H180v120h-66m525-171h91V144h81M570 460v71h139"/><circle cx="114" cy="424" r="4" fill="#637259"/><circle cx="811" cy="144" r="4" fill="#637259"/><circle cx="709" cy="531" r="4" fill="#637259"/></g>
+  <g fill="#46533f" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="686" y="122">ON-DEVICE AI</text><text x="142" y="454">INT8</text><text x="49" y="599" font-size="10" letter-spacing="1.5">STM32N6 / TRANSFORMER</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

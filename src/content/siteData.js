@@ -100,7 +100,7 @@ export const siteData = {
       bullets: [
         'Build simulation and control infrastructure in Isaac Sim and Isaac Lab for manipulation with the IHMC Alex humanoid.',
         'Develop Isaac Audio Sensors and multimodal perception systems for robotics research.',
-        'Mentor an undergraduate researcher on Ego2Grip, guiding 3D hand-motion reconstruction and retargeting to IHMC Alex grippers.'
+        'Mentor two students, including technical guidance on Ego2Grip’s 3D hand-motion reconstruction and retargeting to IHMC Alex grippers.'
       ]
     },
     {
@@ -184,7 +184,7 @@ export const siteData = {
       title: 'Ego2Grip - Learning from First-Person Video',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Mentoring an undergraduate researcher on retargeting 3D hand motion from first-person video to IHMC Alex grippers for accessible manipulation demonstrations.',
+      built: 'Provide mentorship on retargeting 3D hand motion from first-person video to IHMC Alex grippers for accessible manipulation demonstrations.',
       stack: 'Python, PyTorch, HaWoR, Ego4D, 3D hand reconstruction',
       href: 'https://github.com/grmpn/Egocentric-Videos',
       hrefLabel: 'Collaborator’s repository'

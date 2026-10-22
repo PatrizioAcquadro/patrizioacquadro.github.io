@@ -253,9 +253,11 @@ article[id], h2[id] { scroll-margin-top: 112px; }
 .software-group .project-illustration { grid-column: 3; grid-row: 1; margin-top: 0; }
 .page-end-note { margin-top: 55px; display: flex; justify-content: space-between; align-items: center; gap: 25px; font-size: .875rem; color: var(--muted); }
 .experience-entry { display: grid; grid-template-columns: 240px minmax(0, 1fr); padding-block: 44px; border-bottom: 1px solid var(--line); gap: 45px; }
-.experience-entry-purdue { background: var(--sand); border-left: 2px solid var(--accent); margin-inline: -30px; padding-inline: 28px; }
+[data-page='experience'] .group-heading { border-bottom: none; padding-bottom: 8px; margin-bottom: 8px; }
+.experience-entry-purdue { grid-template-columns: 208px minmax(0, 1fr); background: #f1efe9; border: none; border-radius: 10px; margin-block: 16px; padding: 32px; }
 .experience-entry-purdue .timeline-date { color: var(--accent); align-content: start; row-gap: 10px; }
 .experience-entry-purdue .timeline-dot { background: var(--accent); border-color: var(--accent); }
+.experience-entry-purdue .experience-detail::before { content: ''; display: block; width: 28px; height: 2px; background: var(--accent); margin-bottom: 18px; }
 .timeline-date { font-family: var(--mono); font-size: .6875rem; display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; line-height: 1.65; padding-top: 4px; }
 .timeline-dot { width: 7px; height: 7px; flex: 0 0 auto; border: 1px solid var(--muted); margin-top: 5px; border-radius: 50%; }
 .timeline-dot.current { background: var(--accent); border-color: var(--accent); }
@@ -317,6 +319,7 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .venture-poster { min-height: 330px; }
   .contact-main { gap: 35px; }
   .experience-entry { grid-template-columns: 200px minmax(0, 1fr); gap: 30px; }
+  .experience-entry-purdue { grid-template-columns: 168px minmax(0, 1fr); }
   .activity-entry-featured { grid-template-columns: 145px minmax(0, 1fr); }
   .activity-seal { display: none; }
 }
@@ -466,7 +469,7 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .software-group .project-illustration { grid-column: 1 / -1; grid-row: auto; margin-top: 12px; max-width: 440px; }
   .page-end-note { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 35px; }
   .experience-entry { grid-template-columns: 1fr; gap: 22px; padding-block: 30px; }
-  .experience-entry-purdue { margin-inline: -12px; padding-inline: 10px; }
+  .experience-entry-purdue { grid-template-columns: 1fr; margin-block: 12px; padding: 24px 22px; border-radius: 8px; }
   .timeline-date { gap: 10px; }
   .current-label { width: auto; margin-left: 8px; padding-top: 2px; }
   .experience-detail h3 { font-size: 1.8rem; }

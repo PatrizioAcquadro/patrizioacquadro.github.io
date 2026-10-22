@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#dfe6e2"/>
+  <g stroke="#c1d0c7"><path d="M82 155h796M82 320h796M82 485h796M244 100v436M480 100v436M716 100v436" stroke-dasharray="2 8"/></g>
+  <g stroke="#476050" stroke-width="1.5" fill="#f0f3e9"><rect x="119" y="172" width="150" height="104"/><rect x="119" y="294" width="150" height="104"/><circle cx="162" cy="214" r="11"/><circle cx="162" cy="336" r="11"/><path d="M144 254v-12q18-18 36 0v12m-36 122v-12q18-18 36 0v12"/><path d="M212 202v36m-18-18h36m-31 111h27v27h-27z"/></g>
+  <g stroke="#476050" stroke-width="1.5"><rect x="358" y="204" width="224" height="210" fill="#f0f3e9"/><path d="M358 246h224m-224 42h224m-224 42h224m-224 42h224M414 204v210m56-210v210m56-210v210"/>
+    <g fill="#9fb5a0"><rect x="370" y="215" width="32" height="20"/><rect x="482" y="257" width="32" height="20"/><rect x="426" y="299" width="32" height="20"/><rect x="538" y="341" width="32" height="20"/></g>
+    <path d="m377 224 5 5 12-11m95 48 5 5 12-11m-80 48 5 5 12-11m95 48 5 5 12-11" stroke="#476050"/>
+    <path d="M303 309h36m-10-6 10 6-10 6M599 309h38m-10-6 10 6-10 6" stroke="#a3442c" stroke-dasharray="4 5"/>
+    <rect x="666" y="172" width="168" height="226" fill="#f0f3e9"/><path d="M750 172v226m-84-113h168"/>
+    <g fill="#d9e4d5"><path d="M682 209h51v30h-51zm84 0h51v30h-51zm-84 113h51v30h-51zm84 0h51v30h-51z"/></g>
+    <path d="M682 203v42m0-10h51v10m-44-36v13h18v-13m59-6v42m0-10h51v10m-44-36v13h18v-13m-109 90v42m0-10h51v10m-44-36v13h18v-13m59-6v42m0-10h51v10m-44-36v13h18v-13"/>
+  </g>
+  <g stroke="#476050"><path d="M358 467h224v38H358zM414 467v38m56-38v38m56-38v38"/><path d="M371 486h30m27 0h28m27 0h29m27 0h29" stroke="#a3442c" stroke-width="3"/></g>
+  <g fill="#476050" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="119" y="145">PEOPLE</text><text x="384" y="178">ASSIGNMENT</text><text x="688" y="145">ROOMS</text><text x="383" y="536">SCHEDULING</text><text x="49" y="599" font-size="10" letter-spacing="1.5">HOSPITAL SCHEDULING / MILP</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

@@ -26,6 +26,7 @@ test('every page opens directly with complete content, local assets and no brows
       await expect(page.locator(`[data-record="${record}"]`)).toHaveCount(count);
       await expect(page.locator('[aria-current="page"]')).toHaveAttribute('href', route);
     }
+    if (route === '/projects/') await expect(page.locator('.project-illustration img')).toHaveCount(content.projects.length);
     for (const image of await page.locator('img').all()) {
       await image.scrollIntoViewIfNeeded();
       await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);

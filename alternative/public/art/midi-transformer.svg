@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e8e2d9"/>
+  <g stroke="#cfc4b6"><path d="M190 155h585M190 205h585M190 255h585M190 305h585M190 355h585M190 405h585M190 155v250m65-250v250m65-250v250m65-250v250m65-250v250m65-250v250m65-250v250m65-250v250m65-250v250m65-250v250"/></g>
+  <g fill="#ac6b50" stroke="#834b36"><rect x="207" y="369" width="105" height="17"/><rect x="272" y="319" width="105" height="17"/><rect x="337" y="269" width="105" height="17"/><rect x="402" y="219" width="105" height="17"/><rect x="467" y="169" width="170" height="17"/></g>
+  <g fill="#9da98e" stroke="#5b6b50"><rect x="207" y="219" width="40" height="17"/><rect x="337" y="369" width="105" height="17"/><rect x="467" y="319" width="40" height="17"/><rect x="532" y="269" width="105" height="17"/><rect x="662" y="219" width="105" height="17"/></g>
+  <g stroke="#645e52" stroke-width="1.5"><rect x="190" y="429" width="585" height="94" fill="#f6f1e5"/><path d="M235 429v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94m45-94v94"/><g fill="#645e52"><path d="M223 429h24v57h-24zM268 429h24v57h-24zM358 429h24v57h-24zM403 429h24v57h-24zM448 429h24v57h-24zM538 429h24v57h-24zM583 429h24v57h-24zM673 429h24v57h-24zM718 429h24v57h-24z"/></g></g>
+  <path d="M115 415V179m-6 12 6-12 6 12M811 126H195m12-6-12 6 12 6" stroke="#a3442c" stroke-width="1.3" stroke-dasharray="5 7"/>
+  <g fill="#645e52" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="190" y="107">SEQUENCE GENERATION</text><text x="77" y="314" transform="rotate(-90 77 314)">NOTE EVENTS</text><text x="190" y="554">PIANO / MIDI REPRESENTATION</text><text x="49" y="599" font-size="10" letter-spacing="1.5">PIANO MIDI TRANSFORMER</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

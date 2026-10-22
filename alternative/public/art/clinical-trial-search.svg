@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e0e6df"/>
+  <g stroke="#c0cebf"><path d="M83 145h794v350H83zM480 145v350" stroke-dasharray="2 8"/></g>
+  <g stroke="#4b6150" stroke-width="1.5" stroke-linejoin="round"><rect x="110" y="254" width="236" height="87" rx="3" fill="#f0f3e8"/><circle cx="144" cy="289" r="12"/><path d="m153 299 10 12m20-28h137m-137 16h101"/>
+    <path d="m261 356 102 46 99-45m-89-17 85-72M363 402l99-45" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <g fill="#d0ddc9"><rect x="385" y="194" width="113" height="39" rx="2"/><rect x="385" y="254" width="113" height="39" rx="2"/><rect x="385" y="314" width="113" height="39" rx="2"/></g>
+    <path d="M402 213h78m-78 60h58m-58 60h72"/>
+    <path d="M512 273h46m-12-6 12 6-12 6" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <path d="M584 190h110l29 29v171H584V190Z" fill="#b4c7af"/><path d="M605 209h110l29 29v171H605V209Z" fill="#d0ddc9"/><path d="M626 228h110l29 29v171H626V228Z" fill="#f0f3e8"/><path d="M736 228v29h29M645 280h101m-101 18h82m-82 18h92m-92 18h67m-67 18h101m-101 18h82m-82 18h92"/>
+    <path d="m791 270 58 0-21 25v34l-16 9v-43l-21-25Z" fill="#d0ddc9"/>
+    <path d="m797 378 12 12 28-32" stroke="#a3442c" stroke-width="2"/>
+  </g>
+  <g fill="#4b6150" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="110" y="227">SEARCH QUERY</text><text x="388" y="172" font-size="10">KEYWORDS</text><text x="610" y="465" font-size="10">RETRIEVAL + FILTERING</text><text x="117" y="428" font-size="10">LANGUAGE → STRUCTURED SEARCH</text><text x="49" y="599" font-size="10" letter-spacing="1.5">CLINICAL-TRIAL SEARCH</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

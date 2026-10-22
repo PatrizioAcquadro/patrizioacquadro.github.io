@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e4e0e5"/>
+  <g stroke="#c9c1ce"><path d="M64 505h832M64 545h832M220 600l208-210m-78 210 110-210m40 210-8-210m160 210-128-210m278 210L556 390"/></g>
+  <g stroke="#65576c" stroke-width="1.5" stroke-linejoin="round"><path d="m311 439 210-63 167 74-210 70-167-81Z" fill="#c6c1cb"/><path d="M311 439v25l167 81 210-70v-25l-210 70-167-81Z" fill="#b1a8b9"/><path d="M478 520v25"/>
+    <g fill="#e9e5ec"><ellipse cx="385" cy="442" rx="11" ry="5"/><ellipse cx="427" cy="430" rx="11" ry="5"/><ellipse cx="469" cy="417" rx="11" ry="5"/><ellipse cx="511" cy="405" rx="11" ry="5"/><ellipse cx="426" cy="464" rx="11" ry="5"/><ellipse cx="468" cy="451" rx="11" ry="5"/><ellipse cx="510" cy="438" rx="11" ry="5"/><ellipse cx="552" cy="425" rx="11" ry="5"/><ellipse cx="468" cy="486" rx="11" ry="5"/><ellipse cx="510" cy="473" rx="11" ry="5"/><ellipse cx="552" cy="460" rx="11" ry="5"/><ellipse cx="594" cy="447" rx="11" ry="5"/></g>
+    <path d="m439 364 74-24 65 30v42l-75 26-64-31v-43Z" fill="#b96d50" stroke="#8b4937"/><path d="m439 364 64 30 75-24m-75 24v44" stroke="#8b4937"/>
+    <g fill="#d6a68d" stroke="#8b4937"><ellipse cx="475" cy="359" rx="11" ry="6"/><ellipse cx="512" cy="348" rx="11" ry="6"/><ellipse cx="506" cy="374" rx="11" ry="6"/><ellipse cx="543" cy="363" rx="11" ry="6"/></g>
+  </g>
+  <g stroke="#65576c" stroke-linecap="round" stroke-linejoin="round"><path d="m169 246 89 33 55 60 78-15m399-78-89 33-55 60-56-15" stroke="#a59aac" stroke-width="30"/><path d="m169 246 89 33 55 60 78-15m399-78-89 33-55 60-56-15" stroke-width="2"/>
+    <g fill="#f0eced" stroke-width="2"><circle cx="258" cy="279" r="20"/><circle cx="313" cy="339" r="18"/><circle cx="701" cy="279" r="20"/><circle cx="646" cy="339" r="18"/></g>
+    <path d="m390 324 21-18 37 8m-58 10 25 20 29-3m146-17-21-18-37 8m58 10-25 20-29-3" stroke-width="4"/>
+  </g>
+  <path d="M509 212v90m-7-12 7 12 7-12" stroke="#a3442c" stroke-width="1.5" stroke-dasharray="5 7"/>
+  <g fill="#65576c" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="125" y="210">LEFT MANIPULATOR</text><text x="681" y="210">RIGHT MANIPULATOR</text><text x="431" y="185">COORDINATED ACTION</text><text x="49" y="599" font-size="10" letter-spacing="1.5">VLA-LEGO / BIMANUAL ASSEMBLY</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

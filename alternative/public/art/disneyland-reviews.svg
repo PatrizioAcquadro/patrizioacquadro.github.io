@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e7dfd7"/>
+  <g stroke="#c9bcae"><path d="M80 120h800v400H80z" stroke-dasharray="3 8"/><path d="M480 120v400" stroke-dasharray="3 8"/></g>
+  <g stroke="#755744" stroke-width="1.5" stroke-linejoin="round"><path d="M123 193h204v115H205l-38 30v-30h-44V193Z" fill="#f6eee1"/><path d="M147 221h153m-153 19h132m-132 19h146m-146 19h81"/><path d="M164 361h164v85h-35l-25 25v-25H164v-85Z" fill="#d8c5b1"/><path d="M184 384h121m-121 20h94m-94 20h55"/>
+    <path d="M352 299h49m-12-6 12 6-12 6" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <path d="m437 226 76 53m-76-53 76 131m-76-53 76-25m-76 25 76 53m-76 23 76-101m-76 101 76-23m0-78 70 40m-70 38 70-38" stroke="#ae9681"/>
+    <g fill="#f6eee1"><circle cx="437" cy="226" r="10"/><circle cx="437" cy="304" r="10"/><circle cx="437" cy="380" r="10"/><circle cx="513" cy="279" r="12"/><circle cx="513" cy="357" r="12"/><circle cx="583" cy="319" r="12"/></g>
+    <path d="M613 319h43m-12-6 12 6-12 6" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <rect x="678" y="247" width="177" height="144" fill="#f6eee1"/><path d="M698 272h85m-85 14h59"/>
+  </g>
+  <g stroke="#a3442c" stroke-width="1.5" stroke-linejoin="round"><path d="m706 315 4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8Zm30 0 4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8Zm30 0 4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8Zm30 0 4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8Zm30 0 4 8 9 1-7 6 2 9-8-4-8 4 2-9-7-6 9-1 4-8Z"/></g>
+  <g fill="#755744" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="153" y="161">WRITTEN REVIEWS</text><text x="401" y="439" font-size="10">REPRESENTATION</text><text x="691" y="426" font-size="10">RATING PREDICTION</text><text x="49" y="599" font-size="10" letter-spacing="1.5">DISNEYLAND REVIEW ANALYSIS</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

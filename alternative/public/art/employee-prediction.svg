@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e0e3e6"/>
+  <g stroke="#c1c9ce"><path d="M84 160h792M84 320h792M84 480h792M240 110v420M480 110v420M720 110v420" stroke-dasharray="2 8"/></g>
+  <g stroke="#4d5d6b" stroke-width="1.5"><g fill="#f0f0e9"><rect x="109" y="185" width="177" height="69"/><rect x="109" y="272" width="177" height="69"/><rect x="109" y="359" width="177" height="69"/></g>
+    <circle cx="139" cy="209" r="8"/><path d="M126 239v-8q13-15 26 0v8m15-32h96m-96 15h75m-75 15h86"/>
+    <circle cx="139" cy="296" r="8"/><path d="M126 326v-8q13-15 26 0v8m15-32h96m-96 15h75m-75 15h86"/>
+    <circle cx="139" cy="383" r="8"/><path d="M126 413v-8q13-15 26 0v8m15-32h96m-96 15h75m-75 15h86"/>
+    <path d="M310 307h47m-12-6 12 6-12 6" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <path d="M406 199v204h200m-200 0 22-16m-22 16 0-24"/><path d="m413 409 162-192" stroke="#a5b2bc" stroke-dasharray="3 6"/>
+    <path d="M640 307h39m-12-6 12 6-12 6" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <circle cx="712" cy="307" r="22" fill="#abbac3"/><path d="m734 307 42-62h61m-103 62 42 62h61"/><rect x="780" y="220" width="65" height="49" fill="#f0f0e9"/><rect x="780" y="345" width="65" height="49" fill="#d2c1b5"/><path d="M795 244h35m-35 125h35"/>
+  </g>
+  <g fill="#4d5d6b"><circle cx="441" cy="348" r="5"/><circle cx="461" cy="373" r="5"/><circle cx="474" cy="329" r="5"/><circle cx="491" cy="354" r="5"/><circle cx="450" cy="320" r="5"/><circle cx="480" cy="384" r="5"/></g>
+  <g fill="#a3442c"><circle cx="525" cy="250" r="5"/><circle cx="550" cy="278" r="5"/><circle cx="567" cy="238" r="5"/><circle cx="539" cy="222" r="5"/><circle cx="578" cy="266" r="5"/><circle cx="513" cy="279" r="5"/></g>
+  <g fill="#4d5d6b" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="110" y="157">ANONYMOUS RECORDS</text><text x="420" y="457">FEATURE SPACE</text><text x="704" y="457">MODEL OUTPUT</text><text x="49" y="599" font-size="10" letter-spacing="1.5">EMPLOYEE ATTRITION MODELING</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

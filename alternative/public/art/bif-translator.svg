@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e6ded3"/>
+  <g stroke="#ccbfad"><path d="M81 155h798M81 320h798M81 485h798M240 110v420M480 110v420M720 110v420" stroke-dasharray="2 8"/></g>
+  <g stroke="#705c45" stroke-width="1.5" stroke-linejoin="round"><path d="M104 247h188v127H168l-35 28v-28h-29V247Z" fill="#f8f0e2"/><path d="M665 247h190v127H731l-35 28v-28h-31V247Z" fill="#d2dbc8"/>
+    <path d="M310 309h32v-78h44m-44 78v88h44m190-166h41v78h29m-29 0v88h-41" stroke="#a3442c" stroke-dasharray="4 6"/>
+    <rect x="387" y="196" width="189" height="69" fill="#d8c2ac"/><path d="M403 215h37v30h-37zm52 0h37v30h-37zm52 0h53v30h-53z"/>
+    <rect x="387" y="362" width="189" height="69" fill="#f8f0e2"/><circle cx="420" cy="397" r="15"/><circle cx="481" cy="397" r="15"/><circle cx="542" cy="397" r="15"/><path d="M435 391h31m-31 12h31m30-12h31m-31 12h31m-85-15-5 3 5 3m15 6 5 3-5 3m46-18-5 3 5 3m15 6 5 3-5 3"/>
+    <path d="M123 344h99m-99 13h71m491-13h99m-99 13h71" stroke="#ae9b83"/>
+  </g>
+  <g fill="#705c45" font-family="Helvetica,Arial,sans-serif"><text x="128" y="310" font-size="39" letter-spacing="-1">Ciao.</text><text x="688" y="310" font-size="39" letter-spacing="-1">Hello.</text><g font-size="10" letter-spacing="2"><text x="113" y="220">SOURCE TEXT</text><text x="686" y="220">TRANSLATION</text><text x="421" y="178">TRANSFORMER</text><text x="400" y="458">BIDIRECTIONAL GRU</text><text x="49" y="599" letter-spacing="1.5">BIF TRANSLATOR</text><text x="716" y="599" letter-spacing="1.5">CONCEPT DIAGRAM</text></g></g>
+</svg>

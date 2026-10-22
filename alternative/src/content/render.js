@@ -1,4 +1,4 @@
-import { content as data, selectedWork } from './editorial.js';
+import { content as data, selectedWork, projectArt } from './editorial.js';
 
 export const pages = {
   home: { label: 'Home', title: 'Patrizio Acquadro — Researcher & Builder', description: 'Robot learning at Purdue University. AI systems, independent ventures, and projects that bring people together.' },
@@ -81,7 +81,7 @@ function projectLinks(item) {
 }
 
 function project(item, index) {
-  const work = selectedWork.find((entry) => entry.id === item.id);
+  const work = projectArt[item.id];
   return `<article class="project-entry" id="${item.id}" data-record="project"><span class="entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="project-entry-main"><div class="entry-title-row"><h3>${e(item.title)}</h3><span class="date-label">${e(item.timeframe)}</span></div><p class="entry-description">${e(item.built)}</p><ul class="tags" aria-label="Stack and tools">${item.stack.split(',').map((tag) => `<li>${e(tag.trim())}</li>`).join('')}</ul>${projectLinks(item)}</div>${work ? `<figure class="project-illustration"><img src="/art/${work.art}.svg" alt="${e(work.alt)}" width="960" height="640" loading="lazy"><figcaption>${e(work.caption)}</figcaption></figure>` : ''}</article>`;
 }
 

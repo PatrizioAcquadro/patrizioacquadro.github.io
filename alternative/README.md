@@ -32,7 +32,7 @@ On macOS the test configuration gives Firefox a temporary application descriptor
 The homepage introduces the person and links directly to records on `/projects/`, `/experience/`, `/ventures/`, `/activities/`, and `/updates/`. Every page is rendered into HTML before JavaScript runs. Navigation, content, contacts, and CV downloads remain available without JavaScript.
 
 - `src/content/siteData.js` is an unchanged snapshot of the original portfolio's source data at commit `768a196`. It includes all 15 projects, 5 research experiences, 3 ventures, 8 activities, and 9 updates. It does not synchronize automatically with the original.
-- `src/content/editorial.js` holds stable anchors and homepage selections; `render.js` holds shared templates and presentation. When adding source records, extend the ID list and the category counts.
+- `src/content/editorial.js` holds stable anchors, illustrations for all 15 projects, and homepage selections; `render.js` holds shared templates and presentation. When adding source records, extend the ID list, illustration metadata, and the category counts.
 - `src/styles.css` defines the editorial design; `src/main.js` only enhances the mobile menu, email copying, and portrait fallback.
 - `public/` contains local copies of the portraits, icons, and current CV, plus original SVG concept illustrations. Illustrations explain the subject; they are not screenshots, measured results, or technical specifications. Fonts use the local Helvetica/Arial and Iowan/Palatino/Georgia families; there are no remote font requests.
 

@@ -4,7 +4,7 @@ Implemented on `main`, from the original portfolio at `768a196`. All source addi
 
 ## Results
 
-- Alternative `npm run check`, using Node 24.19.0: **4 renderer tests and 27 browser tests passed** (9 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
+- Alternative validation, using Node 24.19.0: **5 renderer tests and 27 browser tests passed** (9 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
 - Original site's `npm run check`, using Node 24.19.0: **5 unit tests and 17 Chromium tests passed**, plus production build, security baseline and asset budgets.
 - Compared the copied `siteData` directly with the original using `assert.deepEqual`: all 15 projects, 5 research experiences, 3 ventures, 8 activities, 9 updates, contacts, and privacy settings match exactly.
 - Compared original, copied, and built CV bytes. SHA-256: `3d665a4d1bdeac09177906d102b6dd092269ff83e60086af2a1e35db34b58b26`.
@@ -13,6 +13,8 @@ Implemented on `main`, from the original portfolio at `768a196`. All source addi
 Browser coverage includes direct page loads, complete content, no external asset requests, operation without JavaScript, CV download, home-to-record navigation, responsive menu and focus, copy success/denial, portrait failure, reduced motion, keyboard entry, primary touch targets, and text contrast. Layout checks cover widths 320, 390, 765, 1120 and 1440 px, plus 200% text enlargement at 390 and 1440 px.
 
 The live local homepage and every inner page were visually reviewed in the in-app browser. The review included the desktop hero, narrower layouts, project illustrations, research, ventures, activities, updates and contact footer. Local screenshots are kept in ignored `.artifacts/`.
+
+The project illustration update adds 12 original SVG diagrams to complete all 15 projects. Every project now has a distinct local image, descriptive alternative text, and concept caption. All SVGs were parsed as XML and visually reviewed together; the browser suite checks that all 15 project images render successfully. The three existing featured illustrations and homepage selection are retained. The full alternative validation was repeated after this update.
 
 ## Environment note
 

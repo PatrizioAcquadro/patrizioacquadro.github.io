@@ -2,9 +2,25 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pages, renderDocument, escapeHtml } from '../src/content/render.js';
-import { content } from '../src/content/editorial.js';
+import { content, projectArt } from '../src/content/editorial.js';
 
 const template = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+
+test('every project has its own local illustration, descriptive alt text and caption', () => {
+  const html = renderDocument(template, 'projects');
+  assert.equal((html.match(/class="project-illustration"/g) || []).length, content.projects.length);
+  const files = new Set();
+  for (const { id } of content.projects) {
+    const art = projectArt[id];
+    assert.ok(art?.alt && art.caption, id);
+    assert.ok(!files.has(art.art), `Duplicate illustration for ${id}`);
+    files.add(art.art);
+    const svg = readFileSync(new URL(`../public/art/${art.art}.svg`, import.meta.url), 'utf8');
+    assert.ok(svg.includes('viewBox="0 0 960 640"'), id);
+    assert.ok(html.includes(`src="/art/${art.art}.svg"`), id);
+    assert.ok(html.includes(`alt="${escapeHtml(art.alt)}"`), id);
+  }
+});
 
 test('each collection is complete in its dedicated static page', () => {
   for (const [page, collection, record, title] of [['projects', 'projects', 'project', 'title'], ['experience', 'research', 'research', 'role'], ['ventures', 'ventures', 'venture', 'name'], ['activities', 'activities', 'activity', 'title'], ['updates', 'news', 'news', 'text']]) {

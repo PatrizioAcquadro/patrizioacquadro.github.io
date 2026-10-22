@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e0e5dd"/>
+  <g stroke="#c0cbbb"><path d="M80 160h800M80 320h800M80 480h800M160 100v440M320 100v440M480 100v440M640 100v440M800 100v440" stroke-dasharray="2 8"/></g>
+  <g stroke="#4a5d45" stroke-width="1.5" stroke-linejoin="round"><path d="M102 267h98l29 30v98H102V267Z" fill="#f5f2e7"/><path d="M200 267v30h29m-107 22h82m-82 18h65m-65 18h74m-74 18h43"/><path d="M230 329h113m-11-6 11 6-11 6" stroke-dasharray="4 7"/>
+    <path d="m446 279 44 25v51l-44 25-44-25v-51l44-25Z" fill="#abbda2"/><path d="m402 304 44 26 44-26m-44 26v50"/>
+    <path d="m416 288-49-85m102 85 51-85m-28 138 96-3m-112 34 27 83m-71-88-54 77"/>
+    <g fill="#f5f2e7"><rect x="328" y="171" width="77" height="37" rx="2"/><rect x="485" y="171" width="77" height="37" rx="2"/><rect x="587" y="319" width="77" height="37" rx="2"/><rect x="467" y="454" width="77" height="37" rx="2"/><rect x="339" y="444" width="77" height="37" rx="2"/></g>
+    <path d="m349 183-9 7 9 7m34-14 9 7-9 7m-23 1 10-17m140 10h30m-30 9h18m88 132h32m-24 9h24m-139 124 7 7 14-17m-154 0h28m-22 8h22"/>
+    <rect x="702" y="267" width="155" height="128" fill="#f5f2e7"/><path d="M702 292h155m-139 18h12m-12 16h28m-28 16h50m-50 16h37m-37 16h61"/><path d="m675 303 26 0" stroke="#a3442c" stroke-dasharray="4 5"/>
+  </g>
+  <g fill="#a3442c"><circle cx="715" cy="280" r="2.5"/><circle cx="726" cy="280" r="2.5"/><circle cx="737" cy="280" r="2.5"/><path d="M743 439h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zM743 461h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zM743 483h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10zm22 0h10v10h-10z"/></g>
+  <g fill="#4a5d45" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="105" y="241">TASK</text><text x="376" y="131">STRUCTURED TOOLS</text><text x="406" y="414">MODEL</text><text x="701" y="241">GENERATED CODE</text><text x="734" y="526" font-size="9">BENCHMARK</text><text x="49" y="599" font-size="10" letter-spacing="1.5">CODE AGENT SYSTEM</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

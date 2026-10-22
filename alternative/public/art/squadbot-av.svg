@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#dce3e5"/>
+  <g stroke="#bccbd0" stroke-width="1"><path d="M80 160h800M80 320h800M80 480h800M240 96v448M480 96v448M720 96v448" stroke-dasharray="2 8"/><ellipse cx="454" cy="424" rx="142" ry="25"/></g>
+  <g stroke="#3f5660" stroke-width="2" stroke-linejoin="round">
+    <path d="M391 394v-42h126v42l42 30H349l42-30Z" fill="#9aafb7"/>
+    <path d="M375 243q0-47 47-47h65q47 0 47 47v82q0 28-28 28H403q-28 0-28-28v-82Z" fill="#edf0ea"/>
+    <path d="M390 253h129v44H390z" fill="#bdccd0"/>
+    <circle cx="424" cy="275" r="12" fill="#3f5660"/><circle cx="485" cy="275" r="12" fill="#3f5660"/>
+    <circle cx="424" cy="275" r="4" fill="#edf0ea"/><circle cx="485" cy="275" r="4" fill="#edf0ea"/>
+    <path d="M438 329h33M365 259h-9v48h9m179-48h9v48h-9"/>
+  </g>
+  <g stroke="#3f5660" stroke-width="1.5"><rect x="133" y="170" width="113" height="82" rx="3" fill="#edf0ea"/><path d="m148 237 25-28 20 14 17-28 21 42H148Z"/><circle cx="222" cy="187" r="5"/><path d="m247 212 116 53" stroke-dasharray="5 7"/></g>
+  <g stroke="#a3442c" stroke-width="1.5"><path d="M156 351c-18 17-18 46 0 63m14-52c-12 11-12 29 0 41m14-31c-5 5-5 14 0 20m17-13h42m-21-12v25"/><path d="m246 382 116-70" stroke-dasharray="5 7"/></g>
+  <g stroke="#3f5660" stroke-width="1.5"><path d="m583 276 84-67 89 81-63 82-110-96Z"/><path d="m667 209 26 163m-110-96 173 14"/><circle cx="583" cy="276" r="10" fill="#a3442c" stroke="#a3442c"/><circle cx="667" cy="209" r="12" fill="#edf0ea"/><circle cx="756" cy="290" r="12" fill="#edf0ea"/><circle cx="693" cy="372" r="12" fill="#edf0ea"/><path d="m540 275 32 1" stroke-dasharray="5 7"/></g>
+  <g stroke="#3f5660"><path d="M338 488h285"/><path d="m614 483 9 5-9 5"/><rect x="355" y="470" width="44" height="35" fill="#edf0ea"/><rect x="426" y="470" width="44" height="35" fill="#bdccd0"/><rect x="497" y="470" width="44" height="35" fill="#9aafb7"/><path d="m541 470 31-85" stroke="#a3442c" stroke-dasharray="4 7"/></g>
+  <g fill="#3f5660" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="133" y="153">VISION</text><text x="144" y="439">AUDIO</text><text x="650" y="176">SCENE GRAPH</text><text x="362" y="535">TEMPORAL WORLD MODEL</text><text x="49" y="599" font-size="10" letter-spacing="1.5">SQUADBOT-AV</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

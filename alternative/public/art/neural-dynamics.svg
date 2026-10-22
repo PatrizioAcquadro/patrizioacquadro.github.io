@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" fill="#e3dfe5"/>
+  <g stroke="#c8bfce"><path d="M103 230h487M103 434h487M103 161v310M200 161v310M297 161v310M394 161v310M491 161v310M588 161v310" stroke-dasharray="2 8"/></g>
+  <g stroke="#64506f" stroke-width="1.5"><path d="M103 154v114h487M103 357v114h487"/><path d="M103 237h35c12 0 17-2 22-17l13-53 12 83c6 19 17 13 24-1 6-11 13-12 29-12h38c12 0 17-2 22-17l13-53 12 83c6 19 17 13 24-1 6-11 13-12 29-12h38c12 0 17-2 22-17l13-53 12 83c6 19 17 13 24-1 6-11 13-12 29-12h38" stroke="#8b5f4c" stroke-width="2"/>
+    <path d="M103 439h25l10-56 9 72 9-79 9 77 9-67 9 66c7 14 14 10 21-2 7-10 15-11 30-11h40l10-56 9 72 9-79 9 77 9-67 9 66c7 14 14 10 21-2 7-10 15-11 30-11h40l10-56 9 72 9-79 9 77 9-67 9 66c7 14 14 10 21-2 7-10 15-11 30-11h40" stroke-width="2"/>
+    <path d="M666 433h186M685 451V195" stroke="#9a8ba3"/>
+    <path d="M704 390c-40-41 9-155 71-150s79 116 16 148-127-51-82-97 117-7 91 55-106 53-101 1 81-97 107-36-24 102-67 72-44-108 6-123" stroke="#8b5f4c" stroke-width="1.5"/>
+    <path d="m762 243 12-3-5 12" stroke="#8b5f4c"/>
+  </g>
+  <g fill="#64506f" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="103" y="131">FITZHUGH–NAGUMO</text><text x="103" y="335">HINDMARSH–ROSE</text><text x="687" y="170">PHASE SPACE</text><text x="293" y="524" font-size="10">ILLUSTRATIVE NEURONAL DYNAMICS</text><text x="49" y="599" font-size="10" letter-spacing="1.5">NEURAL MODELS ANALYSIS</text><text x="716" y="599" font-size="10" letter-spacing="1.5">CONCEPT DIAGRAM</text></g>
+</svg>

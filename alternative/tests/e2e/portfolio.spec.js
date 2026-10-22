@@ -75,6 +75,25 @@ test('home previews reach the exact project, venture, activity and update', asyn
   }
 });
 
+test('robotics leads the page with larger desktop illustrations and working project shortcuts', async ({ page }) => {
+  await page.goto('/projects/');
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  const researchImage = await page.locator('#alexdoor-xas .project-illustration img').boundingBox();
+  const softwareImage = await page.locator('#code-agent-system .project-illustration img').boundingBox();
+  expect(researchImage.width).toBeGreaterThan(softwareImage.width * 1.25);
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 950 });
+    for (const { id } of content.projects.filter((item) => item.robotics)) {
+      await page.getByRole('navigation', { name: 'Robotics projects', exact: true }).locator(`a[href="#${id}"]`).click();
+      await expect(page).toHaveURL(new RegExp(`#${id}$`));
+      const project = page.locator(`#${id}`);
+      await expect(project.getByRole('heading', { name: 'Long-term direction', exact: true })).toBeVisible();
+      await expect.poll(() => project.evaluate((element) => Math.round(element.getBoundingClientRect().top))).toBeGreaterThanOrEqual(80);
+      await expect.poll(() => project.evaluate((element) => Math.round(element.getBoundingClientRect().top))).toBeLessThanOrEqual(125);
+    }
+  }
+});
+
 test('mobile menu supports Escape, section navigation, contact focus and resizing', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
@@ -164,7 +183,7 @@ test('text meets WCAG AA contrast across all page compositions', async ({ page }
         for (let parent = element; parent; parent = parent.parentElement) chain.unshift(parent);
         return chain.reduce((bg, node) => blend(rgba(getComputedStyle(node).backgroundColor), bg), [255, 255, 255]);
       };
-      const selectors = '.eyebrow,.date-label,.entry-index,.text-link,.button,.entry-description,.tags li,.detail-list li,.work-caption,.poster-label,.poster-word,.poster-bottom,.map-title,.portrait figcaption span,.footer-note span,.copy-email,.hero-bottom>p,.hero-statement>span,.section-intro,.role-name,.project-status,.page-description,.update-entry time,.update-entry>div>p,.venture-preview-info>p,.activity-entry p,.current-role>p,.education-grid p,.venture-metrics p>span,.breadcrumb,.scroll-cue,#site-nav a,.art-index';
+      const selectors = '.eyebrow,.date-label,.entry-index,.text-link,.button,.entry-description,.tags li,.detail-list li,.work-caption,.poster-label,.poster-word,.poster-bottom,.map-title,.portrait figcaption span,.footer-note span,.copy-email,.hero-bottom>p,.hero-statement>span,.section-intro,.role-name,.project-status,.page-description,.update-entry time,.update-entry>div>p,.venture-preview-info>p,.activity-entry p,.current-role>p,.education-grid p,.venture-metrics p>span,.breadcrumb,.scroll-cue,#site-nav a,.art-index,.research-headline,.research-overview,.research-details p,.robotics-heading>p,.research-index a,.research-index a>span,.page-jump a,.page-jump a>span';
       return [...document.querySelectorAll(selectors)].filter((element) => element.getBoundingClientRect().width && element.getBoundingClientRect().height).map((element) => {
         const color = luminance(rgba(getComputedStyle(element).color));
         const bg = luminance(background(element));

@@ -1,4 +1,4 @@
-import { content as data, selectedWork, projectArt, ventureArt } from './editorial.js';
+import { content as data, selectedWork, projectArt, roboticsProfiles, ventureArt } from './editorial.js';
 
 export const pages = {
   home: { label: 'Home', title: 'Patrizio Acquadro — Researcher & Builder', description: 'Robot learning at Purdue University. AI systems, independent ventures, and projects that bring people together.' },
@@ -85,8 +85,23 @@ function project(item, index) {
   return `<article class="project-entry" id="${item.id}" data-record="project"><span class="entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="project-entry-main"><div class="entry-title-row"><h3>${e(item.title)}</h3><span class="date-label">${e(item.timeframe)}</span></div><p class="entry-description">${e(item.built)}</p><ul class="tags" aria-label="Stack and tools">${item.stack.split(',').map((tag) => `<li>${e(tag.trim())}</li>`).join('')}</ul>${projectLinks(item)}</div>${work ? `<figure class="project-illustration"><img src="/art/${work.art}.svg" alt="${e(work.alt)}" width="960" height="640" loading="lazy"><figcaption>${e(work.caption)}</figcaption></figure>` : ''}</article>`;
 }
 
+function roboticsProject(item, index) {
+  const profile = roboticsProfiles[item.id];
+  const art = projectArt[item.id];
+  return `<article class="robotics-project" id="${item.id}" data-record="project">
+    <div class="research-topline"><p class="eyebrow"><span class="section-number">${String(index + 1).padStart(2, '0')}</span>${e(profile.focus)}</p><span class="date-label">${e(item.timeframe)}</span></div>
+    <div class="research-layout"><div class="research-copy"><h3 aria-label="${e(item.title)}">${e(profile.name)}</h3><p class="research-headline">${lineBreaks(profile.headline)}</p><p class="research-overview">${e(profile.overview)}</p></div><figure class="project-illustration"><img src="/art/${art.art}.svg" alt="${e(art.alt)}" width="960" height="640" loading="lazy"><figcaption>${e(art.caption)}</figcaption></figure></div>
+    <div class="research-details"><div><h4 class="eyebrow">${item.id === 'ego2grip' ? 'My role / Mentorship' : 'My contribution'}</h4><p>${e(profile.contribution)}</p></div><div class="research-direction"><h4 class="eyebrow">Long-term direction</h4><p>${e(profile.direction)}</p></div></div>
+    <div class="research-footer"><ul class="tags" aria-label="Stack and tools">${item.stack.split(',').map((tag) => `<li>${e(tag.trim())}</li>`).join('')}</ul>${projectLinks(item)}</div>
+  </article>`;
+}
+
 function projects() {
-  return `${pageIntro('01', 'Projects', 'Ideas, built\nand explored', 'A collection of work across robot learning, AI systems, and software. Each project is a different way of turning a question into something concrete.')}<div class="container page-body"><nav class="page-jump" aria-label="Project categories"><a href="#robotics">Robotics <span>05</span></a><a href="#ai-software">AI & Software <span>10</span></a></nav>${[['robotics', 'Robotics', data.projects.filter((item) => item.robotics)], ['ai-software', 'AI & Software', data.projects.filter((item) => !item.robotics)]].map(([id, title, items]) => `<section class="project-group" aria-labelledby="${id}"><div class="group-heading"><h2 id="${id}">${title}</h2><span>${String(items.length).padStart(2, '0')} projects</span></div>${items.map((item) => project(item, data.projects.indexOf(item))).join('')}</section>`).join('')}<div class="page-end-note"><p>More code, experiments, and documentation.</p>${link('https://github.com/PatrizioAcquadro?tab=repositories', 'Explore my GitHub')}</div></div>`;
+  const robotics = data.projects.filter((item) => item.robotics);
+  const software = data.projects.filter((item) => !item.robotics);
+  return `${pageIntro('01', 'Projects', 'Robotics at\nthe core', 'I build systems that help robots perceive, learn, and act. These research projects are the focus of my work, supported by a broader practice in AI engineering and software.')}<div class="container page-body"><nav class="page-jump" aria-label="Project categories"><a class="category-primary" href="#robotics">Robotics <span>${String(robotics.length).padStart(2, '0')} / Core research</span></a><a href="#ai-software">AI & Software <span>${String(software.length).padStart(2, '0')}</span></a></nav>
+    <section class="project-group robotics-group" aria-labelledby="robotics"><div class="robotics-heading"><div><p class="eyebrow">Primary focus</p><h2 id="robotics">Robotics</h2></div><p>From sensing the world to interacting with it.<br>Five connected directions in embodied intelligence.</p></div><nav class="research-index" aria-label="Robotics projects">${robotics.map((item, index) => `<a href="#${item.id}"><span>${String(index + 1).padStart(2, '0')}</span>${e(roboticsProfiles[item.id].name)}<span aria-hidden="true">↓</span></a>`).join('')}</nav>${robotics.map(roboticsProject).join('')}</section>
+    <section class="project-group software-group" aria-labelledby="ai-software"><div class="group-heading"><div><p class="eyebrow">Beyond robotics</p><h2 id="ai-software">AI & Software</h2></div><span>${String(software.length).padStart(2, '0')} projects</span></div>${software.map((item) => project(item, data.projects.indexOf(item))).join('')}</section><div class="page-end-note"><p>More code, experiments, and documentation.</p>${link('https://github.com/PatrizioAcquadro?tab=repositories', 'Explore my GitHub')}</div></div>`;
 }
 
 const bullets = (items) => `<ul class="detail-list">${items.map((text) => `<li>${e(text)}</li>`).join('')}</ul>`;

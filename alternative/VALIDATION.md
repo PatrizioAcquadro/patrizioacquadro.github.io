@@ -4,7 +4,7 @@ Implemented on `main`, from the original portfolio at `768a196`. All source addi
 
 ## Results
 
-- Alternative validation, using Node 24.19.0: **6 renderer tests and 27 browser tests passed** (9 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
+- Alternative validation, using Node 24.19.0: **7 renderer tests and 30 browser tests passed** (10 each in Chromium, Firefox, and WebKit), plus production build and asset/CSP checks.
 - Original site's `npm run check`, using Node 24.19.0: **5 unit tests and 17 Chromium tests passed**, plus production build, security baseline and asset budgets.
 - Compared the copied `siteData` directly with the original using `assert.deepEqual`: all 15 projects, 5 research experiences, 3 ventures, 8 activities, 9 updates, contacts, and privacy settings match exactly.
 - Compared original, copied, and built CV bytes. SHA-256: `3d665a4d1bdeac09177906d102b6dd092269ff83e60086af2a1e35db34b58b26`.
@@ -19,6 +19,8 @@ The project illustration update adds 12 original SVG diagrams to complete all 15
 The Ventures update adds three illustrated identities with integrated lettering: live events and community for BiellaInFesta, mobile festival navigation for Adunet, and an original voxel world for CubeWar. These replace the plain wordmarks in the Ventures detail page. The layout pairs graphics and descriptions on desktop and stacks them on mobile. All three SVGs were parsed as XML, visually reviewed, and checked for successful loading in every browser; source facts, metrics, and homepage previews are preserved. The complete `npm run check` passed again after this update.
 
 The personal monogram update replaces negatively spaced text with an original SVG p/a mark, using geometric letterforms and a separate terracotta slash. All six headers use the same font-independent asset. Matching SVG/PNG favicons, a touch icon, and a transparent PNG export were rendered from the vector masters. The new mark was visually checked at display and header sizes, and the complete `npm run check` passed again, including image loading, mobile navigation, keyboard access, and 200% text reflow.
+
+The robotics presentation update gives the five research projects a primary category treatment, a direct index and larger desktop illustrations; all ten AI/software projects retain their content and art in a compact layout. Research narratives were reconciled with current GitHub status and long-term plans, as recorded in `ROBOTICS_SOURCES.md`. Contributions, mentorship and future directions remain distinct. New tests cover all five research shortcuts at desktop/mobile sizes, placement below the sticky header, larger desktop images and explicit direction/role labels. Reflow at 200% initially revealed intrinsic-size overflow in the new heading/grid; this was corrected. The index check also exposed doubled scroll spacing, corrected for the research anchors. The complete final suite passes, including contrast for all new text treatments. The original site and copied source data were not edited; the original site's check above was not repeated for this scoped update.
 
 ## Environment note
 

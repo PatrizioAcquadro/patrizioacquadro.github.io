@@ -33,6 +33,47 @@ export const projectArt = {
   'castle-war': { art: 'castle-war', alt: 'Two stylized castles face each other across a gridded landscape with a player token and movement route.', caption: 'Game systems / Concept illustration' }
 };
 
+// Research narratives are checked against the repository plans and status pages.
+// Directions describe the intended destination, not completed experimental results.
+// See ROBOTICS_SOURCES.md for the source snapshot and attribution decisions.
+export const roboticsProfiles = {
+  'alexdoor-xas': {
+    name: 'AlexDoor-XAS', focus: 'Humanoid manipulation',
+    headline: 'Learning to open\nthe unfamiliar.',
+    overview: 'How should a humanoid represent an action when the door in front of it is new? A research platform connecting RGB-D perception, contact-aware control, and imitation learning.',
+    contribution: 'I develop simulation, perception, action adapters, and evaluation infrastructure for IHMC Alex, with a qualified 32-door corpus and a matched A1–A4 × ACT/Diffusion study design.',
+    direction: 'Establish how joint-, Cartesian-, door-, and object-centric actions affect generalization to unseen doors, then extend the approach to other articulated objects.'
+  },
+  'isaac-audio-sensors': {
+    name: 'Isaac Audio Sensors', focus: 'Robot hearing · Open source',
+    headline: 'A sense of hearing\nfor simulated robots.',
+    overview: 'An open-source audition SDK that turns scene acoustics into microphone-array signals and spatial observations—connecting simulation, recordings, and robot-learning workflows.',
+    contribution: 'I build acoustic simulation, multichannel recording and replay, dataset tools, and learning-ready observations across Python, Isaac Sim, and Isaac Lab.',
+    direction: 'A validated robot-hearing workflow from acoustic scenes to live learning systems, with measured physical comparisons and clearly defined operating conditions.'
+  },
+  'squadbot-av': {
+    name: 'SquadBot-AV', focus: 'Audiovisual attention',
+    headline: 'Seeing, hearing.\nKnowing where to look.',
+    overview: 'Assistive humanoid attention that combines vision, sound, and an operator’s instructions to decide whom to attend to—and where to turn its head.',
+    contribution: 'I develop synchronized sensing, GPU perception, temporal audiovisual memory, attention policies, and independent evaluation for the fixed-base IHMC Alex003 in simulation.',
+    direction: 'Connect robust audiovisual attention to calibrated physical sensing and bounded head control on Alex003, progressing through independent evaluation and shadow integration.'
+  },
+  'ego2grip': {
+    name: 'Ego2Grip', focus: 'Learning from human demonstrations',
+    headline: 'Human motion.\nRobot demonstrations.',
+    overview: 'Turning first-person video into a route toward robot demonstration data: from reconstructed 3D hand motion to language-aligned, gripper-compatible trajectories.',
+    contribution: 'I mentor the undergraduate researcher developing the pipeline, guiding 3D hand reconstruction, dataset design, and retargeting to IHMC Alex grippers. The reproducible HaWoR baseline is complete.',
+    direction: 'Build a diverse, annotated demonstration dataset, validate hand-to-gripper trajectories in simulation, and transfer selected motions to the physical robot.'
+  },
+  'vla-lego': {
+    name: 'VLA-LEGO', focus: 'Vision-language-action learning',
+    headline: 'Language to action.\nOne brick at a time.',
+    overview: 'A contact-rich assembly testbed for studying how vision-language models generate coordinated, continuous actions for two robot arms.',
+    contribution: 'I built a MuJoCo bimanual LEGO benchmark and VLA architecture, connecting visual-language representations to a flow-matching action head and reproducible experiment tooling.',
+    direction: 'Train and evaluate language-conditioned bimanual assembly, study robustness and failure modes, and work toward transfer to the IHMC Alex humanoid.'
+  }
+};
+
 export const ventureArt = {
   bif: { art: 'venture-bif', alt: 'BiellaInFesta lettering beside an outdoor music stage and a connected crowd in a town square.', caption: 'BiellaInFesta / Events & community' },
   adunet: { art: 'venture-adunet', alt: 'Adunet lettering beside a mobile festival map with a route connecting venues, events, and city landmarks.', caption: 'Adunet / A festival, connected' },

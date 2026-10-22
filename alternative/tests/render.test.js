@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pages, renderDocument, escapeHtml } from '../src/content/render.js';
-import { content, projectArt, ventureArt } from '../src/content/editorial.js';
+import { content, projectArt, roboticsProfiles, ventureArt } from '../src/content/editorial.js';
 
 const template = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
@@ -36,6 +36,24 @@ test('each venture has a distinct illustrated identity in its static page', () =
     assert.ok(html.includes(`src="/art/${art.art}.svg"`), id);
     assert.ok(html.includes(`alt="${escapeHtml(art.alt)}"`), id);
   }
+});
+
+test('robotics narratives cover all five research projects and retain role and future-direction labels', () => {
+  const html = renderDocument(template, 'projects');
+  const robotics = content.projects.filter((item) => item.robotics);
+  assert.deepEqual(Object.keys(roboticsProfiles), robotics.map((item) => item.id));
+  assert.equal((html.match(/class="robotics-project"/g) || []).length, 5);
+  assert.equal((html.match(/<h4 class="eyebrow">Long-term direction<\/h4>/g) || []).length, 5);
+  assert.ok(html.includes('My role / Mentorship'));
+  assert.ok(html.includes('I mentor the undergraduate researcher'));
+  assert.ok(html.indexOf('id="robotics"') < html.indexOf('id="ai-software"'));
+  for (const { id } of robotics) {
+    const { contribution, direction } = roboticsProfiles[id];
+    assert.ok(html.includes(escapeHtml(contribution)), id);
+    assert.ok(html.includes(escapeHtml(direction)), id);
+    assert.ok(html.includes(`href="#${id}"`), id);
+  }
+  assert.ok(!html.includes('href="https://github.com/PatrizioAcquadro/squadbot-av"'));
 });
 
 test('each collection is complete in its dedicated static page', () => {

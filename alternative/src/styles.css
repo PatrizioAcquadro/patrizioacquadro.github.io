@@ -210,6 +210,47 @@ article[id], h2[id] { scroll-margin-top: 112px; }
 .project-illustration { grid-column: 2; margin-top: 16px; max-width: 610px; }
 .project-illustration img { width: 100%; }
 .project-illustration figcaption { font-family: var(--mono); font-size: .5625rem; color: var(--muted); margin-top: 10px; }
+/* Robotics is the main body of work; software keeps a compact illustrated record. */
+[data-page='projects'] .page-intro { padding-bottom: 44px; }
+[data-page='projects'] .breadcrumb { margin-bottom: 20px; }
+[data-page='projects'] .page-jump { align-items: center; margin-bottom: 62px; }
+.page-jump .category-primary { background: var(--ink); color: var(--paper); padding: 14px 20px; border: 1px solid var(--ink); }
+.page-jump .category-primary span { color: #d0d3c9; }
+.page-jump .category-primary:hover { background: var(--accent); border-color: var(--accent); }
+.page-jump .category-primary:hover span { color: var(--paper); }
+.robotics-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding-bottom: 28px; }
+.robotics-heading .eyebrow { color: var(--accent); }
+.robotics-heading h2 { font-size: clamp(3.2rem, 6vw, 5rem); margin-top: 14px; }
+.robotics-heading > p { max-width: 43ch; color: var(--muted); font-size: .875rem; padding-bottom: 5px; }
+.robotics-heading > div { max-width: 100%; }
+.research-index { display: flex; flex-wrap: wrap; column-gap: 28px; padding-block: 15px; border-block: 1px solid var(--ink); }
+.research-index a { display: inline-flex; align-items: center; gap: 10px; font-size: .75rem; min-height: 44px; }
+.research-index a:hover { color: var(--accent); }
+.research-index a > span:first-child { color: var(--accent); font-family: var(--mono); font-size: .5625rem; }
+.research-index a > span:last-child { margin-left: 5px; }
+.robotics-project { padding-block: 44px 42px; border-bottom: 1px solid var(--line); }
+.robotics-project[id] { scroll-margin-top: 0; }
+.research-topline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 25px; margin-bottom: 28px; }
+.research-topline .eyebrow { color: var(--muted); font-size: .625rem; }
+.research-topline .date-label { font-size: .625rem; }
+.research-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: center; gap: 55px; }
+.research-copy h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -.015em; }
+.research-headline { font-size: clamp(2.1rem, 3.5vw, 3.3rem); letter-spacing: -.055em; line-height: 1.06; margin-top: 17px; text-wrap: balance; }
+.research-overview { font-size: .9375rem; color: var(--muted); line-height: 1.75; max-width: 48ch; margin-top: 24px; }
+.robotics-project .project-illustration { grid-column: auto; margin: 0; max-width: none; }
+.robotics-project .project-illustration figcaption { margin-top: 12px; }
+.research-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 45px; margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--line); }
+.research-details h4 { margin: 0 0 12px; color: var(--accent); font-size: .625rem; }
+.research-details p { color: var(--muted); font-size: .875rem; max-width: 64ch; }
+.research-direction { border-left: 1px solid var(--line); padding-left: 30px; }
+.research-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: 10px 25px; margin-top: 23px; }
+.research-footer .tags, .research-footer .project-links, .research-footer .project-status { margin-top: 0; }
+.research-footer .tags { flex: 1 1 340px; }
+.research-footer .project-status { padding-block: 10px; }
+.software-group .group-heading h2 { margin-top: 12px; }
+.software-group .group-heading .eyebrow { color: var(--muted); }
+.software-group .project-entry { grid-template-columns: 32px minmax(0, 1fr) minmax(0, .55fr); gap: 25px; }
+.software-group .project-illustration { grid-column: 3; grid-row: 1; margin-top: 0; }
 .page-end-note { margin-top: 55px; display: flex; justify-content: space-between; align-items: center; gap: 25px; font-size: .875rem; color: var(--muted); }
 .experience-entry { display: grid; grid-template-columns: 240px minmax(0, 1fr); padding-block: 44px; border-bottom: 1px solid var(--line); gap: 45px; }
 .timeline-date { font-family: var(--mono); font-size: .6875rem; display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; line-height: 1.65; padding-top: 4px; }
@@ -311,6 +352,13 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .copy-status { grid-column: 2; }
   .venture-detail { gap: 36px; grid-template-columns: 1fr 1.2fr; }
   .entry-title-row { flex-direction: column; gap: 10px; }
+  .research-layout { gap: 30px; }
+  .research-headline { font-size: 2.3rem; }
+  .robotics-heading { align-items: start; }
+  .robotics-heading > p { max-width: 31ch; padding-top: 18px; }
+  .research-details { gap: 25px; }
+  .research-direction { padding-left: 25px; }
+  .software-group .project-entry { grid-template-columns: 24px minmax(0, 1fr) minmax(0, .75fr); gap: 20px; }
   .education-grid { gap: 25px; }
   .activity-entry { grid-template-columns: 165px minmax(0, 1fr); gap: 25px; }
   .activity-date { flex-direction: column; gap: 8px; }
@@ -394,6 +442,25 @@ article[id], h2[id] { scroll-margin-top: 112px; }
   .project-links { margin-top: 14px; }
   .project-illustration { grid-column: 1 / -1; margin-top: 12px; }
   .project-group + .project-group { margin-top: 55px; }
+  [data-page='projects'] .page-jump { gap: 12px 25px; margin-bottom: 40px; }
+  .page-jump .category-primary { padding: 12px 16px; flex-wrap: wrap; gap: 6px 20px; }
+  .robotics-heading { flex-direction: column; gap: 18px; padding-bottom: 23px; }
+  .robotics-heading h2 { font-size: 3.2rem; }
+  .robotics-heading > p { padding-top: 0; max-width: 43ch; font-size: .8125rem; }
+  .research-index { column-gap: 22px; padding-block: 10px; }
+  .research-index a { font-size: .6875rem; gap: 8px; }
+  .robotics-project { padding-block: 30px; }
+  .research-topline { margin-bottom: 22px; gap: 8px 20px; }
+  .research-topline .eyebrow { gap: 12px; }
+  .research-layout { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+  .research-headline { font-size: clamp(2rem, 8.2vw, 3rem); }
+  .research-overview { margin-top: 20px; font-size: .875rem; max-width: none; }
+  .research-details { grid-template-columns: 1fr; gap: 23px; margin-top: 23px; padding-top: 23px; }
+  .research-direction { border-left: none; padding-left: 0; }
+  .research-details p { font-size: .8125rem; }
+  .research-footer { margin-top: 20px; }
+  .software-group .project-entry { grid-template-columns: 24px minmax(0, 1fr); gap: 12px 15px; }
+  .software-group .project-illustration { grid-column: 1 / -1; grid-row: auto; margin-top: 12px; max-width: 440px; }
   .page-end-note { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 35px; }
   .experience-entry { grid-template-columns: 1fr; gap: 22px; padding-block: 30px; }
   .timeline-date { gap: 10px; }
@@ -422,7 +489,7 @@ article[id], h2[id] { scroll-margin-top: 112px; }
 
 /* Reflow at text zoom, including wide viewports where media queries stay unchanged. */
 body { overflow-wrap: break-word; }
-.header-inner > *, .hero-grid > *, .hero-bottom > *, .section-heading > *, .experience-preview > *, .activity-previews > *, .contact-main > *, .experience-entry > *, .venture-detail > *, .activity-entry > *, .entry-title-row > * { min-width: 0; }
+.header-inner > *, .hero-grid > *, .hero-bottom > *, .section-heading > *, .experience-preview > *, .activity-previews > *, .contact-main > *, .experience-entry > *, .venture-detail > *, .activity-entry > *, .entry-title-row > *, .research-layout > *, .robotics-heading > * { min-width: 0; }
 .entry-title-row .date-label { flex-shrink: 1; }
 .venture-metrics strong { overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: no-preference) {

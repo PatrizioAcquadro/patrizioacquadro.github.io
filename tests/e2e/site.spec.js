@@ -155,7 +155,8 @@ test('responsive layouts, both themes and 200% text enlargement do not overflow'
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  // Let resize observers settle after changing both the viewport and root font size.
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('#menu-toggle').click();
   await page.getByRole('link', { name: 'Contact', exact: true }).click();
   await page.getByRole('link', { name: 'Mail', exact: true }).click();

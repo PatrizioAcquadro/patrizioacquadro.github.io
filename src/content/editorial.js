@@ -18,8 +18,8 @@ content.news = [...siteData.news].sort((a, b) => b.isoDate.localeCompare(a.isoDa
 // Education and languages are transcribed from the byte-identical local CV.
 export const education = [
   { id: 'polimi-msc', institution: 'Politecnico di Milano', displayInstitution: 'Politecnico\ndi Milano', degree: 'M.S. Computer Science & Engineering · AI', timeframe: 'Sep 2024 – Present', notes: ['GPA: 27/30.', 'Honors in LLMs (PhD course) and Software Engineering II.'] },
-  { id: 'bicocca-msc', institution: 'University of Milano-Bicocca', displayInstitution: 'University of\nMilano-Bicocca', degree: 'M.S. AI for Science and Technology', timeframe: 'Sep 2024 – Present', notes: ['Top grades (30/30) in Advanced AI, Machine Learning, Deep Learning and Embedded Systems.'] },
-  { id: 'purdue-exchange', institution: 'Purdue University', displayInstitution: 'Purdue\nUniversity', degree: 'Visiting Exchange Student', timeframe: 'Aug 2025 – May 2026', notes: ['Selected on merit: 1 of 2 students from a 674-student first-year M.Sc. Computer Science cohort at Politecnico di Milano.'] },
+  { id: 'bicocca-msc', institution: 'University of Milano-Bicocca', displayInstitution: 'University of\nMilano-Bicocca', degree: 'M.S. AI for Science and Technology', timeframe: 'Sep 2024 – Present', notes: ['Top grades (30/30) in Advanced AI and Machine Learning.', 'Also 30/30 in Deep Learning and Embedded Systems.'] },
+  { id: 'purdue-exchange', institution: 'Purdue University', displayInstitution: 'Purdue\nUniversity', degree: 'Visiting Exchange Student', timeframe: 'Aug 2025 – May 2026', notes: ['Selected on merit: 1 of 2 students from a 674-student cohort.', 'First-year M.Sc. Computer Science at Politecnico di Milano.'] },
   { id: 'pavia-bsc', institution: 'University of Pavia', displayInstitution: 'University\nof Pavia', degree: 'B.S. Artificial Intelligence', timeframe: 'Sep 2021 – Oct 2024', notes: ['Graduated with 110/110.', 'Thesis on quantum machine learning in finance.'] }
 ];
 export const languages = 'Italian (native), English (fluent; IELTS 7.5), French (basic).';

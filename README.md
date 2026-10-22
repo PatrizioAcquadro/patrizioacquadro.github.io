@@ -48,6 +48,6 @@ Browser tests use an ephemeral HTTPS server on port 4175 with a temporary certif
 
 ## Publication and history
 
-The existing Pages workflow validates the root application with Node 24 and all three browsers, audits dependencies and deploys the exact validated `dist/`. It runs on a push to `main` or manual dispatch. This promotion is local; no push or publication has been performed.
+The existing Pages workflow validates the root application with Node 24 and all three browsers, audits dependencies and deploys the exact validated `dist/`. It runs on a push to `main` or manual dispatch. Check the workflow result and live site to confirm publication.
 
 The previous implementation remains recoverable in Git at `768a196`. The final isolated editorial edition is preserved at `d81b01f`. Inspect those commits without resetting the current checkout. Historical reports remain under `docs/`; current promotion evidence is in [PROMOTION.md](docs/PROMOTION.md).

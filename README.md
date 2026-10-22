@@ -20,7 +20,7 @@ npm run dev
 - Projects marked `robotics: true` appear in the looping carousel (three readable cards on desktop, two on tablet, one on mobile); other projects retain the two-column grid. Without JavaScript, all projects use the grid. The carousel supports arrows, keyboard navigation, touch swipes and reduced motion.
 - `src/content/renderSite.js` escapes and renders content into the HTML through Vite's `transformIndexHtml`, in development and production. Content changes reload the development page. JavaScript handles interactions; all portfolio content and navigation work without it.
 - The homepage canonical, social metadata, sitemap and robots file share the same origin and deployment base path. `/cv/` remains a `noindex` redirect to Home.
-- Replace `public/cv/AcquadroPatrizioCV.pdf` to publish a new CV. The download version is derived from its SHA-256 hash. The editable Word source is in `assets/source/`.
+- Replace `public/cv/AcquadroPatrizioCV.pdf` to publish a new CV. The download version is derived from its SHA-256 hash. The Word file in `assets/source/` is an older source and does not match the current published PDF.
 - Original portraits and logos stay in `assets/source/`, outside the published assets. Responsive WebP portraits and resized PNG icons are committed under `public/`. To regenerate them, run `python3 scripts/optimize-images.py` with Pillow available; Python/Pillow are optional maintenance tools, not build dependencies.
 - `public/og/og-cover.png` is the social preview image. Phone exposure is disabled by default and controlled by `privacyExposure.showPhone`.
 

@@ -122,3 +122,11 @@ Desktop and mobile visual review screenshots are saved under the ignored `.artif
 Shortened the four longest robotics descriptions while retaining contributions and work-in-progress wording. Added the concise group headings "Robotics" and "AI & Software", with a small monochrome rule beside Robotics. Project titles now use level-four headings beneath the level-three group headings, preserving their existing appearance. Removed the robotics Documentation link; repository and showcase links remain available.
 
 Validation passed: 5 unit tests, production build, security baseline, artifact budgets and all 51 browser tests using the documented isolated Firefox launcher. Existing browser checks now verify the group headings, removal of robotics documentation links, retention of the other Documentation link, and both headings' contrast in both themes. Reviewed desktop screenshots in both themes and mobile at 390x844; screenshots are under `.artifacts/project-presentation/`. The in-app browser connection stalled during review, so visual verification used the repository's Playwright runtime. No push or deployment was performed.
+
+## CV alignment - 2026-10-21
+
+Aligned the portfolio with the supplied `AcquadroPatrizio_CV_Pure.pdf`: BiellaInFesta now reports 10k+ followers and 800k monthly views; Adunet includes the 8-10k daily visitor scope. Updated AlexDoor-XAS, SquadBot-AV, Ego2Grip and VLA-LEGO to reflect the project progress described in the CV. Clarified the two master's degrees and attributed 110/110 to the bachelor's degree.
+
+Copied the supplied PDF without modification to the existing public download URL. SHA-256: `61b036dae55ed76aaf8bd3be9cff7c881bd656937f686ae560f785d69e5a8c6d`; download version: `61b036dae55e`. The older Word source is identified as such in the README.
+
+Validation passed with Node 24.19.0: 5 unit tests, production build, security baseline, artifact budgets and 17 Chromium tests. An actual click on Download CV downloaded a PDF identical to the supplied file; HTTP delivery also returned 200 with `application/pdf` and identical bytes. Reviewed desktop 1440x1000 and mobile 390x844 screenshots, saved with the download report under the ignored `.artifacts/cv-update/` directory. Firefox, WebKit and production deployment were not validated for this update. No push or deployment was performed.

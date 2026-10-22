@@ -30,8 +30,8 @@ export const siteData = {
   positioning:
     'I help robots learn, perceive, and act.',
   bio:
-    'I’m an R&D Assistant in Robot Learning at Purdue University, focused on humanoid manipulation and multimodal perception. I’m also pursuing a master’s in AI at Politecnico di Milano and the University of Milano-Bicocca.',
-  lastUpdated: '2026-09-30',
+    'I’m an R&D Assistant in Robot Learning at Purdue University, focused on humanoid manipulation and multimodal perception. I’m also pursuing two master’s degrees focused on AI at Politecnico di Milano and the University of Milano-Bicocca.',
+  lastUpdated: '2026-10-21',
   privacyExposure: {
     showPhone: false,
     phoneLabel: 'Phone',
@@ -89,7 +89,7 @@ export const siteData = {
       dateLabel: 'Oct 2024',
       isoDate: '2024-10-01',
       text:
-        'Obtained my thesis with the maximum grade (110/110), titled "Theoretical Foundations and Real-World Applications of Quantum Machine Learning in Finance".'
+        'Graduated with a B.S. in Artificial Intelligence from the University of Pavia, earning 110/110, with a thesis on quantum machine learning in finance.'
     }
   ],
   research: [
@@ -100,7 +100,7 @@ export const siteData = {
       bullets: [
         'Build simulation and control infrastructure in Isaac Sim and Isaac Lab for manipulation with the IHMC Alex humanoid.',
         'Develop Isaac Audio Sensors and multimodal perception systems for robotics research.',
-        'Mentor an undergraduate researcher on Ego2Grip, guiding the extraction of 3D hand trajectories from first-person video.'
+        'Mentor an undergraduate researcher on Ego2Grip, guiding 3D hand-motion reconstruction and retargeting to IHMC Alex grippers.'
       ]
     },
     {
@@ -108,7 +108,7 @@ export const siteData = {
       org: 'Purdue University',
       timeframe: 'Jan 2026 - May 2026',
       bullets: [
-        'Built a contact-rich MuJoCo benchmark for bimanual LEGO assembly to study robustness and failure modes.',
+        'Built a contact-rich MuJoCo benchmark and VLA architecture for bimanual LEGO assembly to study robustness and failure modes.',
         'Integrated a decoder-only transformer policy on the IHMC Alex humanoid for real-time validation.',
         'Owned the experiment pipeline from data and training to tracking and ablations, with reproducible runs.'
       ],
@@ -150,7 +150,7 @@ export const siteData = {
       title: 'AlexDoor-XAS - Humanoid Door Manipulation',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Developing an IHMC Alex door-opening benchmark. Built simulation control and RGB-D sensing to compare four action representations with ACT and diffusion policies on unseen doors.',
+      built: 'Compared four action representations for IHMC Alex door manipulation across ACT, diffusion, and vision-language-action policies.',
       stack: 'Python, Isaac Sim, Isaac Lab, RGB-D, PyTorch',
       href: 'https://github.com/PatrizioAcquadro/AlexDoor-XAS',
       hrefLabel: 'GitHub repository'
@@ -176,7 +176,7 @@ export const siteData = {
       title: 'SquadBot-AV - Audio-Visual Perception',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Contributing to research on multimodal perception for robotics, combining audio and visual information to help robots understand their surroundings.',
+      built: 'Built an audiovisual scene graph, temporal world model, and learned policies for the IHMC Alex humanoid.',
       stack: 'Python, Robotics, Multimodal perception',
       hrefLabel: 'Research in progress'
     },
@@ -184,7 +184,7 @@ export const siteData = {
       title: 'Ego2Grip - Learning from First-Person Video',
       robotics: true,
       timeframe: '2026 - Present',
-      built: 'Mentoring an undergraduate researcher on reconstructing 3D hand trajectories from first-person video, with the goal of creating robot-compatible manipulation demonstrations.',
+      built: 'Mentoring an undergraduate researcher on retargeting 3D hand motion from first-person video to IHMC Alex grippers for accessible manipulation demonstrations.',
       stack: 'Python, PyTorch, HaWoR, Ego4D, 3D hand reconstruction',
       href: 'https://github.com/grmpn/Egocentric-Videos',
       hrefLabel: 'Collaborator’s repository'
@@ -193,7 +193,7 @@ export const siteData = {
       title: 'VLA-LEGO - Bimanual Assembly Benchmark',
       robotics: true,
       timeframe: '2026',
-      built: 'Built a contact-rich MuJoCo benchmark for IHMC Alex bimanual LEGO assembly, with reproducible experiments to study robustness and failure modes in vision-language-action policies.',
+      built: 'Built a contact-rich MuJoCo benchmark and vision-language-action architecture for IHMC Alex bimanual LEGO assembly, with reproducible experiments to study robustness and failure modes.',
       stack: 'Python, MuJoCo, PyTorch, Hugging Face Transformers, Hydra, Weights & Biases',
       href: 'https://github.com/PatrizioAcquadro/VLA-LEGO_Project',
       hrefLabel: 'GitHub repository'
@@ -294,8 +294,8 @@ export const siteData = {
       timeframe: 'Jul 2022 - Present',
       bullets: [
         'Managed local disco and live-event coverage for a youth audience across Biella province through Instagram.',
-        'Scaled to 8.9k+ followers and ~550k monthly views in a ~43k-resident market with consistent publishing.',
-        'Led a 4+ person team across content, design, communications, and partnerships during peak weeks.'
+        'Scaled to 10k+ followers and 800k monthly views with consistent publishing.',
+        'Lead a 4+ person team across content, design, communications, and partnerships during peak weeks.'
       ]
     },
     {
@@ -303,7 +303,7 @@ export const siteData = {
       role: 'Founder',
       timeframe: 'Apr 2025 - May 2025',
       bullets: [
-        'Built and shipped the Next.js app end-to-end, optimizing delivery, security, and performance at launch.',
+        'Built and shipped a Next.js festival map app for 8–10k daily visitors, optimizing delivery, security, and performance at launch.',
         'Mapped 50+ venues and 90+ POIs with time-aware events, routes, closures, and logistics for clear navigation.',
         'Led a 10-person onsite team with the local tourist office for promotion and field operations.'
       ]

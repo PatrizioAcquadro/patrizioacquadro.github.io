@@ -50,4 +50,17 @@ Browser tests use an ephemeral HTTPS server on port 4175 with a temporary certif
 
 The existing Pages workflow validates the root application with Node 24 and all three browsers, audits dependencies and deploys the exact validated `dist/`. It runs on a push to `main` or manual dispatch. Check the workflow result and live site to confirm publication.
 
+For HTTPS pushes, this checkout uses the account already authenticated in GitHub CLI. The credential helper is scoped to this repository; no token is stored in the project. To configure the same setup in another checkout after signing in with `gh auth login`:
+
+```sh
+git config --local --replace-all credential.https://github.com.helper ''
+git config --local --add credential.https://github.com.helper '!gh auth git-credential'
+```
+
+After `git push origin main`, confirm that the Pages run has event `push` and its `headSha` matches the pushed commit:
+
+```sh
+gh run list --workflow deploy-pages.yml --branch main --event push --limit 1 --json event,headSha,status,conclusion,url
+```
+
 The previous implementation remains recoverable in Git at `768a196`. The final isolated editorial edition is preserved at `d81b01f`. Inspect those commits without resetting the current checkout. Historical reports remain under `docs/`; current promotion evidence is in [PROMOTION.md](docs/PROMOTION.md).
